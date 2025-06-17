@@ -52,6 +52,11 @@ public class Weapon : MonoBehaviour
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(mouseScreen);
         mouseWorld.z = 0f;
 
+        Vector3 playerPos = transform.position;
+        //Vector2 rawDir = mouseWorld - firePoint.position;
+        Vector2 rawDir = mouseWorld - playerPos;
+        if (rawDir.sqrMagnitude < 0.75f) return;
+
         lastAimDirection = (mouseWorld - firePoint.position).normalized;
 
         float angle = Mathf.Atan2(lastAimDirection.y, lastAimDirection.x) * Mathf.Rad2Deg;
@@ -63,7 +68,7 @@ public class Weapon : MonoBehaviour
         bowTransform.rotation = q;
 
         // Reposition the bow in a circle around the player
-        Vector3 playerPos = transform.position;
+        //Vector3 playerPos = transform.position;
         Vector3 bowOffset = (Vector3)lastAimDirection * bowRadius;
         bowTransform.position = playerPos + bowOffset;
 

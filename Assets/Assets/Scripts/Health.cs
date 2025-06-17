@@ -1,31 +1,37 @@
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(Collider2D))]
 public class Health : MonoBehaviour
 {
-    [Tooltip("Starting HP")]
-    public int maxHealth = 1;
+    [Tooltip("Maximum hit points")]
+    public int maxHP = 3;
 
-    private int currentHealth;
+    [Tooltip("Invoked when HP reaches zero")]
+    public UnityEvent OnDeath;
 
-    private void Awake()
+    private int currentHP;
+
+    void Awake()
     {
-        currentHealth = maxHealth;
+        currentHP = maxHP;
     }
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        Debug.Log($"{gameObject.name} took {amount} damage, now at {currentHealth} HP");
+        currentHP = Mathf.Max(currentHP - amount, 0);
+        Debug.Log($"{name} took {amount} damage, {currentHP}/{maxHP} HP left");
 
-        if (currentHealth <= 0)
-        {
+        if (currentHP == 0)
             Die();
-        }
     }
 
-    void Die()
+    private void Die()
     {
-        // For now, just destroy the GameObject
+        // Let any listeners run (e.g. play VFX, drop loot)
+        OnDeath?.Invoke();
+
+        // Default behavior: destroy after a short delay
         Destroy(gameObject);
     }
 }
