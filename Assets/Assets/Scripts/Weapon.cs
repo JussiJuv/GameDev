@@ -6,6 +6,10 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public Transform bowTransform;
 
+    [Header("Bow Settings")]
+    [Tooltip("Distance from the player center to the bow")]
+    public float bowRadius = 0.5f;
+
     [Header("Projectile Settings")]
     [Tooltip("Prefab of the projectile to fire")]
     public GameObject projectilePrefab;
@@ -58,6 +62,12 @@ public class Weapon : MonoBehaviour
         firePoint.rotation = q;
         bowTransform.rotation = q;
 
+        // Reposition the bow in a circle around the player
+        Vector3 playerPos = transform.position;
+        Vector3 bowOffset = (Vector3)lastAimDirection * bowRadius;
+        bowTransform.position = playerPos + bowOffset;
+
+        firePoint.position = bowTransform.position;
     }
 
     void Shoot()
