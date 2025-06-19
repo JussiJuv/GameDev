@@ -10,6 +10,9 @@ public class Weapon : MonoBehaviour
     [Tooltip("Distance from the player center to the bow")]
     public float bowRadius = 0.5f;
 
+    [Tooltip("")]
+    public float bowDeadZoneRadius = 0.9f;
+
     [Header("Projectile Settings")]
     [Tooltip("Prefab of the projectile to fire")]
     public GameObject projectilePrefab;
@@ -55,7 +58,7 @@ public class Weapon : MonoBehaviour
         Vector3 playerPos = transform.position;
         //Vector2 rawDir = mouseWorld - firePoint.position;
         Vector2 rawDir = mouseWorld - playerPos;
-        if (rawDir.sqrMagnitude < 0.75f) return;
+        if (rawDir.sqrMagnitude < bowDeadZoneRadius) return;
 
         lastAimDirection = (mouseWorld - firePoint.position).normalized;
 

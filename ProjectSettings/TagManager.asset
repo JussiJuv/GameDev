@@ -15,10 +15,10 @@ TagManager:
   - 
   - Weapon
   - Player
+  - PlayerProjectile
   - 
   - 
-  - 
-  - 
+  - Enemy
   - 
   - 
   - 
