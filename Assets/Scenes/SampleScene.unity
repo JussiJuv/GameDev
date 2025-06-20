@@ -182,9 +182,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
+  destroyDelay: 0.5
+  deathEffectPrefab: {fileID: 0}
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  OnPlayerDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  deathClip: {fileID: 0}
 --- !u!61 &295462152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -607,6 +613,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8226741591452074890, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+      propertyPath: deathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c655cd9abd197b4e80660b8e31fc533, type: 3}
     - target: {fileID: -3833442151004070157, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: fireRate
       value: 3
