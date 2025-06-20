@@ -1,6 +1,9 @@
-Character
+Character (1)
 https://thelazystone.itch.io/post-apocalypse-pixel-art-asset-pack
 
 
-Enemy
+Enemy (2)
 https://sangoro.itch.io/free-s-fully-animated-enemy-basic-slime
+
+VFX (3)
+https://pimen.itch.io/dark-spell-effect
