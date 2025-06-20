@@ -23,9 +23,7 @@ public class Health : MonoBehaviour
     [Header("Audio")]
     [Tooltip("SFX to play when player dies")]
     public AudioClip deathClip;
-    //public AudioClip deathSFX;
 
-    //private AudioSource audioSource;
     private int currentHP;
     private Collider2D col;
     private Behaviour[] disableOnDeath;
@@ -39,7 +37,6 @@ public class Health : MonoBehaviour
         // Gather components to disable on death
         disableOnDeath = GetComponents<Behaviour>();
 
-        //audioSource = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(int amount)
@@ -68,7 +65,12 @@ public class Health : MonoBehaviour
         // Spawn VFX if assigned
         if (deathEffectPrefab != null)
         {
+            Debug.Log("Playing death VFX");
             Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("VFX Prefab not found");
         }
 
         // Play SFX if assigned
@@ -76,10 +78,6 @@ public class Health : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(deathClip, transform.position);
         }
-        /*if (CompareTag("Player") && deathSFX != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(deathSFX);
-        }*/
 
         // Disable any MonoBehaviours
         foreach (var comp in disableOnDeath)
@@ -99,10 +97,5 @@ public class Health : MonoBehaviour
         // Finally destroy this GameObject after a delay
         Destroy(gameObject, destroyDelay);
 
-        /*// Let any listeners run (e.g. play VFX, drop loot)
-        OnDeath?.Invoke();
-
-        // Default behavior: destroy after a short delay
-        Destroy(gameObject);*/
     }
 }
