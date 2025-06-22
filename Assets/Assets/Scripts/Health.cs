@@ -24,8 +24,6 @@ public class Health : MonoBehaviour
     [Tooltip("SFX to play when player dies")]
     public AudioClip deathClip;
 
-    public AudioSource sfxAudioSource;
-
     private int currentHP;
     private Collider2D col;
     private Behaviour[] disableOnDeath;
