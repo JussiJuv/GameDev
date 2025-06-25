@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: Silver Key
   keyIcon: {fileID: -710564211, guid: a991e9f8f94460843b059a5fd586472d, type: 3}
-  doorID: 1
+  doorID: door_01

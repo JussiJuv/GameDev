@@ -47,6 +47,9 @@ TagManager:
   - name: Wall
     uniqueID: 939189445
     locked: 0
+  - name: WorldUI
+    uniqueID: 1152643505
+    locked: 0
   - name: Player
     uniqueID: 165465987
     locked: 0
