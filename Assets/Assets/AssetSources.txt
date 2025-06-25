@@ -9,3 +9,6 @@ https://pimen.itch.io/dark-spell-effect
 
 Tiles (4)
 https://assetstore.unity.com/packages/2d/environments/pixel-art-top-down-basic-187605
+
+Keys (5)
+https://assetstore.unity.com/packages/2d/pixel-art-key-pack-animated-271986

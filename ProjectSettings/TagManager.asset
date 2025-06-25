@@ -44,14 +44,26 @@ TagManager:
   - name: Background
     uniqueID: 832229497
     locked: 0
+  - name: Wall
+    uniqueID: 939189445
+    locked: 0
   - name: Player
     uniqueID: 165465987
+    locked: 0
+  - name: Props
+    uniqueID: 2242802099
+    locked: 0
+  - name: Struct
+    uniqueID: 1757622137
     locked: 0
   - name: VFX
     uniqueID: 541352243
     locked: 0
   - name: Projectile
     uniqueID: 2092533771
+    locked: 0
+  - name: Key
+    uniqueID: 617610607
     locked: 0
   m_RenderingLayers:
   - Default
