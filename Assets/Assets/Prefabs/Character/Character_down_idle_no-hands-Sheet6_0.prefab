@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: -1047071634352462018}
   - component: {fileID: -8226741591452074890}
   - component: {fileID: 7395702047644957517}
-  - component: {fileID: 3461975419553660645}
   - component: {fileID: -8843363672306798895}
+  - component: {fileID: 8988376279219047480}
   m_Layer: 9
   m_Name: Character_down_idle_no-hands-Sheet6_0
   m_TagString: Player
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 165465987
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1217764008, guid: 712f6f6280e42d446b8dfcb78919b1da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -159,6 +159,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  dashDistance: 5
+  dashDuration: 0.05
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 16384
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!61 &-1047071634352462018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -217,7 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050c3eb106116264390773dd781f1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 1
+  maxHP: 10
+  xpValue: 0
   destroyDelay: 0.5
   deathEffectPrefab: {fileID: 3341095332118901100, guid: 2a2673d47a31eb840bec71e522f7e708, type: 3}
   OnDeath:
@@ -254,19 +263,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3461975419553660645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6581479567029726846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b07109c96bbf5499a553ce6b841a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!114 &-8843363672306798895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +275,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6280dea2eadb0a143923e151babe8216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8988376279219047480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581479567029726846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fea301ceada304c9c295b539f843d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAbilities:
+  - {fileID: 11400000, guid: 03c2c87ce65328449a9f1937ceffe4a9, type: 2}
+  - {fileID: 11400000, guid: 8302e0d2435181a42a5428561b87cc8b, type: 2}
 --- !u!1001 &7648146855642804341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -337,7 +348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7271260529311391554, guid: 3fe1548925a019843b961eb442d61514, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

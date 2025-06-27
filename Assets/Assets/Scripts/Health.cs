@@ -7,6 +7,9 @@ public class Health : MonoBehaviour
     [Tooltip("Maximum hit points")]
     public int maxHP = 3;
 
+    [Tooltip("XP awarded when this entity dies (set 0 for Player or non-XP entities)")]
+    public int xpValue = 0;
+
     [Tooltip("Seconds to wait before actually destroying the GameObject")]
     public float destroyDelay = 0.5f;
 
@@ -92,6 +95,13 @@ public class Health : MonoBehaviour
 
         // Invoke the general OnDeath event
         OnDeath?.Invoke();
+
+        // Award XP if this is an enemy (xpValue > 0)
+        if (xpValue > 0 && XPManager.Instance != null)
+        {
+            XPManager.Instance.AddXP(xpValue);
+            Debug.Log($"Awarded {xpValue} XP for defeating {name}");
+        }
 
         // If this is the Player, invoke OnPlayerDeath as well
         if (CompareTag("Player")) OnPlayerDeath?.Invoke();

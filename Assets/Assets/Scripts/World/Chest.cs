@@ -11,7 +11,7 @@ public class Chest : MonoBehaviour
     public int coinAmount = 10;
     public GameObject openVFX;          // optional VFX prefab
     public AudioClip openSFX;           // optional sound clip
-    public float promptYOffset = 1f;    // vertical offset for the prompt
+    public float promptYOffset = 1f;    // vertical offset for the 
 
     private bool playerInRange = false;
     private bool isOpen = false;

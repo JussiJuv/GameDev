@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -585523863
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 8793639957104055765, guid: 770caea2cf0dbc140a834a19c2277574, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
+  xpValue: 10
   destroyDelay: 0.5
   deathEffectPrefab: {fileID: 0}
   OnDeath:
