@@ -34,6 +34,10 @@ public class PlayerInventory : MonoBehaviour
         }
         return false;
     }
-    
+
+    /// <summary>
+    /// Expose the list of collected keys for UI only.
+    /// </summary>
+    public IReadOnlyList<KeyItemData> Keys => keys;
 
 }
