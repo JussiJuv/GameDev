@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Collider2D col;
-    //private Vector2 movement;
     private Vector2 moveInput;
 
     // Dash state
@@ -17,8 +16,7 @@ public class PlayerController : MonoBehaviour
     private bool isDashing;
     public float dashDistance = 5f;
     public float dashDuration = 0.05f;
-    //private float dashTimeLeft;
-    //private Vector2 dashDirection;
+
     public LayerMask wallMask;
     public LayerMask enemyMask;
 
@@ -64,6 +62,7 @@ public class PlayerController : MonoBehaviour
             && Input.GetKeyDown(dashData.activationKey))
         {
             Debug.Log("Dashing!");
+            abilityManager.Consume(dashData.abilityName);
             StartCoroutine(PerformDash());
         }
     }
@@ -76,22 +75,6 @@ public class PlayerController : MonoBehaviour
         // Regular walk
         Vector2 newPos = rb.position + moveInput.normalized * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(newPos);
-
-/*        if (isDashing)
-        {
-            float step = dashData.dashSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + dashDirection * step);
-
-
-            dashTimeLeft -= Time.fixedDeltaTime;
-            if (dashTimeLeft <= 0f) EndDash();
-        }
-        else
-        {
-            // Regular walk
-            Vector2 newPos = rb.position + moveInput * moveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(newPos);
-        }*/
     }
 
     private IEnumerator PerformDash()
@@ -133,20 +116,4 @@ public class PlayerController : MonoBehaviour
         }
         return 0;
     }
-
-/*    private void StartDash()
-    {
-        isDashing = true;
-        dashDirection = moveInput != Vector2.zero
-            ? moveInput.normalized
-            : Vector2.right;
-        dashTimeLeft = dashData.dashDistance / dashData.dashSpeed;
-
-        abilityManager.Consume(dashData.abilityName);
-    }
-
-    private void EndDash()
-    {
-        isDashing = false;
-    }*/
 }

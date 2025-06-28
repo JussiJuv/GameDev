@@ -18,8 +18,8 @@ MonoBehaviour:
   unlockLevel: 2
   activationKey: 113
   cooldown: 3
-  dashDistance: 10
-  dashSpeed: 10
+  dashDistance: 7
+  dashSpeed: 7
   arrowCount: 0
   areaRadius: 0
   arrowPrefab: {fileID: 0}

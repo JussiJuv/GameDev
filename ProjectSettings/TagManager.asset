@@ -16,11 +16,11 @@ TagManager:
   - Weapon
   - Player
   - PlayerProjectile
-  - 
+  - PlayerProjectileAbility
   - 
   - Enemy
-  - 
-  - 
+  - Wall
+  - Ground
   - 
   - 
   - 

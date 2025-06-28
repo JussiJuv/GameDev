@@ -21,6 +21,7 @@ public class AbilityData : ScriptableObject
     [Header("Arrow Rain Settings (if Active)")]
     public int arrowCount;
     public float areaRadius;
+    public int arrowDamage;
     public GameObject arrowPrefab;
     public float dropHeight;
 

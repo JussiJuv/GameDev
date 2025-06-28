@@ -231,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 340822704}
   - component: {fileID: 340822705}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Dungeon Wall Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 626552338}
   - component: {fileID: 626552337}
   - component: {fileID: 626552336}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WallTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4772,13 +4772,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3833442151004070157, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+      propertyPath: ArrowRainAbility
+      value: 
+      objectReference: {fileID: 2129100377}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.61
+      value: 27.41
       objectReference: {fileID: 0}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -10.81
       objectReference: {fileID: 0}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4819,7 +4823,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6581479567029726846, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2129100377}
   m_SourcePrefab: {fileID: 100100000, guid: 1f06199d022161542b6d6048e1691189, type: 3}
 --- !u!1001 &744660004
 PrefabInstance:
@@ -4839,11 +4846,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8632570280047989433, guid: 3d55e098407bae946aab9f817c945d6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.51
+      value: 27.39
       objectReference: {fileID: 0}
     - target: {fileID: 8632570280047989433, guid: 3d55e098407bae946aab9f817c945d6d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.95
+      value: -10.8
       objectReference: {fileID: 0}
     - target: {fileID: 8632570280047989433, guid: 3d55e098407bae946aab9f817c945d6d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6537,6 +6544,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2349278583362291744, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2676647125395865318, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.48
@@ -6597,7 +6608,7 @@ GameObject:
   - component: {fileID: 857543835}
   - component: {fileID: 857543837}
   - component: {fileID: 857543836}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GroundTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14627,7 +14638,7 @@ GameObject:
   - component: {fileID: 886804089}
   - component: {fileID: 886804091}
   - component: {fileID: 886804090}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Dungeon Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16075,7 +16086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1073542285}
   - component: {fileID: 1073542284}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Wall Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16241,6 +16252,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2349278583362291744, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
+      propertyPath: canMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2676647125395865318, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.305267
@@ -16281,6 +16296,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5273939111373719458, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
+      propertyPath: maxHP
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5603505670351048312, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
       propertyPath: m_Name
       value: Enemy_Base 1
@@ -16290,6 +16309,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
+--- !u!1 &1470649001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470649002}
+  m_Layer: 0
+  m_Name: ArrowContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1470649002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470649001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.7469845, y: -1.5572461, z: -0.0068087443}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1734069390
 GameObject:
   m_ObjectHideFlags: 0
@@ -16612,7 +16662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2099053907}
   - component: {fileID: 2099053906}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Ground Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16647,6 +16697,41 @@ Transform:
   - {fileID: 857543835}
   m_Father: {fileID: 1263300263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2129100368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6581479567029726846, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+  m_PrefabInstance: {fileID: 683101922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2129100369 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8988376279219047480, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+  m_PrefabInstance: {fileID: 683101922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129100368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fea301ceada304c9c295b539f843d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2129100377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129100368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7923e632cc8030846a94aff88e4fed7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityManager: {fileID: 2129100369}
+  indicatorPrefab: {fileID: 5854324021512247943, guid: 6673342f64bddc84393d947d3222f252, type: 3}
+  abilityName: Arrow Rain
+  arrowVisualPrefab: {fileID: 8055485634933547239, guid: 0565d9688ae83f243a5207193642a867, type: 3}
+  visualFallSpeed: 10
+  stickDuration: 1
+  arrowContainer: {fileID: 1470649002}
 --- !u!1 &2144158926
 GameObject:
   m_ObjectHideFlags: 0
@@ -16921,6 +17006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorLocked
       objectReference: {fileID: 0}
+    - target: {fileID: 8752434467899542396, guid: ed8fd06f9c5f43b44b315d60a70ccf94, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16941,3 +17030,4 @@ SceneRoots:
   - {fileID: 1433457681}
   - {fileID: 799997297}
   - {fileID: 2144158927}
+  - {fileID: 1470649002}

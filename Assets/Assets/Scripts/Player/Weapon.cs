@@ -31,21 +31,45 @@ public class Weapon : MonoBehaviour
 
     private Camera mainCam;
 
+    [Header("Arrow Rain Blocker")]
+    public ArrowRainAbility ArrowRainAbility;
+
     private void Awake()
     {
         mainCam = Camera.main;
+        ArrowRainAbility = GetComponent<ArrowRainAbility>();
     }
 
     private void Update()
     {
         AimAtMouse();
 
-        // F ire when the Fire1 button (left CTRL / mouse0 / configured) is pressed
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
+        {
+            // If we are in arrow rain targeting mode, dont shoot
+            if (ArrowRainAbility != null && ArrowRainAbility.IsTargeting)
+            {
+                Debug.Log("Weapon Blocked normal shot during arrow rain");
+            }
+            else
+            {
+                Shoot();
+                nextFireTime = Time.time +1f / fireRate;
+            }
+        }
+
+        /*// If arrow rain targeting is active, skip normal shooting
+        if (ArrowRainAbility != null && ArrowRainAbility.IsTargeting)
+        {
+            return;
+        }
+
+        // Fire when the Fire1 button (left CTRL / mouse0 / configured) is pressed
         if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
         {
             Shoot();
             nextFireTime = Time.time + 1f / fireRate;
-        }
+        }*/
     }
 
     void AimAtMouse()

@@ -16,11 +16,12 @@ MonoBehaviour:
   icon: {fileID: 0}
   type: 0
   unlockLevel: 3
-  activationKey: 101
+  activationKey: 49
   cooldown: 1
   dashDistance: 0
   dashSpeed: 0
-  arrowCount: 5
-  areaRadius: 3
+  arrowCount: 50
+  areaRadius: 2
+  arrowDamage: 3
   arrowPrefab: {fileID: 8055485634933547239, guid: f1cd9b6811e030042b07e2c8033662e8, type: 3}
   dropHeight: 5
