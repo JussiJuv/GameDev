@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   abilityName: Dash
-  icon: {fileID: 0}
+  icon: {fileID: 7110878671101974141, guid: 59d5e2c05388a504aabe35276cd32205, type: 3}
   type: 0
   unlockLevel: 2
   activationKey: 113
@@ -22,5 +22,6 @@ MonoBehaviour:
   dashSpeed: 7
   arrowCount: 0
   areaRadius: 0
+  arrowDamage: 0
   arrowPrefab: {fileID: 0}
   dropHeight: 0

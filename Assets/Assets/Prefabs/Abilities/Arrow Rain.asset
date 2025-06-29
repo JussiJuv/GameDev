@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Arrow Rain
   m_EditorClassIdentifier: 
   abilityName: Arrow Rain
-  icon: {fileID: 0}
+  icon: {fileID: 7906804529728520265, guid: dbf8de14af602964fb4542c11295b55e, type: 3}
   type: 0
   unlockLevel: 3
   activationKey: 49

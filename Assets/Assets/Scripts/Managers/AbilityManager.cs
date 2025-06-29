@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class AbilityManager : MonoBehaviour
     private Dictionary<string, AbilityData> _unlocked = new Dictionary<string, AbilityData>();
     // Remaining cooldown time per ability
     private Dictionary<string, float> _cooldowns = new Dictionary<string, float>();
+
+    // Fired when an ability is unlocked
+    public event Action<AbilityData> OnAbilityUnlocked;
+
+    // Fired when an ability is used and enters cooldown.
+    public event Action<string, float> OnAbilityUsed;
 
     private void OnEnable()
     {
@@ -39,14 +46,21 @@ public class AbilityManager : MonoBehaviour
 
     private void Update()
     {
-        // Tick down all active cooldowns
+        // Tick down all active cooldowns and notify UI as they change
         var keys = new List<string>(_cooldowns.Keys);
         foreach (var name in keys)
         {
             if (_cooldowns[name] > 0f)
+            {
                 _cooldowns[name] -= Time.deltaTime;
+                float normalized = Mathf.Clamp01(_cooldowns[name] / GetCooldownDuration(name));
+                OnAbilityUsed?.Invoke(name, normalized);
+            }
         }
     }
+
+    private float GetCooldownDuration(string name) =>
+        _unlocked.TryGetValue(name, out var ab) ? ab.cooldown : 1f;
 
     /// <summary>
     /// Called whenever the player levels up.
@@ -60,6 +74,7 @@ public class AbilityManager : MonoBehaviour
             if (ability.unlockLevel == level && !_unlocked.ContainsKey(ability.abilityName))
             {
                 _unlocked[ability.abilityName] = ability;
+                OnAbilityUnlocked?.Invoke(ability);
                 Debug.Log($"[AbilityManager] Unlocked: {ability.abilityName}");
                 // TODO: fire an event/UI update about the new ability
             }
@@ -99,5 +114,8 @@ public class AbilityManager : MonoBehaviour
             return;
         }
         _cooldowns[abilityName] = _unlocked[abilityName].cooldown;
+
+        // Notify UI of cooldown start
+        OnAbilityUsed?.Invoke(abilityName, 1f);
     }
 }

@@ -33,7 +33,7 @@ public class ArrowRainAbility : MonoBehaviour
             && abilityManager.CanUse(abilityName))
         {
             _data = abilityManager.GetAbility(abilityName);
-            abilityManager.Consume(abilityName);
+            //abilityManager.Consume(abilityName);
             BeginTargeting();
         }
 
@@ -43,6 +43,7 @@ public class ArrowRainAbility : MonoBehaviour
             Vector3 center = _indicator.transform.position;
             EndTargeting();
             StartCoroutine(SpawnArrowRainVisual(center));
+            abilityManager.Consume(abilityName);
         }
 
         // 3) Cancel with right click or Esc
