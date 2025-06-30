@@ -38,4 +38,10 @@ public class CurrencyManager : MonoBehaviour
         OnCoinsChanged?.Invoke(Coins);
         return true;
     }
+
+    public void SetCoins(int amount)
+    {
+        Coins = amount;
+        OnCoinsChanged?.Invoke(Coins);
+    }
 }

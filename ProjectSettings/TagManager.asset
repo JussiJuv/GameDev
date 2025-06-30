@@ -47,6 +47,12 @@ TagManager:
   - name: WorldUI
     uniqueID: 1152643505
     locked: 0
+  - name: Checkpoint
+    uniqueID: 768341515
+    locked: 0
+  - name: Rune
+    uniqueID: 3728875753
+    locked: 0
   - name: Player
     uniqueID: 165465987
     locked: 0

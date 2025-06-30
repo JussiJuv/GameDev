@@ -40,4 +40,6 @@ public class PlayerInventory : MonoBehaviour
     /// </summary>
     public IReadOnlyList<KeyItemData> Keys => keys;
 
+    public void ClearKeys() => keys.Clear();
+
 }

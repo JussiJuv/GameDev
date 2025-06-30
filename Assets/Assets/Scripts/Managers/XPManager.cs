@@ -35,6 +35,14 @@ public class XPManager : MonoBehaviour
         currentXP = 0;
         xpToNextLevel = GetXPThreshold(currentLevel);
         OnXPChanged?.Invoke(currentXP, xpToNextLevel);
+
+        // This is horrible
+        // Override with saved data if it exists
+        if (SaveSystem.Data.savedLevel > 0)
+        {
+            Debug.Log($"[XPManager] Loading saved level {SaveSystem.Data.savedLevel}, XP {SaveSystem.Data.savedXP}");
+            SetLevelAndXP(SaveSystem.Data.savedLevel, SaveSystem.Data.savedXP);
+        }
     }
 
     public void AddXP(int amount)
@@ -73,5 +81,12 @@ public class XPManager : MonoBehaviour
         return xpThresholds[xpThresholds.Length - 1]; // Max threshold for overflow levels
     }
 
+    public void SetLevelAndXP(int level, int xp)
+    {
+        currentLevel = level;
+        currentXP = xp;
+        xpToNextLevel = GetXPThreshold(level);
+        OnXPChanged.Invoke(currentXP, xpToNextLevel);
+    }
 
 }
