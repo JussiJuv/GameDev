@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerController : MonoBehaviour
@@ -46,6 +47,34 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log($"[PlayerController] Dash key = {dashData.activationKey}, cooldown = {dashData.cooldown}s");
             }
+
+            // Subscribe to future unlocks
+            abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
+            // If dash is already unlocked at startup, grab it now
+            TryCacheDash();
+        }
+    }
+
+    private void OnAbilityUnlocked(AbilityData data)
+    {
+        if (data.abilityName == "Dash")
+        {
+            dashData = data;
+            Debug.Log("[PlayerController] Dash unlocked via event!");
+        }
+    }
+
+    private void TryCacheDash()
+    {
+        try
+        {
+            dashData = abilityManager.GetAbility("Dash");
+            Debug.Log("[PlayerController] Dash already unlocked at startup");
+        }
+        catch
+        {
+            // Not unlocked yet
+            dashData = null;
         }
     }
 

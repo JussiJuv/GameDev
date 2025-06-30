@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 6551777613735413933}
   - component: {fileID: 7874481109673916633}
   - component: {fileID: 5273939111373719458}
-  - component: {fileID: 2349278583362291744}
   - component: {fileID: 355754569691349180}
-  - component: {fileID: 8158126200048142572}
+  - component: {fileID: 6507404039069742280}
+  - component: {fileID: 6559643012209477189}
   m_Layer: 13
-  m_Name: Enemy_Base 1
+  m_Name: Boss_slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.483, y: 3.586, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050c3eb106116264390773dd781f1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
+  maxHP: 10
   xpValue: 10
   destroyDelay: 0.5
   deathEffectPrefab: {fileID: 0}
@@ -155,26 +155,6 @@ MonoBehaviour:
       m_Calls: []
   deathClip: {fileID: 0}
   currentHP: 0
---- !u!114 &2349278583362291744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5603505670351048312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71276afa11b16c40815ebb40448a63f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canMove: 1
-  patrolSpeed: 2
-  chaseSpeed: 2
-  patrolRadius: 3
-  chaseRange: 10
-  attackRange: 1
-  attackDamage: 1
-  attackCooldown: 1
 --- !u!95 &355754569691349180
 Animator:
   serializedVersion: 7
@@ -197,7 +177,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &8158126200048142572
+--- !u!114 &6507404039069742280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5603505670351048312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29601ac4d571304f9c999275b2585bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canActivate: 0
+  smallSlimePrefab: {fileID: 5603505670351048312, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
+  splitCount: 4
+  spawnRadius: 1
+  moveSpeed: 3
+  attackRange: 1.75
+  attackDamage: 1
+  attackCooldown: 1
+  bossHealthBarUI: {fileID: 0}
+  bossName: Slime Giant
+  gateController: {fileID: 0}
+--- !u!58 &6559643012209477189
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

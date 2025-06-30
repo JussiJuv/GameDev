@@ -21,3 +21,6 @@ https://egordorichev.itch.io/key-set
 
 Currency (8)
 https://laredgames.itch.io/gems-coins-free
+
+Boss room entrance mist (9)
+https://kenney.nl/assets/smoke-particles
