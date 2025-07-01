@@ -97,7 +97,6 @@ public class AbilityManager : MonoBehaviour
     {
         if (!_unlocked.ContainsKey(abilityName))
         {
-            Debug.LogError($"[AbilityManager] GetAbility: '{abilityName}' not unlocked!");
             return null;
         }
         return _unlocked[abilityName];
@@ -110,7 +109,6 @@ public class AbilityManager : MonoBehaviour
     {
         if (!_unlocked.ContainsKey(abilityName))
         {
-            Debug.LogError($"[AbilityManager] Consume: '{abilityName}' not unlocked!");
             return;
         }
         _cooldowns[abilityName] = _unlocked[abilityName].cooldown;

@@ -24,12 +24,18 @@ public class PlayerController : MonoBehaviour
     private AbilityData dashData;
     private AbilityManager abilityManager;
 
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
     [HideInInspector] public bool isInvulnerable { get; private set; }
 
     private void Awake()
     {
-       rb = GetComponent<Rigidbody2D>();
-       col = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
+
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -41,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
             if (dashData == null)
             {
-                Debug.LogWarning("Dash ability not unlocked or not found on startup");
+                Debug.Log("Dash ability not unlocked or not found on startup");
             }
             else
             {
@@ -69,7 +75,6 @@ public class PlayerController : MonoBehaviour
         try
         {
             dashData = abilityManager.GetAbility("Dash");
-            Debug.Log("[PlayerController] Dash already unlocked at startup");
         }
         catch
         {
@@ -83,6 +88,14 @@ public class PlayerController : MonoBehaviour
         // Read raw input axes
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
+
+        animator.SetFloat("MoveX", moveInput.x);
+        animator.SetFloat("MoveY", moveInput.y);
+        animator.SetFloat("Speed", moveInput.sqrMagnitude);
+
+        // Flip the sprite when moving left
+        if (moveInput.x < 0f) spriteRenderer.flipX = true;
+        else if (moveInput.x > 0f) spriteRenderer.flipX = false;
 
         // Detect dash key
         if (!isDashing 

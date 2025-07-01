@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 7395702047644957517}
   - component: {fileID: -8843363672306798895}
   - component: {fileID: 8988376279219047480}
+  - component: {fileID: 4174585013214212714}
   m_Layer: 9
   m_Name: Character_down_idle_no-hands-Sheet6_0
   m_TagString: Player
@@ -114,7 +115,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 165465987
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1217764008, guid: 712f6f6280e42d446b8dfcb78919b1da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -146,6 +147,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8055485634933547239, guid: f1cd9b6811e030042b07e2c8033662e8, type: 3}
   fireRate: 3
   projectileSpeed: 10
+  ArrowRainAbility: {fileID: 4174585013214212714}
 --- !u!114 &-2233566201651687474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +238,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathClip: {fileID: 8300000, guid: 5c655cd9abd197b4e80660b8e31fc533, type: 3}
+  currentHP: 0
 --- !u!50 &7395702047644957517
 Rigidbody2D:
   serializedVersion: 5
@@ -290,6 +293,25 @@ MonoBehaviour:
   allAbilities:
   - {fileID: 11400000, guid: 03c2c87ce65328449a9f1937ceffe4a9, type: 2}
   - {fileID: 11400000, guid: 8302e0d2435181a42a5428561b87cc8b, type: 2}
+--- !u!114 &4174585013214212714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581479567029726846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7923e632cc8030846a94aff88e4fed7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityManager: {fileID: 8988376279219047480}
+  indicatorPrefab: {fileID: 5854324021512247943, guid: 6673342f64bddc84393d947d3222f252, type: 3}
+  abilityName: Arrow Rain
+  arrowVisualPrefab: {fileID: 8055485634933547239, guid: 0565d9688ae83f243a5207193642a867, type: 3}
+  visualFallSpeed: 10
+  stickDuration: 1
+  arrowContainer: {fileID: 0}
 --- !u!1001 &7648146855642804341
 PrefabInstance:
   m_ObjectHideFlags: 0
