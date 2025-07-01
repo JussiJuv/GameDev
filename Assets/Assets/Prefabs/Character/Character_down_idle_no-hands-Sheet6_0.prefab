@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: -8843363672306798895}
   - component: {fileID: 8988376279219047480}
   - component: {fileID: 4174585013214212714}
+  - component: {fileID: 2151278627712864587}
   m_Layer: 9
   m_Name: Character_down_idle_no-hands-Sheet6_0
   m_TagString: Player
@@ -312,6 +313,28 @@ MonoBehaviour:
   visualFallSpeed: 10
   stickDuration: 1
   arrowContainer: {fileID: 0}
+--- !u!95 &2151278627712864587
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581479567029726846}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 835e1e3bb76048040af70b65aa774ca7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7648146855642804341
 PrefabInstance:
   m_ObjectHideFlags: 0

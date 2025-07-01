@@ -8,8 +8,12 @@ public class PortalActivator : MonoBehaviour
     public SpriteRenderer promptIcon;
     [Tooltip("Vertical offset for the prompt")]
     public float promptYOffset = 1.5f;
+
+    [Header("Scene & Checkpoint")]
     [Tooltip("Name of the scene to load")]
     public string sceneToLoad = "Hub";
+    [Tooltip("Checkpoint ID to set when activating portal")]
+    public string nextCheckpointID = "Hub";
 
     private bool playerInRange = false;
 
@@ -30,6 +34,9 @@ public class PortalActivator : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
+            // Save the new checkpoint
+            SaveSystem.SetCheckpoint(nextCheckpointID);
+
             SceneManager.LoadScene(sceneToLoad);
         }
     }
