@@ -21675,6 +21675,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 807385879494846663, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1033706581497467819, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: m_Name
       value: UI Canvas
@@ -21759,10 +21763,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4187730532553875586, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187730532553875586, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187730532553875586, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187730532553875586, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4218487876930945669, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: xpManager
       value: 
       objectReference: {fileID: 7489831707175281196}
+    - target: {fileID: 4915025164007033732, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915025164007033732, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915025164007033732, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915025164007033732, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5223083122859892560, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: playerHealth
       value: 

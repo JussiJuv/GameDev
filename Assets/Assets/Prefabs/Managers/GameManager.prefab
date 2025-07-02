@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8200077580895068750}
   - component: {fileID: 8470700584376517573}
   - component: {fileID: 6311039484639117079}
+  - component: {fileID: 4973816225391620661}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fb5cff3d4e77d948bef233916aaabdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4973816225391620661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509418227246363219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bef131040fbdba4c81c16fbd8d43d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1207483880930750063
@@ -244,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3504045297283274790, guid: 1cd9fe7cfc22fed4eaf32b42457be880, type: 3}
       propertyPath: skipCheckpointOnStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

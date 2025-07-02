@@ -86,7 +86,7 @@ public class XPManager : MonoBehaviour
         currentLevel = level;
         currentXP = xp;
         xpToNextLevel = GetXPThreshold(level);
-        OnXPChanged.Invoke(currentXP, xpToNextLevel);
+        OnXPChanged?.Invoke(currentXP, xpToNextLevel);
     }
 
 }
