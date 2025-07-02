@@ -4,11 +4,35 @@ using TMPro;
 
 public class XPBarUI : MonoBehaviour
 {
-    [Header("References")]
-    public XPManager xpManager;
-    public Image fillImage;
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI fractionText;
+    private Image fillImage;
+    private TextMeshProUGUI levelText;
+    private TextMeshProUGUI fractionText;
+
+    private XPManager xpManager;
+
+    private void Awake()
+    {
+        // Locate the HUD parent under the Canvas
+        var hud = GameObject.Find("UI Canvas")?.transform.Find("HUD");
+        if (hud == null) { Debug.LogError("XPBarUI: HUD not found under UI Canvas."); return; }
+
+        // Find the XP_BG container
+        var xpBg = hud.Find("XP_BG");
+        if (xpBg == null) { Debug.LogError("XPBarUI: XP_BG not found under HUD."); return; }
+
+        // Grab the fill image and text fields
+        fillImage = xpBg.Find("XP_Fill")?.GetComponent<Image>();
+        levelText = xpBg.Find("XP_LevelText")?.GetComponent<TextMeshProUGUI>();
+        fractionText = xpBg.Find("XP_FractionText")?.GetComponent<TextMeshProUGUI>();
+
+        if (fillImage == null) Debug.LogError("XPBarUI: XP_Fill Image not found.");
+        if (levelText == null) Debug.LogError("XPBarUI: XP_LevelText not found.");
+        if (fractionText == null) Debug.LogError("XPBarUI: XP_FractionText not found.");
+
+        // Get the XPManager singleton
+        xpManager = XPManager.Instance;
+        if (xpManager == null) Debug.LogError("XPBarUI: No XPManager instance present.");
+    }
 
     private void OnEnable()
     {

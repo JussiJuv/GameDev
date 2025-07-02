@@ -20,8 +20,17 @@ public class SaveStateApplier : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+
+        Debug.Log($"[SaveStateApllier] Scene loaded: {scene.name}");
         // Whenever a new scene comes up, reapply the saved data
         ApplySavedState();
+
+        // Debugs for save file
+        // Debug after applying
+        if (XPManager.Instance != null && CurrencyManager.Instance != null)
+        {
+            Debug.Log($"[SaveStateApplier] After load ? Level={XPManager.Instance.currentLevel}, XP={XPManager.Instance.currentXP}, Coins={CurrencyManager.Instance.Coins}");
+        }
     }
 
     private void ApplySavedState()
