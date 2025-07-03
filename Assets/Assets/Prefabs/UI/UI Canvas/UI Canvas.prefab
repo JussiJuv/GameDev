@@ -32,11 +32,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2209239250062794204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -90, y: -20}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 1, y: 1}
 --- !u!222 &1905170261587186593
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2209239250062794204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -321,11 +321,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2209239250062794204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 64, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -50, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &6012410555721221085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 2
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 64, y: 64}
@@ -773,10 +773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2def643d850d36478b107c1f0a65e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xpManager: {fileID: 0}
-  fillImage: {fileID: 8291880616051584402}
-  levelText: {fileID: 609369853887726618}
-  fractionText: {fileID: 4441286637325174631}
 --- !u!1 &2334279888575692128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,10 +1345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb53b794194df2e41b4a53560b40286f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencyManager: {fileID: 0}
-  coinText: {fileID: 6049091111321778058}
-  popupPrefab: {fileID: 6219547022685745721, guid: 41369ee43b541684280dea82f99687ec, type: 3}
-  popupParent: {fileID: 3796479917904058882}
 --- !u!114 &8490042933629931863
 MonoBehaviour:
   m_ObjectHideFlags: 0

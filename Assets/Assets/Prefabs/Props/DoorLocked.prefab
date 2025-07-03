@@ -212,7 +212,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2052165197
-  m_SortingLayer: 5
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 3060436805951418750, guid: 55677e92d300adc428a938eb098d74dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -299,7 +299,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2052165197
-  m_SortingLayer: 5
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -2163105754527607079, guid: 55677e92d300adc428a938eb098d74dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 9054612223849483478}
   - component: {fileID: -5816810032090138524}
   - component: {fileID: 7594938773123619589}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: DoorLocked
   m_TagString: Untagged
   m_Icon: {fileID: 0}

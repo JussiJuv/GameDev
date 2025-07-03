@@ -3,18 +3,15 @@ using System.Collections.Generic;
 
 public class InventoryUI : MonoBehaviour
 {
-    /*[Header("UI References")]
-    public GameObject panel;               // InventoryPanel
-    public Transform gridContainer;        // GridContainer transform
-    public GameObject slotPrefab;          // InvSlot prefab*/
-
     [Header("Grid Settings")]
-    public int columns = 5;
-    public int rows = 5;
+    public int columns = 4;
+    public int rows = 3;
 
     private GameObject panel;
     private Transform gridContainer;
     private GameObject slotPrefab;
+    Transform shopSection;
+
     private PlayerInventory playerInv;
     private List<SlotUI> slots = new List<SlotUI>();
     private bool isOpen = false;
@@ -44,6 +41,17 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
+        // Shop UI
+        shopSection = panel?.transform.Find("ShopSection");
+        if (shopSection != null)
+        {
+            shopSection.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("[InventoryUI]: 'ShopSection' not found under panel");
+        }
+
         slotPrefab = Resources.Load<GameObject>("UI/Slot_BG");
         if (slotPrefab == null)
         {
@@ -57,13 +65,6 @@ public class InventoryUI : MonoBehaviour
 
         playerInv = FindFirstObjectByType<PlayerInventory>();
         if (playerInv == null) Debug.LogError("[InventoryUI]: No PlayerInventory found in scene");
-
-        /*playerInv = FindFirstObjectByType<PlayerInventory>();
-        if (panel != null)
-            panel.SetActive(false);
-
-        // Instantiate grid slots
-        CreateSlots();*/
     }
 
     void Update()
@@ -98,10 +99,13 @@ public class InventoryUI : MonoBehaviour
     {
         isOpen = !isOpen;
         panel.SetActive(isOpen);
+
+        // Always keep shop section hidden when toggling with I
+        if (shopSection != null) shopSection.gameObject.SetActive(false);
+
         Time.timeScale = isOpen ? 0f : 1f;
 
-        if (isOpen)
-            RefreshSlots();
+        if (isOpen) RefreshSlots();
     }
 
     private void RefreshSlots()
