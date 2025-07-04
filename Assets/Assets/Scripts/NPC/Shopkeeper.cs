@@ -78,6 +78,9 @@ public class Shopkeeper : MonoBehaviour
         if (nowOpen && shopUI.transform.Find("ShopSection") is Transform ss)
         {
             ss.gameObject.SetActive(true);
+            // Refresh inventory
+            var invUI = FindFirstObjectByType<InventoryUI>();
+            if (invUI != null) invUI.RefreshSlots();
         }
 
         Time.timeScale = nowOpen ? 0f : 1f;

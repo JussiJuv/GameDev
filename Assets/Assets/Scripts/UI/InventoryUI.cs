@@ -7,6 +7,10 @@ public class InventoryUI : MonoBehaviour
     public int columns = 4;
     public int rows = 3;
 
+    [Header("Potion Icons")]
+    public Sprite smallPotionIconSprite;
+    public Sprite largePotionIconSprite;
+
     private GameObject panel;
     private Transform gridContainer;
     private GameObject slotPrefab;
@@ -108,7 +112,7 @@ public class InventoryUI : MonoBehaviour
         if (isOpen) RefreshSlots();
     }
 
-    private void RefreshSlots()
+    public void RefreshSlots()
     {
         if (playerInv == null)
             return;
@@ -119,11 +123,28 @@ public class InventoryUI : MonoBehaviour
 
         // Fill slots with player's items in order
         var keys = playerInv.Keys;
-        for (int i = 0; i < keys.Count && i < slots.Count; i++)
+        int idx = 0;
+        for (; idx < keys.Count && idx < slots.Count; idx++)
+        {
+            slots[idx].SetItem(keys[idx].keyIcon);
+        }
+
+        /*for (int i = 0; i < keys.Count && i < slots.Count; i++)
         {
             var data = keys[i];
             SlotUI slot = slots[i];
             slot.SetItem(data.keyIcon);
+        }*/
+
+        // Fill slots with consumables
+        var cons = playerInv.Consumables;
+        for (int j = 0; j < cons.Count && idx < slots.Count; j++, idx++)
+        {
+            var s = cons[j];
+            Sprite icon = (s.type == ConsumableType.SmallPotion)
+                ? smallPotionIconSprite
+                : largePotionIconSprite;
+            slots[idx].SetItem(icon, s.count);
         }
     }
 }

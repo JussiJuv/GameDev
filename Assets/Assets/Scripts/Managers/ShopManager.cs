@@ -121,12 +121,94 @@ public class ShopManager : MonoBehaviour
 
     void Buy()
     {
-        if (selected == null) return;
+        if (selected == null)
+        {
+            Debug.LogError("ShopManager.Buy: no item selected!");
+            return;
+        }
+
+        if (CurrencyManager.Instance == null)
+        {
+            Debug.LogError("ShopManager.Buy: CurrencyManager.Instance is null!");
+            return;
+        }
+
+        bool couldSpend = CurrencyManager.Instance.SpendCoins(selected.cost);
+        Debug.Log($"ShopManager.Buy: SpendCoins returned {couldSpend}");
+
+        if (!couldSpend)
+        {
+            Debug.Log("ShopManager: Not enough coins");
+            return;
+        }
+
+        // at this point we have successfully spent coins
+        Debug.Log($"ShopManager: Purchased {selected.name}");
+
+        // Try to get the inventory
+        PlayerInventory inv = PlayerInventory.Instance;
+        if (inv == null)
+        {
+            // fallback: look it up in scene
+            inv = FindFirstObjectByType<PlayerInventory>();
+            if (inv == null)
+            {
+                Debug.LogError("ShopManager.Buy: No PlayerInventory instance found!");
+                return;
+            }
+            else Debug.LogWarning("ShopManager.Buy: Using FindObjectOfType fallback for PlayerInventory.");
+        }
+
+        // Map the purchase
+        switch (selected.id)
+        {
+            case "small_pot":
+                inv.AddConsumable(ConsumableType.SmallPotion, 1);
+                break;
+            case "large_pot":
+                inv.AddConsumable(ConsumableType.LargePotion, 1);
+                break;
+            default:
+                Debug.LogWarning($"[ShopManager] unrecognized item id {selected.id}");
+                break;
+        }
+
+        // Finally refresh the UI
+        var ui = FindFirstObjectByType<InventoryUI>();
+        if (ui != null) ui.RefreshSlots();
+    }
+
+
+
+    /*void Buy()
+    {
+        if (selected == null)
+        {
+            Debug.LogError("[ShopManager]: no item selected");
+            return;
+        }
+
+        if (CurrencyManager.Instance == null)
+        {
+            Debug.LogError("[ShopManager]: CurrencyManager.Instance is null");
+            return;
+        }
+
         if (CurrencyManager.Instance.SpendCoins(selected.cost))
+        {
             Debug.Log($"Purchased {selected.name}");
+            if (selected.id == "small_pot")
+            {
+                PlayerInventory.Instance.AddConsumable(ConsumableType.SmallPotion);
+            }
+            else if (selected.id == "large_pot")
+            {
+                PlayerInventory.Instance.AddConsumable(ConsumableType.LargePotion);
+            }
+        }
         else
             Debug.Log("Not enough coins");
-    }
+    }*/
 
     void Close()
     {

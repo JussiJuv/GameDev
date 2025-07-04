@@ -21567,6 +21567,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 556781717045703522, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 556781717045703522, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 556781717045703522, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 556781717045703522, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1033706581497467819, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: m_Name
       value: UI Canvas
@@ -21655,10 +21671,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4187730532553875586, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187730532553875586, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187730532553875586, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187730532553875586, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915025164007033732, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915025164007033732, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915025164007033732, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915025164007033732, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5223083122859892560, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 2129100380}
+    - target: {fileID: 7738903242524374976, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738903242524374976, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738903242524374976, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738903242524374976, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8581612047341569331, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -21885,7 +21949,7 @@ PrefabInstance:
       objectReference: {fileID: 387304397}
     - target: {fileID: 3023858596702927180, guid: 7b589e8d579b2a9448dfe4cd4fe21b4a, type: 3}
       propertyPath: skipCheckpointOnStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3345646396801721533, guid: 7b589e8d579b2a9448dfe4cd4fe21b4a, type: 3}
       propertyPath: m_LocalPosition.x
