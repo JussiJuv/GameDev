@@ -54,6 +54,11 @@ public class Health : MonoBehaviour
             Die();
     }
 
+    public void Heal(int amount)
+    {
+        currentHP = Mathf.Min(currentHP + amount, maxHP);
+    }
+
     private void Die()
     {
         isDead = true;

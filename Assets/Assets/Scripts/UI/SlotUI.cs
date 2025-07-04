@@ -6,7 +6,7 @@ public class SlotUI : MonoBehaviour
 {
     [Header("UI References")]
     public Image iconImage;
-    public GameObject countTextObj;   // optional child object for count label
+    public GameObject countTextObj;
     public TextMeshProUGUI countText;
 
     private bool isEmpty = true;

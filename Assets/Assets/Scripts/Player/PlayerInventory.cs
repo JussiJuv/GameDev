@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-// Inventory component to hold key items
-
 public enum ConsumableType { SmallPotion, LargePotion }
 
 [System.Serializable]
@@ -54,19 +52,6 @@ public class PlayerInventory : MonoBehaviour
 
     public void ClearKeys() => keys.Clear();
 
-    /*public void AddConsumable(ConsumableType type, int amt = 1)
-    {
-        for (int i = 0; i < slots.Count; i++)
-        {
-            if (slots[i].type == type)
-            {
-                slots[i] = new InventorySlot { type = type, count = slots[i].count + amt };
-                return;
-            }
-        }
-        // First time
-        slots.Add(new InventorySlot { type = type, count = amt });
-    }*/
     public void AddConsumable(ConsumableType type, int amount = 1)
     {
         for (int i = 0; i < consumableSlots.Count; i++)
