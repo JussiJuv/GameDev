@@ -5,18 +5,9 @@ using System.Collections.Generic;
 
 public class ShopManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class ShopItem
-    {
-        public string id;
-        public string name;
-        [TextArea] public string description;
-        public int cost;
-        public Sprite icon;
-    }
 
     [Header("Data")]
-    public List<ShopItem> items;
+    public List<ConsumableData> items;
 
     [Header("UI Paths (under ShopSection)")]
     public string itemListPath = "ItemList/Viewport/Content";
@@ -31,7 +22,7 @@ public class ShopManager : MonoBehaviour
     private Image costIcon;
 
     private GameObject shopUI;
-    private ShopItem selected;
+    private ConsumableData selected;
 
     void Awake()
     {
@@ -86,37 +77,22 @@ public class ShopManager : MonoBehaviour
     {
         if (itemListContent == null || entryPrefab == null) return;
 
-        foreach (var it in items)
+        foreach (var data in items)
         {
             var go = Instantiate(entryPrefab, itemListContent);
-
-            // Icon
-            var iconImg = go.transform.Find("Icon")?.GetComponent<Image>();
-            if (iconImg != null) iconImg.sprite = it.icon;
-
-            // Label
-            var label = go.GetComponentInChildren<TextMeshProUGUI>();
-            if (label != null) label.text = it.name;
-
-            // Correct closure
-            var captured = it;
-            var btn = go.GetComponent<Button>();
-            if (btn != null)
-                btn.onClick.AddListener(() => Select(captured));
+            go.transform.Find("Icon").GetComponent<Image>().sprite = data.icon;
+            //go.GetComponentInChildren<TextMeshProUGUI>().text = data.id;
+            go.GetComponent<Button>().onClick.AddListener(() => Select(data));
         }
     }
 
-    void Select(ShopItem it)
+    void Select(ConsumableData it)
     {
         selected = it;
-        Debug.Log($"ShopManager: Selected {it.name}");
-
-        if (nameText != null) nameText.text = it.name;
-        if (descText != null) descText.text = it.description;
-        if (costText != null) costText.text = $"{it.cost}";
-
-        if (costIcon != null)
-            costIcon.gameObject.SetActive(true);
+        nameText.text = it.name;
+        descText.text = it.description;
+        costText.text = it.cost.ToString();
+        costIcon.gameObject.SetActive(true);
     }
 
     void Buy()
@@ -159,56 +135,15 @@ public class ShopManager : MonoBehaviour
             else Debug.LogWarning("ShopManager.Buy: Using FindObjectOfType fallback for PlayerInventory.");
         }
 
-        // Map the purchase
-        switch (selected.id)
-        {
-            case "small_pot":
-                inv.AddConsumable(ConsumableType.SmallPotion, 1);
-                break;
-            case "large_pot":
-                inv.AddConsumable(ConsumableType.LargePotion, 1);
-                break;
-            default:
-                Debug.LogWarning($"[ShopManager] unrecognized item id {selected.id}");
-                break;
-        }
+
+        //PlayerInventory.Instance.AddConsumable(selected.type, 1);
+        inv.AddConsumable(selected.type, 1);
 
         // Finally refresh the UI
         var ui = FindFirstObjectByType<InventoryUI>();
         if (ui != null) ui.RefreshSlots();
     }
 
-
-
-    /*void Buy()
-    {
-        if (selected == null)
-        {
-            Debug.LogError("[ShopManager]: no item selected");
-            return;
-        }
-
-        if (CurrencyManager.Instance == null)
-        {
-            Debug.LogError("[ShopManager]: CurrencyManager.Instance is null");
-            return;
-        }
-
-        if (CurrencyManager.Instance.SpendCoins(selected.cost))
-        {
-            Debug.Log($"Purchased {selected.name}");
-            if (selected.id == "small_pot")
-            {
-                PlayerInventory.Instance.AddConsumable(ConsumableType.SmallPotion);
-            }
-            else if (selected.id == "large_pot")
-            {
-                PlayerInventory.Instance.AddConsumable(ConsumableType.LargePotion);
-            }
-        }
-        else
-            Debug.Log("Not enough coins");
-    }*/
 
     void Close()
     {

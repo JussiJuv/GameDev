@@ -23,7 +23,8 @@ public class SlotUI : MonoBehaviour
         }
         if (countTextObj != null)
         {
-            bool show = count > 1;
+            //bool show = count > 1;
+            bool show = true;
             countTextObj.SetActive(show);
             if (show && countText != null)
                 countText.text = $"x{count}";

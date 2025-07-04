@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    private Health health;
+
     [HideInInspector] public bool isInvulnerable { get; private set; }
 
     private void Awake()
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        health = GetComponent<Health>();
     }
 
     private void Start()
@@ -106,6 +110,17 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Dashing!");
             abilityManager.Consume(dashData.abilityName);
             StartCoroutine(PerformDash());
+        }
+
+        // Healing
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            float fraction;
+            if (PlayerInventory.Instance.ConsumeActive(out fraction))
+            {
+                int amount = Mathf.CeilToInt(fraction * health.maxHP);
+                health.Heal(amount);
+            }
         }
     }
 

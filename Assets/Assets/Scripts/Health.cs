@@ -4,6 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D))]
 public class Health : MonoBehaviour
 {
+    public UnityEvent<int, int> OnHealthChanged;
+
     [Tooltip("Maximum hit points")]
     public int maxHP = 3;
 
@@ -57,6 +59,7 @@ public class Health : MonoBehaviour
     public void Heal(int amount)
     {
         currentHP = Mathf.Min(currentHP + amount, maxHP);
+        OnHealthChanged?.Invoke(currentHP, maxHP);
     }
 
     private void Die()

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19a6206f7b4ebe40b8f7baed7f1f3fe, type: 3}
+  m_Name: LargePotionData
+  m_EditorClassIdentifier: 
+  id: large_pot
+  type: 1
+  icon: {fileID: -3595479761897144259, guid: 37f6205a53033db4fba339ec4bfa8cea, type: 3}
+  healFraction: 0.75
+  cost: 10
+  description: Heals 75% of max HP.
