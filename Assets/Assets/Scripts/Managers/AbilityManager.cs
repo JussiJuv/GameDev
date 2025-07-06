@@ -116,4 +116,29 @@ public class AbilityManager : MonoBehaviour
         // Notify UI of cooldown start
         OnAbilityUsed?.Invoke(abilityName, 1f);
     }
+
+    /// <summary>
+    /// Ensures all abilities up to `level` are unlocked (and fires OnAbilityUnlocked for each new one).
+    /// </summary>
+    public void InitializeUnlockedAbilities(int level)
+    {
+        for (int lvl = 1; lvl <= level; lvl++)
+        {
+            foreach (var ability in allAbilities)
+            {
+                if (ability.unlockLevel == lvl
+                    && !_unlocked.ContainsKey(ability.abilityName))
+                {
+                    _unlocked[ability.abilityName] = ability;
+                    OnAbilityUnlocked?.Invoke(ability);
+                }
+            }
+        }
+    }
+
+    public IEnumerable<AbilityData> GetUnlockedAbilities()
+    {
+        return _unlocked.Values;
+    }
+
 }

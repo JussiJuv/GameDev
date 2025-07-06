@@ -18,4 +18,9 @@ public class SaveData
 
     // Keys: store doorIDs (strings)
     public List<string> savedKeys = new List<string>();
+
+    // Consumables
+    public List<InventorySlot> savedConsumables = new List<InventorySlot>();
+    // - 1 means no active consumable
+    public int savedActiveConsumable = -1;
 }

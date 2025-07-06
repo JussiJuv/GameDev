@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Weapon : MonoBehaviour
 {
@@ -37,7 +38,18 @@ public class Weapon : MonoBehaviour
     private void Awake()
     {
         mainCam = Camera.main;
+        SceneManager.sceneLoaded += OnSceneLoaded;
         ArrowRainAbility = GetComponent<ArrowRainAbility>();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        mainCam = Camera.main;
     }
 
     private void Update()

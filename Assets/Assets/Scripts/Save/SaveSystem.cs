@@ -68,6 +68,16 @@ public static class SaveSystem
             Data.savedKeys.Add(key.doorID);
         }
 
+        // Consumables
+        Data.savedConsumables.Clear();
+        foreach (var slot in inv.Consumables)
+        {
+            Data.savedConsumables.Add(slot);
+        }
+        Data.savedActiveConsumable = inv.ActiveConsumable.HasValue
+            ? (int)inv.ActiveConsumable.Value
+            : -1;
+
         string json = JsonUtility.ToJson(Data, prettyPrint: true);
         File.WriteAllText(SAVE_FILE, json);
     }

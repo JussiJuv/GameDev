@@ -38,21 +38,5 @@ public class CheckpointManager : MonoBehaviour
                 break;
             }
         }
-
-        /*// Find the saved checkpoint in scene
-        string savedID = SaveSystem.Data.lastCheckpointID;
-        if (string.IsNullOrEmpty(savedID))
-            return;
-
-        var allCheckpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
-
-        foreach (var cp in allCheckpoints)
-        {
-            if (cp.checkpointID == savedID)
-            {
-                playerTransform.position = cp.transform.position;
-                break;
-            }
-        }*/
     }
 }

@@ -55,6 +55,23 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public void ClearConsumables()
+    {
+        consumableSlots.Clear();
+        activeConsumable = null;
+        OnConsumablesChanged?.Invoke();
+        OnActiveConsumableChanged?.Invoke(activeConsumable);
+    }
+
+    /// <summary>
+    /// Force a specific consumable type as active
+    /// </summary>
+    public void SetActiveConsumable(ConsumableType? type)
+    {
+        activeConsumable = type;
+        OnActiveConsumableChanged?.Invoke(activeConsumable);
+    }
+
     public void AddConsumable(ConsumableType type, int amount = 1)
     {
         var index = consumableSlots.FindIndex(s => s.type == type);

@@ -4702,11 +4702,11 @@ PrefabInstance:
       objectReference: {fileID: 1470649002}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.13
+      value: 33.16
       objectReference: {fileID: 0}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.16
+      value: -2.62
       objectReference: {fileID: 0}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21949,7 +21949,7 @@ PrefabInstance:
       objectReference: {fileID: 387304397}
     - target: {fileID: 3023858596702927180, guid: 7b589e8d579b2a9448dfe4cd4fe21b4a, type: 3}
       propertyPath: skipCheckpointOnStart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3345646396801721533, guid: 7b589e8d579b2a9448dfe4cd4fe21b4a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22011,6 +22011,14 @@ PrefabInstance:
       propertyPath: gridContainer
       value: 
       objectReference: {fileID: 1833455710}
+    - target: {fileID: 5053510049947846301, guid: 7b589e8d579b2a9448dfe4cd4fe21b4a, type: 3}
+      propertyPath: largePotionIconSprite
+      value: 
+      objectReference: {fileID: -3595479761897144259, guid: 37f6205a53033db4fba339ec4bfa8cea, type: 3}
+    - target: {fileID: 5053510049947846301, guid: 7b589e8d579b2a9448dfe4cd4fe21b4a, type: 3}
+      propertyPath: smallPotionIconSprite
+      value: 
+      objectReference: {fileID: 856644352319919699, guid: 37f6205a53033db4fba339ec4bfa8cea, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

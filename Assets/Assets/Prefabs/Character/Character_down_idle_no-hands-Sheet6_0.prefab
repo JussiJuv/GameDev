@@ -228,6 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050c3eb106116264390773dd781f1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   maxHP: 10
   xpValue: 0
   destroyDelay: 0.5
@@ -279,6 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6280dea2eadb0a143923e151babe8216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consumableDataList:
+  - {fileID: 11400000, guid: 7b81dac4a55355c499d60259a24319db, type: 2}
+  - {fileID: 11400000, guid: cd79293de37a4e446954e5c037d2a935, type: 2}
 --- !u!114 &8988376279219047480
 MonoBehaviour:
   m_ObjectHideFlags: 0

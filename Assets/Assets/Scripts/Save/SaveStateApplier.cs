@@ -31,6 +31,19 @@ public class SaveStateApplier : MonoBehaviour
         {
             Debug.Log($"[SaveStateApplier] After load ? Level={XPManager.Instance.currentLevel}, XP={XPManager.Instance.currentXP}, Coins={CurrencyManager.Instance.Coins}");
         }
+
+        // Refresh Inventory UI
+        FindFirstObjectByType<InventoryUI>()?.RefreshSlots();
+
+        // Re-synnc abilities
+        var am = FindFirstObjectByType<AbilityManager>();
+        if (am != null)
+        {
+            am.InitializeUnlockedAbilities(SaveSystem.Data.savedLevel);
+        }
+
+        // Force the ability hotbar UI to rebuild
+        FindFirstObjectByType<AbilityHotbarUI>()?.RebuildHotbar();
     }
 
     private void ApplySavedState()
@@ -69,6 +82,28 @@ public class SaveStateApplier : MonoBehaviour
                 {
                     var keyData = FindKeyDataByDoorID(doorID);
                     if (keyData != null) inv.AddKey(keyData);
+                }
+            }
+        }
+
+        // Consumables
+        if (player != null)
+        {
+            var inv = player.GetComponent<PlayerInventory>();
+            if (inv != null)
+            {
+                // Clear any runtime data
+                inv.ClearConsumables();
+                // Rebuild from save
+                foreach (var slot in SaveSystem.Data.savedConsumables)
+                {
+                    inv.AddConsumable(slot.type, slot.count);
+                }
+                // Restore active (if >= 0)
+                int idx = SaveSystem.Data.savedActiveConsumable;
+                if (idx >= 0)
+                {
+                    inv.SetActiveConsumable((ConsumableType)idx);
                 }
             }
         }

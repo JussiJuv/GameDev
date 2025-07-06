@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class InventoryUI : MonoBehaviour
@@ -71,10 +72,48 @@ public class InventoryUI : MonoBehaviour
         if (playerInv == null) Debug.LogError("[InventoryUI]: No PlayerInventory found in scene");
     }
 
+    private void Start()
+    {
+        RefreshSlots();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
             ToggleInventory();
+    }
+
+    void OnEnable()
+    {
+        // Listen for scene changes
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        // Also handle the current scene immediately
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        if (playerInv != null)
+            playerInv.OnConsumablesChanged -= RefreshSlots;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // (4) Re?find the PlayerInventory in the freshly loaded scene
+        playerInv = FindFirstObjectByType<PlayerInventory>();
+        if (playerInv == null)
+        {
+            Debug.LogError("[InventoryUI] No PlayerInventory found in scene " + scene.name);
+            return;
+        }
+
+        // (5) Subscribe to consumable changes
+        playerInv.OnConsumablesChanged -= RefreshSlots;
+        playerInv.OnConsumablesChanged += RefreshSlots;
+
+        // (6) Immediately refresh the grid to show keys & potions
+        RefreshSlots();
     }
 
     private void CreateSlots()

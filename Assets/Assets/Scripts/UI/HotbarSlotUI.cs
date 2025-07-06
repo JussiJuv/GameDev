@@ -13,6 +13,8 @@ public class HotbarSlotUI : MonoBehaviour
         if (iconImage == null) iconImage = transform.Find("Icon").GetComponent<Image>();
         if (cooldownOverlay == null) cooldownOverlay = transform.Find("Icon/CooldownOverlay").GetComponent<Image>();
         if (keyLabel == null) keyLabel = transform.Find("KeyLabel").GetComponent<TextMeshProUGUI>();
+
+        Debug.Log($"[HotbarSlotUI]: Awake on {name}, parent = {transform.parent?.name}");
     }
 
     public void Init(Sprite iconSprite, string key, Color disabledColor)
@@ -27,7 +29,19 @@ public class HotbarSlotUI : MonoBehaviour
 
     public void SetCooldown(float normalized)
     {
+        if (cooldownOverlay == null) 
+        {
+            Debug.LogError("[HotbarSlotUI]: cooldownOverlay is null");
+            return;
+        }
         cooldownOverlay.fillAmount = normalized;
         iconImage.color = Color.Lerp(Color.gray, Color.white, 1 - normalized);
+    }
+
+    public void Clear()
+    {
+        if (iconImage != null) iconImage.enabled = false;
+        if (keyLabel != null) keyLabel.text = "";
+        if (cooldownOverlay != null) cooldownOverlay.fillAmount = 0f;
     }
 }
