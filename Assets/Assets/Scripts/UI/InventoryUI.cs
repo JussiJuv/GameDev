@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -211,6 +212,31 @@ public class InventoryUI : MonoBehaviour
                 ? smallPotionIconSprite
                 : largePotionIconSprite;
             slots[idx].SetItem(icon, s.count);
+        }
+    }
+
+    public void DelayedRefresh()
+    {
+        StartCoroutine(WaitAndRefresh());
+    }
+
+    private IEnumerator WaitAndRefresh()
+    {
+        // Wait for one or two frames to allow inventory to load
+        yield return null;
+        yield return null;
+
+        playerInv = FindFirstObjectByType<PlayerInventory>();
+        if (playerInv != null)
+        {
+            playerInv.OnConsumablesChanged -= RefreshSlots;
+            playerInv.OnConsumablesChanged += RefreshSlots;
+            Debug.Log("[InventoryUI] Delayed refresh: found PlayerInventory, refreshing slots");
+            RefreshSlots();
+        }
+        else
+        {
+            Debug.LogWarning("[InventoryUI] Delayed refresh: still no PlayerInventory found.");
         }
     }
 }

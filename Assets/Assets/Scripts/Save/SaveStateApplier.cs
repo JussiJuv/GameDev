@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SaveStateApplier : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class SaveStateApplier : MonoBehaviour
 
         // Listen for any scene loads
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        Debug.Log("[SceneBootstrap] Player already present? " + (FindFirstObjectByType<PlayerInventory>() != null));
+
     }
 
     private void OnDestroy()
@@ -19,6 +23,32 @@ public class SaveStateApplier : MonoBehaviour
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(DelayedApplyState());
+    }
+
+    private IEnumerator DelayedApplyState()
+    {
+        // Wait until PlayerInventory exists in the scene
+        while (FindFirstObjectByType<PlayerInventory>() == null)
+            yield return null;
+
+        Debug.Log("[SaveStateApplier] Player detected. Applying saved state.");
+        ApplySavedState();
+
+        // Refresh UI & reapply gameplay state
+        FindFirstObjectByType<InventoryUI>()?.RefreshSlots();
+
+        var am = FindFirstObjectByType<AbilityManager>();
+        if (am != null)
+        {
+            am.InitializeUnlockedAbilities(SaveSystem.Data.savedLevel);
+        }
+
+        FindFirstObjectByType<AbilityHotbarUI>()?.RebuildHotbar();
+    }
+
+    /*private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
         Debug.Log($"[SaveStateApllier] Scene loaded: {scene.name}");
@@ -44,10 +74,12 @@ public class SaveStateApplier : MonoBehaviour
 
         // Force the ability hotbar UI to rebuild
         FindFirstObjectByType<AbilityHotbarUI>()?.RebuildHotbar();
-    }
+    }*/
 
-    private void ApplySavedState()
+    public void ApplySavedState()
     {
+        Debug.Log("[SaveStateApplier]: APPLYING SAVE STATE!!!!!!!!!!");
+
         // Health
         var player = GameObject.FindWithTag("Player");
         if (player != null)
@@ -77,11 +109,20 @@ public class SaveStateApplier : MonoBehaviour
             var inv = player.GetComponent<PlayerInventory>();
             if (inv != null)
             {
+                Debug.Log($"[SaveStateApplier] Restoring {SaveSystem.Data.savedKeys.Count} saved key(s).");
                 inv.ClearKeys();
                 foreach (var doorID in SaveSystem.Data.savedKeys)
                 {
                     var keyData = FindKeyDataByDoorID(doorID);
-                    if (keyData != null) inv.AddKey(keyData);
+                    if (keyData != null) 
+                    { 
+                        inv.AddKey(keyData);
+                        Debug.Log($"[SaveStateApplier] Added key: {keyData.keyName} (doorID: {doorID})");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[SaveStateApplier] Could not find KeyData for doorID: {doorID}");
+                    }
                 }
             }
         }
@@ -106,6 +147,18 @@ public class SaveStateApplier : MonoBehaviour
                     inv.SetActiveConsumable((ConsumableType)idx);
                 }
             }
+        }
+
+        // UI refresh
+        var inventoryUI = FindFirstObjectByType<InventoryUI>();
+        if (inventoryUI != null)
+        {
+            Debug.Log("[SaveStateApplier]: Forcing InventoryUI refresh...");
+            inventoryUI.RefreshSlots();
+        }
+        else
+        {
+            Debug.LogWarning("[SaveStateApplier] InventoryUI not found in scene.");
         }
     }
 

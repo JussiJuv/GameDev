@@ -77,6 +77,33 @@ public class PortalActivator : MonoBehaviour
             camFollow?.ForceSnapToPlayer();
         }
         else Debug.LogError($"[PortalActivator] No checkpoint '{lastID}' in scene {scene.name}");
+
+        var playerInv = FindFirstObjectByType<PlayerInventory>();
+        playerInv?.DebugLogInventory();
+
+
+        // Apply saved state manually
+        var applier = FindFirstObjectByType<SaveStateApplier>();
+        if (applier != null)
+        {
+            Debug.Log("[PortalActivator] Found SaveStateApplier. Forcing ApplySavedState().");
+            applier.ApplySavedState();
+        }
+        else
+        {
+            Debug.LogWarning("[PortalActivator] SaveStateApplier not found in Hub scene!");
+        }
+
+        var ui = FindFirstObjectByType<InventoryUI>();
+        if (ui != null)
+        {
+            Debug.Log("[PortalActivator] Found InventoryUI, calling DelayedRefresh()");
+            ui.DelayedRefresh();
+        }
+        else
+        {
+            Debug.LogWarning("[PortalActivator] InventoryUI not found in UI scene");
+        }
     }
 
 
@@ -139,6 +166,23 @@ public class PortalActivator : MonoBehaviour
         {
             playerInRange = false;
             promptIcon.gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator DelayedUIRefresh()
+    {
+        // Wait one frame
+        yield return null;
+
+        var invUI = FindFirstObjectByType<InventoryUI>();
+        if (invUI != null)
+        {
+            Debug.Log("[PortalActivator]: Manually refreshing Inventory UI");
+            invUI.RefreshSlots();
+        }
+        else
+        {
+            Debug.LogWarning("[PortalActivator] Could not find InventoryUI to refresh");
         }
     }
 }

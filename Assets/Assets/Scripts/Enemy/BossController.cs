@@ -148,7 +148,11 @@ public class BossController : MonoBehaviour
         if (player != null)
         {
             var inv = player.GetComponent<PlayerInventory>();
-            if (inv != null && bossKeyData != null) inv.AddKey(bossKeyData);
+            if (inv != null && bossKeyData != null) 
+            {
+                inv.AddKey(bossKeyData);
+                inv.DebugLogInventory();
+            }
         }
 
         // Show pickup popup

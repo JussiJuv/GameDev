@@ -38,11 +38,15 @@ public class PlayerInventory : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            Debug.LogWarning("[PlayerInventory] Duplicate found and destroyed");
             Destroy(gameObject);
             return;
         }
+        Debug.Log("[PlayerInventory] Awake - Marking as DontDestroyOnLoad");
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        Debug.Log($"[PlayerInventory] Awake called on instance {GetInstanceID()}");
     }
 
     private void Start()
@@ -166,5 +170,39 @@ public class PlayerInventory : MonoBehaviour
     public void ClearKeys() => keys.Clear();
 
     public IReadOnlyList<InventorySlot> Consumables => consumableSlots;
+
+    public void DebugLogInventory()
+    {
+        Debug.Log("=== INVENTORY DEBUG ===");
+
+        if (keys.Count == 0)
+        {
+            Debug.Log("Keys: (none)");
+        }
+        else
+        {
+            Debug.Log("Keys:");
+            foreach (var key in keys)
+            {
+                Debug.Log($"- {key.keyName} (doorID: {key.doorID})");
+            }
+        }
+
+        if (consumableSlots.Count == 0)
+        {
+            Debug.Log("Consumables: (none)");
+        }
+        else
+        {
+            Debug.Log("Consumables:");
+            foreach (var slot in consumableSlots)
+            {
+                Debug.Log($"- {slot.type}: {slot.count}");
+            }
+        }
+
+        Debug.Log("========================");
+    }
+
 
 }

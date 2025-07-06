@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_down_idle_no-hands-Sheet6_0
       objectReference: {fileID: 0}
+    - target: {fileID: 6581479567029726846, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -769,6 +773,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d55e098407bae946aab9f817c945d6d, type: 3}
+--- !u!1 &871869185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 871869187}
+  - component: {fileID: 871869186}
+  m_Layer: 0
+  m_Name: SceneBootstrap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &871869186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871869185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5db62d707733e842958cef11d44fdf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1850612045}
+--- !u!4 &871869187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871869185}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.19453414, y: 1.2003638, z: 6.5180564}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1076835399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4153,6 +4202,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7db60863512e5ca4b954ce1e65b00434, type: 3}
+--- !u!1 &1850612045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6581479567029726846, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+  m_PrefabInstance: {fileID: 273911802}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1871747920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5993,3 +6047,4 @@ SceneRoots:
   - {fileID: 6843542812530904849}
   - {fileID: 1076835399}
   - {fileID: 1871747920}
+  - {fileID: 871869187}
