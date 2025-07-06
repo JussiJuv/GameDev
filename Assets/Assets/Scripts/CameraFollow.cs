@@ -3,11 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class CameraFollow : MonoBehaviour
 {
-    [Tooltip("The transform the camera will follow (e.g. the Player)")]
+    [Tooltip("The transform the camera will follow (the Player)")]
     public Transform target;
 
     [Tooltip("How quickly the camera catches up (higher = snappier)")]
-    //public float smoothSpeed = 5f;
     public float smoothTime = 0.15f;
 
     private Vector3 offset;
@@ -29,7 +28,6 @@ public class CameraFollow : MonoBehaviour
         if (target != null)
             offset = transform.position - target.position;
 
-        // Optional: listen for scene loads in case you need to re?find Player mid?game
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -62,16 +60,6 @@ public class CameraFollow : MonoBehaviour
             return;
         }
         target = playerGO.transform;
-
-        /*// Immediately position camera so the player is at the center
-        transform.position = new Vector3(
-            target.position.x,
-            target.position.y,
-            transform.position.z
-        );
-
-        // Now calculate offset for future smooth-following
-        offset = transform.position - target.position;*/
     }
 
     void OnDestroy()
@@ -89,25 +77,6 @@ public class CameraFollow : MonoBehaviour
             offset = transform.position - target.position;
         }
     }
-
-    /*void LateUpdate()
-    {
-        if (target == null) return;
-
-        // Desired position is player position + our initial offset
-        Vector3 desiredPos = target.position + offset;
-
-        Vector3 smoothedPos = Vector3.SmoothDamp(
-            transform.position,
-            desiredPos,
-            ref velocity,
-            smoothTime
-        );
-
-        smoothedPos.z = transform.position.z;
-
-        transform.position = smoothedPos;
-    }*/
 
     void LateUpdate()
     {
@@ -138,5 +107,15 @@ public class CameraFollow : MonoBehaviour
         );
         smoothed.z = transform.position.z;
         transform.position = smoothed;
+    }
+
+    /// <summary>
+    /// Snap camera to the players position + offset
+    /// </summary>
+    public void ForceSnapToPlayer()
+    {
+        if (target == null) return;
+        offset = transform.position - target.position;
+        transform.position = target.position + offset;
     }
 }

@@ -2064,7 +2064,7 @@ GameObject:
   - component: {fileID: 4716157265696302821}
   - component: {fileID: 9035382513348185714}
   - component: {fileID: 7317868587888561007}
-  - component: {fileID: 2461837575252949138}
+  - component: {fileID: 606669492980607868}
   m_Layer: 5
   m_Name: BossHealthBarPanel
   m_TagString: Untagged
@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2461837575252949138
+--- !u!114 &606669492980607868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 [RequireComponent(typeof(Collider2D))]
 public class PortalActivator : MonoBehaviour
@@ -37,8 +38,90 @@ public class PortalActivator : MonoBehaviour
             // Save the new checkpoint
             SaveSystem.SetCheckpoint(nextCheckpointID);
 
-            SceneManager.LoadScene(sceneToLoad);
+            // Load Hub additively
+            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+
+            // Unload demo
+            SceneManager.UnloadSceneAsync("demo");
+
+            // Teleport the player to their last checkpoint in the new scene
+            StartCoroutine(MovePlayerToSpawnNextFrame());
         }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Only react when Hub loads
+        if (scene.name != sceneToLoad) return;
+
+        // Now the Hub is fully initialized—do your checkpoint teleport:
+        var lastID = SaveSystem.Data.lastCheckpointID;
+        var allCP = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
+        var target = System.Array.Find(allCP, cp => cp.checkpointID == lastID);
+        if (target != null)
+        {
+            var player = GameObject.FindWithTag("Player");
+            player.transform.position = target.transform.position;
+
+            var camFollow = Object.FindFirstObjectByType<CameraFollow>();
+            camFollow?.ForceSnapToPlayer();
+        }
+        else Debug.LogError($"[PortalActivator] No checkpoint '{lastID}' in scene {scene.name}");
+    }
+
+
+    private IEnumerator MovePlayerToSpawnNextFrame()
+    {
+        // Wait one frame so all Hub scene objects (including Checkpoints) exist
+        yield return null;
+
+        // 1) Which checkpoint ID were we at?
+        string lastID = SaveSystem.Data.lastCheckpointID;
+        if (string.IsNullOrEmpty(lastID))
+        {
+            Debug.LogWarning("[PortalActivator] No saved checkpoint ID");
+            yield break;
+        }
+
+        // 2) Find the matching Checkpoint component
+        Checkpoint targetCP = null;
+        foreach (var cp in FindObjectsByType<Checkpoint>(FindObjectsSortMode.None))
+        {
+            if (cp.checkpointID == lastID)
+            {
+                targetCP = cp;
+                break;
+            }
+        }
+        if (targetCP == null)
+        {
+            Debug.LogError($"[PortalActivator] Checkpoint '{lastID}' not found in Hub scene");
+            yield break;
+        }
+
+        // 3) Move the Player there
+        var player = GameObject.FindWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("[PortalActivator] Player not found to move!");
+            yield break;
+        }
+        player.transform.position = targetCP.transform.position;
+
+        // 4) Snap the camera if you have a CameraFollow
+        var camFollow = FindFirstObjectByType<CameraFollow>();
+        if (camFollow != null)
+            camFollow.ForceSnapToPlayer();
     }
 
     void OnTriggerEnter2D(Collider2D other)

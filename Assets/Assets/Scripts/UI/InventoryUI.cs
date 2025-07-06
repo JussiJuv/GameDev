@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour
     private List<SlotUI> slots = new List<SlotUI>();
     private bool isOpen = false;
 
-    void Awake()
+    /*void Awake()
     {
         var canvasGO = GameObject.Find("UI Canvas");
         if (canvasGO == null)
@@ -70,12 +70,12 @@ public class InventoryUI : MonoBehaviour
 
         playerInv = FindFirstObjectByType<PlayerInventory>();
         if (playerInv == null) Debug.LogError("[InventoryUI]: No PlayerInventory found in scene");
-    }
+    }*/
 
-    private void Start()
+    /*private void Start()
     {
         RefreshSlots();
-    }
+    }*/
 
     void Update()
     {
@@ -100,6 +100,22 @@ public class InventoryUI : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 1) Grab the new Canvas & Panel
+        var canvas = GameObject.Find("UI Canvas");
+        panel = canvas.transform.Find("InventoryPanel").gameObject;
+        gridContainer = panel.transform.Find("GridContainer");
+        shopSection = panel.transform.Find("ShopSection");
+        if (shopSection != null) shopSection.gameObject.SetActive(false);
+
+        // 2) Ensure slotPrefab is loaded
+        if (slotPrefab == null)
+            slotPrefab = Resources.Load<GameObject>("UI/Slot_BG");
+
+        // 3) Hide & rebuild
+        panel.SetActive(false);
+        CreateSlots();
+
+
         // (4) Re?find the PlayerInventory in the freshly loaded scene
         playerInv = FindFirstObjectByType<PlayerInventory>();
         if (playerInv == null)
@@ -140,6 +156,12 @@ public class InventoryUI : MonoBehaviour
 
     private void ToggleInventory()
     {
+        if (panel == null || !panel)
+        {
+            Debug.LogWarning("[InventoryUI]: Panel is does not exists");
+            InitializeUIReferences();
+        }
+
         isOpen = !isOpen;
         panel.SetActive(isOpen);
 
@@ -149,6 +171,18 @@ public class InventoryUI : MonoBehaviour
         Time.timeScale = isOpen ? 0f : 1f;
 
         if (isOpen) RefreshSlots();
+    }
+
+    private void InitializeUIReferences()
+    {
+        var canvas = GameObject.Find("UI Canvas");
+        panel = canvas.transform.Find("InventoryPanel").gameObject;
+        gridContainer = panel.transform.Find("GridContainer");
+        shopSection = panel.transform.Find("ShopSection");
+        slotPrefab = Resources.Load<GameObject>("UI/Slot_BG");
+        CreateSlots();
+        playerInv = FindFirstObjectByType<PlayerInventory>();
+        playerInv.OnConsumablesChanged += RefreshSlots;
     }
 
     public void RefreshSlots()
@@ -167,13 +201,6 @@ public class InventoryUI : MonoBehaviour
         {
             slots[idx].SetItem(keys[idx].keyIcon);
         }
-
-        /*for (int i = 0; i < keys.Count && i < slots.Count; i++)
-        {
-            var data = keys[i];
-            SlotUI slot = slots[i];
-            slot.SetItem(data.keyIcon);
-        }*/
 
         // Fill slots with consumables
         var cons = playerInv.Consumables;

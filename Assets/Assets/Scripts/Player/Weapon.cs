@@ -47,9 +47,39 @@ public class Weapon : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         mainCam = Camera.main;
+        if (mainCam == null)
+        {
+            Debug.LogError($"[Weapon]: No Camera.main found in scene {scene.name}");
+        }
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        RefreshCamera();
+    }
+
+    private void RefreshCamera()
+    {
+        mainCam = Camera.main;
+        if (mainCam == null)
+        {
+            Debug.LogError("[Weapon] No Camera.main in current scenes");
+        }
     }
 
     private void Update()
@@ -69,19 +99,6 @@ public class Weapon : MonoBehaviour
                 nextFireTime = Time.time +1f / fireRate;
             }
         }
-
-        /*// If arrow rain targeting is active, skip normal shooting
-        if (ArrowRainAbility != null && ArrowRainAbility.IsTargeting)
-        {
-            return;
-        }
-
-        // Fire when the Fire1 button (left CTRL / mouse0 / configured) is pressed
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
-        {
-            Shoot();
-            nextFireTime = Time.time + 1f / fireRate;
-        }*/
     }
 
     void AimAtMouse()

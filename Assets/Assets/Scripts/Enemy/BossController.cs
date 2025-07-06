@@ -1,6 +1,5 @@
 using UnityEngine;
-//using UnityEngine.Events;
-using TMPro;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(Health))]
@@ -27,8 +26,7 @@ public class BossController : MonoBehaviour
     public KeyItemData bossKeyData;
 
     [Header("UI")]
-    [Tooltip("Reference to your BossHealthBarUI in the scene")]
-    public BossHealthBarUI bossHealthBarUI;
+    private BossHealthBarUI bossHealthBarUI;
     public string bossName;
 
     private Transform playerT;
@@ -36,6 +34,12 @@ public class BossController : MonoBehaviour
     private Health health;
 
     public BossRoomEntrance gateController;
+
+    /*private void Start()
+    {
+        bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();
+        if (bossHealthBarUI == null) Debug.LogError("[BossController]: BossHealthBarUI not found in loaded scenes");
+    }*/
 
     private void Awake()
     {
@@ -83,9 +87,55 @@ public class BossController : MonoBehaviour
 
     public void ActivateBoss()
     {
+        if (bossHealthBarUI == null)
+        {
+            // Grab the UI scene
+            var uiScene = SceneManager.GetSceneByName("UI");
+            if (!uiScene.isLoaded)
+            {
+                Debug.LogError("UI scene not loaded");
+                return;
+            }
+
+            // Look through its root GameObjects
+            foreach (var root in uiScene.GetRootGameObjects())
+            {
+                // Find the canvas
+                var canvas = root.GetComponentInChildren<Canvas>(true);
+                if (canvas == null) continue;
+
+                var panelTf = canvas.transform.Find("BossHealthBarPanel");
+                if (panelTf != null)
+                {
+                    bossHealthBarUI = panelTf.GetComponent<BossHealthBarUI>();
+                    break;
+                }
+            }
+
+            if (bossHealthBarUI == null)
+            {
+                Debug.LogError("[BossController]: Could not find BossHealthBarUI in UI scene");
+                return;
+            }
+
+            /*bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();
+            if (bossHealthBarUI == null)
+            {
+                Debug.LogError("[BossController]: BossHealthBarUI still missing during ActivateBoss");
+                return;
+            }*/
+        }
+
         canActivate = true;
         // Show the boss hp bar
-        bossHealthBarUI.Show(health, bossName);
+        if (bossHealthBarUI != null)
+        {
+            bossHealthBarUI.Show(health, bossName);
+        }
+        else
+        {
+            Debug.LogWarning("[BossController]: bossHealthBarUI is null");
+        }
     }
 
     /// <summary>
@@ -106,7 +156,14 @@ public class BossController : MonoBehaviour
 
 
         // Hide the boss hp bar
-        bossHealthBarUI.Hide();
+        if (bossHealthBarUI != null)
+        {
+            bossHealthBarUI.Hide();
+        }
+        else
+        {
+            Debug.LogWarning("[BossController]: bossHealthBarUI is null");
+        }
 
         // Spawn small slimes, award key, open the 
         if (smallSlimePrefab != null)

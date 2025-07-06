@@ -62,31 +62,28 @@ public class AbilityHotbarUI : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Find the fresh AbilityManager in the new scene
         var mgr = FindFirstObjectByType<AbilityManager>();
-        Debug.Log($"[AbilityHotbarUI]: {mgr.name}");
-        if (mgr == null)
-        {
-            Debug.LogError("[AbilityHotbarUI] No AbilityManager found in scene " + scene.name);
-            return;
-        }
-
-        // If it changed (or was previously null), re?subscribe
         if (mgr != abilityManager)
         {
             // Unsubscribe old
-            if (abilityManager != null)
+            if (subscribed && abilityManager != null)
             {
                 abilityManager.OnAbilityUnlocked -= OnAbilityUnlocked;
                 abilityManager.OnAbilityUsed -= OnAbilityUsed;
+                subscribed = false;
             }
 
             abilityManager = mgr;
-            abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
-            abilityManager.OnAbilityUsed += OnAbilityUsed;
+
+            // Subscribe once
+            if (!subscribed && abilityManager != null)
+            {
+                abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
+                abilityManager.OnAbilityUsed += OnAbilityUsed;
+                subscribed = true;
+            }
         }
 
-        // Rebuild the hotbar to reflect any unlocked abilities
         RebuildHotbar();
     }
 
