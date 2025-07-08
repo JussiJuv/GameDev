@@ -30,6 +30,21 @@ public class ConsumableUI : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        var inv = PlayerInventory.Instance;
+        inv.OnConsumablesChanged += Refresh;
+        inv.OnActiveConsumableChanged += _ => Refresh();
+        Refresh();
+    }
+
+    void OnDisable()
+    {
+        var inv = PlayerInventory.Instance;
+        inv.OnConsumablesChanged -= Refresh;
+        inv.OnActiveConsumableChanged -= _ => Refresh();
+    }
+
     // Adapter for the ActiveConsumableChanged event
     private void OnActiveChanged(ConsumableType? newActive)
     {

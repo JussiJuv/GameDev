@@ -79,9 +79,15 @@ public class ShopManager : MonoBehaviour
 
         foreach (var data in items)
         {
+            // Icon
             var go = Instantiate(entryPrefab, itemListContent);
             go.transform.Find("Icon").GetComponent<Image>().sprite = data.icon;
             //go.GetComponentInChildren<TextMeshProUGUI>().text = data.id;
+
+            // Label
+            var label = go.GetComponentInChildren<TextMeshProUGUI>();
+            if (label != null) label.text = data.displayName;
+
             go.GetComponent<Button>().onClick.AddListener(() => Select(data));
         }
     }
@@ -89,7 +95,8 @@ public class ShopManager : MonoBehaviour
     void Select(ConsumableData it)
     {
         selected = it;
-        nameText.text = it.name;
+        //nameText.text = it.name;
+        nameText.text = it.displayName;
         descText.text = it.description;
         costText.text = it.cost.ToString();
         costIcon.gameObject.SetActive(true);
@@ -141,7 +148,7 @@ public class ShopManager : MonoBehaviour
 
         // Finally refresh the UI
         var ui = FindFirstObjectByType<InventoryUI>();
-        if (ui != null) ui.RefreshSlots();
+        //if (ui != null) ui.RefreshSlots();
     }
 
 

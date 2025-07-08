@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -21,62 +22,6 @@ public class InventoryUI : MonoBehaviour
     private PlayerInventory playerInv;
     private List<SlotUI> slots = new List<SlotUI>();
     private bool isOpen = false;
-
-    /*void Awake()
-    {
-        var canvasGO = GameObject.Find("UI Canvas");
-        if (canvasGO == null)
-        {
-            Debug.LogError("[InventoryUI]: 'UI Canvas' not found in scene");
-            return;
-        }
-
-        var panelTF = canvasGO.transform.Find("InventoryPanel");
-        if (panelTF == null)
-        {
-            Debug.LogError("[InventoryUI]: 'InventoryPanel' not found");
-            return;
-        }
-        panel = panelTF.gameObject;
-
-
-        gridContainer = panelTF.Find("GridContainer");
-        if (gridContainer == null) 
-        {
-            Debug.LogError("[InventoryUI]: 'GridContainer' not found under panel");
-            return;
-        }
-
-        // Shop UI
-        shopSection = panel?.transform.Find("ShopSection");
-        if (shopSection != null)
-        {
-            shopSection.gameObject.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("[InventoryUI]: 'ShopSection' not found under panel");
-        }
-
-        slotPrefab = Resources.Load<GameObject>("UI/Slot_BG");
-        if (slotPrefab == null)
-        {
-            Debug.LogError("[InventoryUI]: 'InvSlot' prefab not found in Resources");
-            return;
-        } 
-
-        panel?.SetActive(false);
-
-        CreateSlots();
-
-        playerInv = FindFirstObjectByType<PlayerInventory>();
-        if (playerInv == null) Debug.LogError("[InventoryUI]: No PlayerInventory found in scene");
-    }*/
-
-    /*private void Start()
-    {
-        RefreshSlots();
-    }*/
 
     void Update()
     {
@@ -149,8 +94,15 @@ public class InventoryUI : MonoBehaviour
         {
             GameObject go = Instantiate(slotPrefab, gridContainer);
             SlotUI slotUI = go.GetComponent<SlotUI>();
-            if (slotUI != null)
-                slotUI.Clear();
+            /*if (slotUI != null)
+                slotUI.Clear();*/
+            if (slotUI == null)
+            {
+                Debug.LogError("[InventoryUI]: Slot prefab is missing a SlotUI component");
+                Destroy(go);
+                continue;
+            }
+            slotUI.Clear();
             slots.Add(slotUI);
         }
     }
@@ -188,12 +140,28 @@ public class InventoryUI : MonoBehaviour
 
     public void RefreshSlots()
     {
-        if (playerInv == null)
-            return;
+        /*if (playerInv == null)
+            return;*/
+
+        Debug.Log($"[InventoryUI.RefreshSlots] panel={(panel == null ? "NULL" : "OK")}, " +
+              $"gridContainer={(gridContainer == null ? "NULL" : "OK")}, " +
+              $"slotsCount={slots?.Count}");
+
+        // if UI not yet wired, do it now
+        if (panel == null || gridContainer == null || slots.Count == 0)
+        {
+            Debug.Log("[InventoryUI]: Lazy-init from RefreshSlots");
+            InitializeUIReferences();
+        }
+        if (playerInv == null) FindAnyObjectByType<PlayerInventory>();
+        if (playerInv == null) return;
 
         // Clear all slots
         foreach (var slot in slots)
-            slot.Clear();
+        {
+            //slot.Clear();
+            if (slot != null) slot.Clear();
+        }
 
         // Fill slots with player's items in order
         var keys = playerInv.Keys;
@@ -211,7 +179,37 @@ public class InventoryUI : MonoBehaviour
             Sprite icon = (s.type == ConsumableType.SmallPotion)
                 ? smallPotionIconSprite
                 : largePotionIconSprite;
-            slots[idx].SetItem(icon, s.count);
+
+            var slotUI = slots[idx];
+            slotUI.SetItem(icon, s.count);
+            //slots[idx].SetItem(icon, s.count);
+
+            var btn = slotUI.GetComponent<Button>();
+            if (btn != null)
+            {
+                var typeToActivate = s.type;
+
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() =>
+                {
+                    Debug.Log($"[InventoryUI] Slot clicked for {typeToActivate}");
+                    PlayerInventory.Instance.SetActiveConsumable(typeToActivate);
+                    FindFirstObjectByType<ConsumableUI>()?.Refresh();
+                });
+            }
+
+            /*// Clear old listeners
+            slotUI.button.onClick.RemoveAllListeners();
+            // If user clicks this spot, activate that potion
+            slotUI.button.onClick.AddListener(() =>
+            {
+                PlayerInventory.Instance.SetActiveConsumable(s.type);
+                // Update the potion icon under the hp bar
+                FindFirstObjectByType<ConsumableUI>()?.Refresh();
+
+                *//*// Highlight this slot
+                HighlightActiveSlot(s.type);*//*
+            });*/
         }
     }
 

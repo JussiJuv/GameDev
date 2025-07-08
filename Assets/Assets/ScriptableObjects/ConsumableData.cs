@@ -5,6 +5,7 @@ public enum ConsumableType { SmallPotion, LargePotion }
 [CreateAssetMenu(menuName = "Data/Consumable Data")]
 public class ConsumableData : ScriptableObject
 {
+    public string displayName;
     public string id;
     public ConsumableType type;
     public Sprite icon;

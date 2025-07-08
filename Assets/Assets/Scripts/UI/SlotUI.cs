@@ -11,6 +11,8 @@ public class SlotUI : MonoBehaviour
 
     private bool isEmpty = true;
 
+    public Button button => GetComponent<Button>();
+
     /// <summary>
     /// Set this slot to display the given item.
     /// </summary>

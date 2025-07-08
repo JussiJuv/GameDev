@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19a6206f7b4ebe40b8f7baed7f1f3fe, type: 3}
   m_Name: LargePotionData
   m_EditorClassIdentifier: 
+  displayName: Large Health Potion
   id: large_pot
   type: 1
   icon: {fileID: -3595479761897144259, guid: 37f6205a53033db4fba339ec4bfa8cea, type: 3}
