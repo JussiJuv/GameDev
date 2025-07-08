@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 [RequireComponent(typeof(Collider2D))]
 public class Health : MonoBehaviour
@@ -41,6 +42,9 @@ public class Health : MonoBehaviour
 
         // Gather components to disable on death
         disableOnDeath = GetComponents<Behaviour>();
+
+        var anim = GetComponent<Animator>();
+        disableOnDeath = disableOnDeath.Where(c => c != anim).ToArray();
 
     }
 

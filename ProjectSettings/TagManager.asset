@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - PlayerProjectile
+  - Hazard
+  - Clone
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Enemy
   - Wall
   - Ground
-  - 
+  - Hazard
   - 
   - 
   - 
@@ -79,6 +82,9 @@ TagManager:
     locked: 0
   - name: Key
     uniqueID: 617610607
+    locked: 0
+  - name: ShadowMeteor
+    uniqueID: 3336595431
     locked: 0
   m_RenderingLayers:
   - Default

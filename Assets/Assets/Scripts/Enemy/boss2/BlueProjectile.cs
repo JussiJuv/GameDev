@@ -5,10 +5,13 @@ public class BlueProjectile : MonoBehaviour
     private float speed = 5f;
     private int damage = 1;
     private Vector2 direction;
+    [Min(0)] public float lifetime = 10f;
 
-    /// <summary>
-    /// Initializes direction, speed, and damage.
-    /// </summary>
+    void Start()
+    {
+        Destroy(gameObject, lifetime);
+    }
+
     public void Init(Vector2 dir, float spd, int dmg)
     {
         direction = dir;
@@ -16,20 +19,27 @@ public class BlueProjectile : MonoBehaviour
         damage = dmg;
     }
 
-    private void Update()
+    void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
+        // 1) If it hits the Player, damage as before:
+        if (other.CompareTag("Player"))
+        {
+            var h = other.GetComponent<Health>();
+            if (h != null) h.TakeDamage(damage);
+            Destroy(gameObject);
             return;
+        }
 
-        var h = other.GetComponent<Health>();
-        if (h != null)
-            h.TakeDamage(damage);
-
-        Destroy(gameObject);
+        // If it hits a player arrow, destroy itself:
+        if (other.CompareTag("PlayerProjectile"))
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 }

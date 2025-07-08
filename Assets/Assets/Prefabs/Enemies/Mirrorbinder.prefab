@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 140563001724803500}
   - component: {fileID: 1457862710607894780}
   - component: {fileID: 6877480420426697146}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Mirrorbinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -585523863
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -2830724886272251484, guid: 3f31582ee90e30f46a53b536de4a5859, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -176,11 +176,23 @@ MonoBehaviour:
       m_Calls: []
   maxHP: 100
   xpValue: 0
-  destroyDelay: 0.5
+  destroyDelay: 0.75
   deathEffectPrefab: {fileID: 0}
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2833644975514389614}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Die
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -198,17 +210,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4cc9c79eea3104d862afb29ab637f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseTwoThreshold: 0.66
-  phaseThreeThreshold: 0.33
-  shotsPerVolley: 3
-  shotInterval: 0.5
-  volleyCooldown: 1.5
-  projectileBluePrefab: {fileID: 5774319383681552065, guid: 720db81bd155f054f99df460ea0cc885, type: 3}
-  projectileRedPrefab: {fileID: 6889912735526265534, guid: c7ca1abf8cb298a4998e460f619d6808, type: 3}
-  clonePrefab: {fileID: 0}
-  clonesInPhase2: 6
-  cloneRadius: 3
-  cloneChargeTime: 2
-  cloneGrayAmount: 0.8
+  devStartPhase2: 0
   isClone: 0
-  isRealClone: 0
+  homePoint: {fileID: 0}
+  moveSpeed: 5
+  p1VolleysBeforeSpecial: 3
+  p1ShotsPerVolley: 3
+  p1ShotInterval: 0.5
+  p1VolleyCooldown: 1.5
+  p1MeteorInterval: 2
+  circularShotCount: 50
+  circularSpeed: 2
+  circularDamage: 1
+  p1PostAbilityCooldown: 2
+  p2ClonesCount: 6
+  p2CloneRadius: 6
+  p2CloneChargeTime: 2.5
+  p2VolleysBeforeSpecial: 4
+  p2ShotsPerVolley: 3
+  p2ShotInterval: 0.5
+  p2VolleyCooldown: 1.5
+  p2MeteorInterval: 6
+  clonePrefab: {fileID: 5394012695098621967, guid: a71180c6d0ff05c4385f23b7d3a2bc54, type: 3}
+  redProjectilePrefab: {fileID: 6889912735526265534, guid: c7ca1abf8cb298a4998e460f619d6808, type: 3}
+  redProjectileSpeed: 15
+  redProjectileDamage: 1
+  p3ClonesCount: 12
+  p3CloneRadius: 8
+  p3CloneChargeTime: 2
+  p3VolleysBeforeSpecial: 3
+  p3ShotsPerVolley: 5
+  p3ShotInterval: 0.4
+  p3VolleyCooldown: 1
+  p3MeteorInterval: 4
+  regularProjectileSpeed: 7
+  regularProjectileDamage: 1
+  projectileBluePrefab: {fileID: 5774319383681552065, guid: 720db81bd155f054f99df460ea0cc885, type: 3}
+  meteorPrefab: {fileID: 8020823694010776494, guid: 1cc308433ae3b284da4bda1a51eada53, type: 3}
