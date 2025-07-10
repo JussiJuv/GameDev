@@ -42,7 +42,10 @@ public class PortalActivator : MonoBehaviour
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
 
             // Unload demo
-            SceneManager.UnloadSceneAsync("demo");
+            //SceneManager.UnloadSceneAsync("demo");
+            string currentScene = gameObject.scene.name;
+            if (currentScene != "UI") 
+                SceneManager.UnloadSceneAsync(currentScene);
 
             // Teleport the player to their last checkpoint in the new scene
             StartCoroutine(MovePlayerToSpawnNextFrame());

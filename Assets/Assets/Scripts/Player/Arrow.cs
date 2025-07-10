@@ -12,6 +12,9 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Ignore imp projectiles
+        if (other.GetComponent<ImpProjectile>() != null) return;
+
         var health = other.GetComponent<Health>();
         if (health != null)
         {

@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 8dfb36818cf477a47aacb6646701f42a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -585523863
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 8793639957104055765, guid: 770caea2cf0dbc140a834a19c2277574, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,6 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050c3eb106116264390773dd781f1cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   maxHP: 10
   xpValue: 10
   destroyDelay: 0.5
@@ -197,7 +200,7 @@ MonoBehaviour:
   attackRange: 1.75
   attackDamage: 1
   attackCooldown: 1
-  bossHealthBarUI: {fileID: 0}
+  bossKeyData: {fileID: 11400000, guid: 34b1eca0acc9ace4caec70b48637b673, type: 2}
   bossName: Slime Giant
   gateController: {fileID: 0}
 --- !u!58 &6559643012209477189

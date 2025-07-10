@@ -56,6 +56,7 @@ public class Health : MonoBehaviour
         currentHP = Mathf.Max(currentHP - amount, 0);
         Debug.Log($"{name} took {amount} damage, {currentHP}/{maxHP} HP left");
 
+        OnHealthChanged?.Invoke(currentHP, maxHP);
         if (currentHP == 0)
             Die();
     }

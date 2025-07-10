@@ -4219,6 +4219,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: portal_2_0
       objectReference: {fileID: 0}
+    - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
+      propertyPath: sceneToLoad
+      value: Area2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
+      propertyPath: nextCheckpointID
+      value: Area2_Start
+      objectReference: {fileID: 0}
     - target: {fileID: 8675538501309859562, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.705181
