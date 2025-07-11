@@ -14,21 +14,21 @@ public class Checkpoint : MonoBehaviour
 
     [Header("Prompt Icon")]
     public SpriteRenderer promptIcon;
-    [Tooltip("Local Y-offsset for the prompt")]
     public float promptYOffset = 1.5f;
 
-    private bool isActive;
+    protected bool isActive;
+
     private bool playerInRange = false;
     private Collider2D col;
 
     private void Start()
     {
         col = GetComponent<Collider2D>();
-        // On scene load, decide whether this matches the saved checkpoint
-        isActive = SaveSystem.Data.lastCheckpointID == checkpointID;
+
+        // Initialize based on saved data
+        isActive = (SaveSystem.Data.lastCheckpointID == checkpointID);
         UpdateVisuals();
 
-        // Init prompt
         if (promptIcon != null)
         {
             promptIcon.gameObject.SetActive(false);
@@ -38,67 +38,62 @@ public class Checkpoint : MonoBehaviour
 
     private void Update()
     {
-        // Only allow activation if we are in range, not already active, and press E
         if (playerInRange && !isActive && Input.GetKeyDown(KeyCode.E))
-        {
             Activate();
-        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player") && !isActive)
+        if (other.CompareTag("Player") && !isActive)
         {
             playerInRange = true;
-            if (promptIcon != null)
-            {
-                promptIcon.gameObject.SetActive(true);
-            }
+            promptIcon?.gameObject.SetActive(true);
         }
     }
 
-    // Called once when the player presses E in range
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !isActive)
+        {
+            playerInRange = false;
+            promptIcon?.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Activates this checkpoint and deactivates all others.
+    /// </summary>
     private void Activate()
     {
+        // Deactivate every other checkpoint
+        var all = FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
+        foreach (var cp in all)
+        {
+            if (cp == this) continue;
+            cp.isActive = false;
+            cp.col.enabled = true;
+            cp.UpdateVisuals();
+        }
+
         isActive = true;
         UpdateVisuals();
 
-        // Hide the prompt and disable this collider
-        if (promptIcon != null)
-        {
-            promptIcon.gameObject.SetActive(false);
-        }
+        promptIcon?.gameObject.SetActive(false);
         col.enabled = false;
 
+        // Persist to save data
         SaveSystem.SetCheckpoint(checkpointID);
-
-        // TODO: Play SFX, UI
-
+        // TODO: Play any SFX/UI here
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    /// <summary>
+    /// Syncs visuals to the isActive flag.
+    /// </summary>
+    public void UpdateVisuals()
     {
-        if (collision.CompareTag("Player") && !isActive)
-        {
-            playerInRange = false;
-            if (promptIcon != null)
-            {
-                promptIcon.gameObject.SetActive(false);
-            }
-        }
-    }
-
-    void UpdateVisuals()
-    {
-        activeVisual.SetActive(isActive); 
-        inactiveVisual.SetActive(!isActive);
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (isActive) return;
-        if (!collision.CompareTag("Player")) return;
-
-        if (Input.GetKeyDown(KeyCode.E)) Activate();
+        activeVisual?.SetActive(isActive);
+        inactiveVisual?.SetActive(!isActive);
     }
 }
+
+

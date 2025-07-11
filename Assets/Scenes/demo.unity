@@ -4888,7 +4888,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -14720,7 +14720,7 @@ TilemapRenderer:
   m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -16193,6 +16193,10 @@ PrefabInstance:
     - target: {fileID: 1797354697005444928, guid: 325a6fd2f05529347873b2384dfc63bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071333917228895104, guid: 325a6fd2f05529347873b2384dfc63bf, type: 3}
+      propertyPath: chestID
+      value: demo_2
       objectReference: {fileID: 0}
     - target: {fileID: 8071333917228895104, guid: 325a6fd2f05529347873b2384dfc63bf, type: 3}
       propertyPath: coinAmount
@@ -21549,6 +21553,10 @@ PrefabInstance:
     - target: {fileID: 1797354697005444928, guid: 325a6fd2f05529347873b2384dfc63bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071333917228895104, guid: 325a6fd2f05529347873b2384dfc63bf, type: 3}
+      propertyPath: chestID
+      value: demo_1
       objectReference: {fileID: 0}
     - target: {fileID: 8071333917228895104, guid: 325a6fd2f05529347873b2384dfc63bf, type: 3}
       propertyPath: openSFX

@@ -358,7 +358,11 @@ MonoBehaviour:
   closedSprite: {fileID: 2811079341381327259}
   openSprite: {fileID: 3147764620894805356}
   promptIcon: {fileID: 4185373478571276847}
-  coinAmount: 10
+  coinAmount: 300
   openVFX: {fileID: 0}
-  openSFX: {fileID: 0}
+  openSFX: {fileID: 8300000, guid: 58af34a667c86a64499f785f204666bf, type: 3}
   promptYOffset: 1
+  consumableLoot:
+  - {fileID: 11400000, guid: 7b81dac4a55355c499d60259a24319db, type: 2}
+  - {fileID: 11400000, guid: cd79293de37a4e446954e5c037d2a935, type: 2}
+  consumableCounts: 0000000000000000

@@ -23,4 +23,7 @@ public class SaveData
     public List<InventorySlot> savedConsumables = new List<InventorySlot>();
     // - 1 means no active consumable
     public int savedActiveConsumable = -1;
+
+    // Opened chests
+    public List<string> openedChests = new List<string>();
 }
