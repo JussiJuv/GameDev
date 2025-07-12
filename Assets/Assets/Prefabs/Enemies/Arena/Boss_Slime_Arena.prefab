@@ -100,7 +100,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801507347542421277}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -235,5 +235,6 @@ MonoBehaviour:
   smallSlimePrefab: {fileID: 5729015300142895643, guid: 887e2e1bb89b21e4db2fa87c5a65579c, type: 3}
   splitCount: 4
   spawnRadius: 1
+  spawnDelay: 1
   gateController: {fileID: 0}
   bossName: Slime Giant
