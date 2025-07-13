@@ -9,8 +9,11 @@ public class ImpProjectile : MonoBehaviour
     [Tooltip("Damage to deal on hit")]
     public int damage = 1;
 
-    [Tooltip("Seconds before auto?destroy")]
+    [Tooltip("Seconds before auto-destroy")]
     public float lifetime = 5f;
+
+    [Tooltip("Which layers should stop this projectile on hit?")]
+    public LayerMask destructibleLayers;
 
     private Vector2 direction;
 
@@ -28,13 +31,29 @@ public class ImpProjectile : MonoBehaviour
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!other.CompareTag("Player")) return;
+        // if we hit player, deal damage
+        if (collision.CompareTag("Player"))
+        {
+            var h = collision.GetComponent<Health>();
+            if (h != null) h.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
 
-        var h = other.GetComponent<Health>();
+        // if we hit anything on destructibleLayers, just destroy
+        if (((1 << collision.gameObject.layer) & destructibleLayers) != 0) 
+            Destroy(gameObject);
+    }
+
+    /*void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player")) return;
+
+        var h = collision.GetComponent<Health>();
         if (h != null) h.TakeDamage(damage);
 
         Destroy(gameObject);
-    }
+    }*/
 }

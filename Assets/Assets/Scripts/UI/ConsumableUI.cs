@@ -55,14 +55,12 @@ public class ConsumableUI : MonoBehaviour
     {
         var inv = PlayerInventory.Instance;
         var active = inv.ActiveConsumable;
-        Debug.Log($"[ConsumableUI]: Active = {active}");
         if (!active.HasValue)
         {
             slotUI.Clear();
             return;
         }
         var slot = inv.Consumables.First(s => s.type == active.Value);
-        Debug.Log($"[ConsumableUI]: Slot count = {slot.count}");
 
         var data = inv.consumableDataList.FirstOrDefault(d => d.type == slot.type);
         if (data == null)
@@ -71,7 +69,6 @@ public class ConsumableUI : MonoBehaviour
             slotUI.Clear();
             return;
         }
-        Debug.Log($"[ConsumableUI]: Data.icon = {data.icon}");
         slotUI.SetItem(data.icon, slot.count);
     }
 }

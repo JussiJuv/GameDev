@@ -39,7 +39,9 @@ public static class SaveSystem
     public static void Save()
     {
         // Always update current scene name before writing
-        Data.lastScene = SceneManager.GetActiveScene().name;
+        var sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName != "UI")
+            Data.lastScene = sceneName;
 
         // Player health
         var playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();

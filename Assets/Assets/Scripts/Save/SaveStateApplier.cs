@@ -48,37 +48,9 @@ public class SaveStateApplier : MonoBehaviour
         FindFirstObjectByType<AbilityHotbarUI>()?.RebuildHotbar();
     }
 
-    /*private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-
-        Debug.Log($"[SaveStateApllier] Scene loaded: {scene.name}");
-        // Whenever a new scene comes up, reapply the saved data
-        ApplySavedState();
-
-        // Debugs for save file
-        // Debug after applying
-        if (XPManager.Instance != null && CurrencyManager.Instance != null)
-        {
-            Debug.Log($"[SaveStateApplier] After load ? Level={XPManager.Instance.currentLevel}, XP={XPManager.Instance.currentXP}, Coins={CurrencyManager.Instance.Coins}");
-        }
-
-        // Refresh Inventory UI
-        FindFirstObjectByType<InventoryUI>()?.RefreshSlots();
-
-        // Re-synnc abilities
-        var am = FindFirstObjectByType<AbilityManager>();
-        if (am != null)
-        {
-            am.InitializeUnlockedAbilities(SaveSystem.Data.savedLevel);
-        }
-
-        // Force the ability hotbar UI to rebuild
-        FindFirstObjectByType<AbilityHotbarUI>()?.RebuildHotbar();
-    }*/
-
     public void ApplySavedState()
     {
-        Debug.Log("[SaveStateApplier]: APPLYING SAVE STATE!!!!!!!!!!");
+        //Debug.Log("[SaveStateApplier]: APPLYING SAVE STATE");
 
         // Health
         var player = GameObject.FindWithTag("Player");

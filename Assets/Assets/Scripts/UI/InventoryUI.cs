@@ -143,14 +143,14 @@ public class InventoryUI : MonoBehaviour
         /*if (playerInv == null)
             return;*/
 
-        Debug.Log($"[InventoryUI.RefreshSlots] panel={(panel == null ? "NULL" : "OK")}, " +
+        /*Debug.Log($"[InventoryUI.RefreshSlots] panel={(panel == null ? "NULL" : "OK")}, " +
               $"gridContainer={(gridContainer == null ? "NULL" : "OK")}, " +
-              $"slotsCount={slots?.Count}");
+              $"slotsCount={slots?.Count}");*/
 
         // if UI not yet wired, do it now
         if (panel == null || gridContainer == null || slots.Count == 0)
         {
-            Debug.Log("[InventoryUI]: Lazy-init from RefreshSlots");
+            //Debug.Log("[InventoryUI]: Lazy-init from RefreshSlots");
             InitializeUIReferences();
         }
         if (playerInv == null) FindAnyObjectByType<PlayerInventory>();
@@ -192,24 +192,11 @@ public class InventoryUI : MonoBehaviour
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(() =>
                 {
-                    Debug.Log($"[InventoryUI] Slot clicked for {typeToActivate}");
+                    //Debug.Log($"[InventoryUI] Slot clicked for {typeToActivate}");
                     PlayerInventory.Instance.SetActiveConsumable(typeToActivate);
                     FindFirstObjectByType<ConsumableUI>()?.Refresh();
                 });
             }
-
-            /*// Clear old listeners
-            slotUI.button.onClick.RemoveAllListeners();
-            // If user clicks this spot, activate that potion
-            slotUI.button.onClick.AddListener(() =>
-            {
-                PlayerInventory.Instance.SetActiveConsumable(s.type);
-                // Update the potion icon under the hp bar
-                FindFirstObjectByType<ConsumableUI>()?.Refresh();
-
-                *//*// Highlight this slot
-                HighlightActiveSlot(s.type);*//*
-            });*/
         }
     }
 
@@ -229,7 +216,7 @@ public class InventoryUI : MonoBehaviour
         {
             playerInv.OnConsumablesChanged -= RefreshSlots;
             playerInv.OnConsumablesChanged += RefreshSlots;
-            Debug.Log("[InventoryUI] Delayed refresh: found PlayerInventory, refreshing slots");
+            //Debug.Log("[InventoryUI] Delayed refresh: found PlayerInventory, refreshing slots");
             RefreshSlots();
         }
         else

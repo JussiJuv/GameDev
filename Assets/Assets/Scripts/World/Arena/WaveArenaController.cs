@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
 public class WaveArenaController : MonoBehaviour
@@ -10,7 +11,6 @@ public class WaveArenaController : MonoBehaviour
     private ContactFilter2D enemyFilter;
     private Collider2D[] overlapResults = new Collider2D[16];
 
-
     [Header("Wave Definitions")]
     [Tooltip("Configure each wave")]
     public WaveDefinition[] waves;
@@ -18,10 +18,9 @@ public class WaveArenaController : MonoBehaviour
     [Header("Boss (last wave)")]
     [Tooltip("Spawn VFX for boss")]
     public GameObject spawnBoss;
-    [Tooltip("Boss enemy prefab to instantiate in last wave")]
     public GameObject bossPrefab;
-    [Tooltip("Delay between boss VFX and boss spawn")]
     public float bossSpawnDelay = 1f;
+    public float bossVFXPostDelay = 1f;
 
     [Header("Arena Flow Controller")]
     public EntranceWallController entranceWall;
@@ -29,6 +28,7 @@ public class WaveArenaController : MonoBehaviour
     public float waveTimeout = 10f;
 
     bool started = false;
+    private WaveCounterUI waveCounterUI;
 
     private void Awake()
     {
@@ -36,6 +36,20 @@ public class WaveArenaController : MonoBehaviour
         enemyFilter = new ContactFilter2D();
         enemyFilter.SetLayerMask(LayerMask.GetMask("Enemy"));
         enemyFilter.useLayerMask = true;
+    }
+
+    private void Start()
+    {
+        waveCounterUI = FindFirstObjectByType<WaveCounterUI>();
+        if (waveCounterUI == null)
+        {
+            Debug.LogError("[WaveArenaController] Could not find WaveCounterUI in any loaded scenes");
+        }
+        else
+        {
+            Debug.Log("!!!!!!!!!WaveCounterUI Found!!!!!!");
+            waveCounterUI.Hide();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,10 +69,7 @@ public class WaveArenaController : MonoBehaviour
         for (int i = 0; i < totalWaves; i++)
         {
             // TODO Update wave UI
-
-            // Second to last wave: boss spawn VFX
-            if (i == totalWaves - 2  && spawnBoss != null)
-                spawnBoss.SetActive(true);
+            waveCounterUI.Show(i + 1, totalWaves);
 
             // Spawn normal enemies
             yield return SpawnWave(waves[i]);
@@ -66,6 +77,9 @@ public class WaveArenaController : MonoBehaviour
             // spawn boss if final wave
             if (i == totalWaves - 1 && bossPrefab != null)
             {
+                if (spawnBoss != null)
+                    spawnBoss.SetActive(true);
+
                 yield return new WaitForSeconds(waves[i].spawnDelay);
 
                 if (spawnBoss != null)
@@ -76,25 +90,33 @@ public class WaveArenaController : MonoBehaviour
                         anim.Play(0, 0, 0f);
                         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
                     }
-                    spawnBoss.SetActive(false);
+                    //spawnBoss.SetActive(false);
                 }
                 
                 yield return new WaitForSeconds(bossSpawnDelay);
                 Instantiate(bossPrefab, spawnBoss.transform.position, Quaternion.identity);
 
+                // keep VFX around for a bit longer
+                yield return new WaitForSeconds(bossVFXPostDelay);
+
+                if (spawnBoss != null)
+                    spawnBoss.SetActive(false);
+
                 // Final wave wait until there are no more enemies
-                yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
+                //yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
+                yield return WaitForWaveClear();
                 break;
             }
             else
             {
                 // Not final wave: wait for clear
-                yield return WaitForWaveClear(waveTimeout);
+                yield return WaitForWaveClear();
             }
         }
 
         // Finished: Open the gate
         gateController.OpenGate();
+        waveCounterUI?.Hide();
     }
 
     IEnumerator SpawnWave(WaveDefinition wave)
@@ -118,7 +140,7 @@ public class WaveArenaController : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForWaveClear(float timeout)
+    IEnumerator WaitForWaveClear()
     {
         //float timer = 0f;
         while (true)
@@ -131,15 +153,4 @@ public class WaveArenaController : MonoBehaviour
             yield return null;
         }
     }
-
-    /*IEnumerator WaitForWaveClear(float timeout)
-    {
-        float timer = 0f;
-        while (GameObject.FindGameObjectsWithTag("Enemy").Length > 0 && timer < timeout)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        // Proceed whether or not all enemies died, to avoid soft-lock
-    }*/
 }

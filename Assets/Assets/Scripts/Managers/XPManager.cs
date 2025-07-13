@@ -48,7 +48,7 @@ public class XPManager : MonoBehaviour
     public void AddXP(int amount)
     {
         currentXP += amount;
-        Debug.Log($"Gained {amount} XP. Total XP: {currentXP} / {xpToNextLevel}");
+        //Debug.Log($"Gained {amount} XP. Total XP: {currentXP} / {xpToNextLevel}");
         OnXPChanged?.Invoke(currentXP, xpToNextLevel);
 
         while (currentXP >= xpToNextLevel)
@@ -62,7 +62,7 @@ public class XPManager : MonoBehaviour
     {
         currentLevel++;
         xpToNextLevel = GetXPThreshold(currentLevel);
-        Debug.Log($"Leveled up! New Level: {currentLevel}");
+        //Debug.Log($"Leveled up! New Level: {currentLevel}");
         OnLevelUp?.Invoke(currentLevel);
         OnXPChanged?.Invoke(currentXP, xpToNextLevel);
     }

@@ -54,7 +54,7 @@ public class Health : MonoBehaviour
         if (isDead) return;
 
         currentHP = Mathf.Max(currentHP - amount, 0);
-        Debug.Log($"{name} took {amount} damage, {currentHP}/{maxHP} HP left");
+        //Debug.Log($"{name} took {amount} damage, {currentHP}/{maxHP} HP left");
 
         OnHealthChanged?.Invoke(currentHP, maxHP);
         if (currentHP == 0)
@@ -81,12 +81,12 @@ public class Health : MonoBehaviour
         // Spawn VFX if assigned
         if (deathEffectPrefab != null)
         {
-            Debug.Log("Playing death VFX");
+            //Debug.Log("Playing death VFX");
             Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
         }
         else
         {
-            Debug.LogWarning("VFX Prefab not found");
+            //Debug.LogWarning("VFX Prefab not found");
         }
 
         // Play SFX if assigned
@@ -113,7 +113,7 @@ public class Health : MonoBehaviour
         if (xpValue > 0 && XPManager.Instance != null)
         {
             XPManager.Instance.AddXP(xpValue);
-            Debug.Log($"Awarded {xpValue} XP for defeating {name}");
+            //Debug.Log($"Awarded {xpValue} XP for defeating {name}");
         }
 
         // If this is the Player, invoke OnPlayerDeath as well

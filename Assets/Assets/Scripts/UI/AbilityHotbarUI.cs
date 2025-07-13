@@ -14,7 +14,7 @@ public class AbilityHotbarUI : MonoBehaviour
 
     private bool subscribed = false;
 
-    private void Start()
+    /*private void Start()
     {
         if (abilityManager == null)
         {
@@ -29,7 +29,7 @@ public class AbilityHotbarUI : MonoBehaviour
         }
 
         RebuildHotbar();
-    }
+    }*/
 
     void Awake()
     {
@@ -43,16 +43,20 @@ public class AbilityHotbarUI : MonoBehaviour
 
     void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneChanged;
 
         // If portal into Hub happened without destroying this UI,
         // manually invoke our scene?loaded handler now
-        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        //OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+
+        SceneManager.sceneUnloaded += OnSceneChanged;
+        TryHookupManager();
+
     }
 
     void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded -= OnSceneChanged;
         if (abilityManager != null)
         {
             abilityManager.OnAbilityUnlocked -= OnAbilityUnlocked;
@@ -60,7 +64,46 @@ public class AbilityHotbarUI : MonoBehaviour
         }
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneChanged(Scene scene, LoadSceneMode mode) => TryHookupManager();
+
+    private void OnSceneChanged(Scene scene) => TryHookupManager();
+
+    private void TryHookupManager()
+    {
+        var mgr = FindFirstObjectByType<AbilityManager>();
+        Debug.Log($"[Hotbar] Trying hookup, found mgr={mgr?.name}");
+        if (mgr != abilityManager)
+        {
+            // Drop old
+            UnsubscribeManager();
+            abilityManager = mgr;
+            // use new
+            SubscribeManager();
+            RebuildHotbar();
+        }
+    }
+
+    private void SubscribeManager()
+    {
+        if (abilityManager != null && !subscribed)
+        {
+            abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
+            abilityManager.OnAbilityUsed += OnAbilityUsed;
+            subscribed = true;
+        }
+    }
+
+    private void UnsubscribeManager()
+    {
+        if (abilityManager != null && subscribed)
+        {
+            abilityManager.OnAbilityUnlocked -= OnAbilityUnlocked;
+            abilityManager.OnAbilityUsed -= OnAbilityUsed;
+            subscribed = false;
+        }
+    }
+
+    /*private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         var mgr = FindFirstObjectByType<AbilityManager>();
         if (mgr != abilityManager)
@@ -85,7 +128,7 @@ public class AbilityHotbarUI : MonoBehaviour
         }
 
         RebuildHotbar();
-    }
+    }*/
 
     private void OnAbilityUnlocked(AbilityData ab)
     {
