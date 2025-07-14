@@ -14,6 +14,14 @@ public class BossHealthBarUI : MonoBehaviour
     [Tooltip("TextMeshPro label showing boss name")]
     public TMP_Text bossNameText;
 
+    [Tooltip("The child GameObject with all visuals")]
+    public GameObject content;
+
+    private void Awake()
+    {
+        Hide();
+    }
+
     private void Update()
     {
         if (bossHealth == null || fillImage == null)
@@ -32,7 +40,8 @@ public class BossHealthBarUI : MonoBehaviour
         bossHealth = health;
         bossNameText.text = bossName;
         fillImage.fillAmount = 1f;
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
+        content.SetActive(true);
     }
 
     /// <summary>
@@ -40,6 +49,7 @@ public class BossHealthBarUI : MonoBehaviour
     /// </summary>
     public void Hide()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        content.SetActive(false);
     }
 }

@@ -57,10 +57,18 @@ public class SaveStateApplier : MonoBehaviour
         if (player != null)
         {
             var hp = player.GetComponent<Health>();
-            if (hp != null && SaveSystem.Data.savedHP > 0)
+            if (hp != null)
+            {
+                if (SaveSystem.Data.savedMaxHP > 0)
+                    hp.maxHP = SaveSystem.Data.savedMaxHP;
+
+                if (SaveSystem.Data.savedHP > 0)
+                    hp.currentHP = Mathf.Min(SaveSystem.Data.savedHP, hp.maxHP);
+            }
+            /*if (hp != null && SaveSystem.Data.savedHP > 0)
             {
                 hp.currentHP = Mathf.Min(SaveSystem.Data.savedHP, hp.maxHP);
-            }
+            }*/
         }
 
         // XP & Level
@@ -130,7 +138,7 @@ public class SaveStateApplier : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("[SaveStateApplier] InventoryUI not found in scene.");
+            //Debug.LogWarning("[SaveStateApplier] InventoryUI not found in scene.");
         }
     }
 

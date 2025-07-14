@@ -24,19 +24,25 @@ public class BlueProjectile : MonoBehaviour
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         // 1) If it hits the Player, damage as before:
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            var h = other.GetComponent<Health>();
+            var h = collision.GetComponent<Health>();
             if (h != null) h.TakeDamage(damage);
             Destroy(gameObject);
             return;
         }
 
-        // If it hits a player arrow, destroy itself:
-        if (other.CompareTag("PlayerProjectile"))
+        // If it hits a player arrow or wall, destroy itself:
+        if (collision.CompareTag("PlayerProjectile"))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             Destroy(gameObject);
             return;

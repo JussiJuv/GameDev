@@ -31,10 +31,12 @@ public class EnemyController : MonoBehaviour
     private Vector3 startPos;
     private Vector3 patrolTarget;
     private Transform playerT;
+    private Rigidbody2D rb;
     private float lastAttackTime = 0f;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
         PickPatrolTarget();
 
@@ -49,9 +51,31 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (!canMove || playerT == null)
+            return;
 
-    // Update is called once per frame
-    void Update()
+        float dist = Vector2.Distance(transform.position, playerT.position);
+        if (dist <= attackRange)
+        {
+            TryAttack();
+        }
+        else if (dist<= chaseRange)
+        {
+            Vector2 target = Vector2.MoveTowards(
+                rb.position,
+                playerT.position,
+                chaseSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(target);
+        }
+        else
+        {
+            Patrol();
+        }
+    }
+
+    /*void Update()
     {
         if (!canMove || playerT == null)
         {
@@ -71,7 +95,7 @@ public class EnemyController : MonoBehaviour
         {
             Patrol();
         }
-    }
+    }*/
 
     private void Patrol()
     {

@@ -7,6 +7,8 @@ public class ImpController : MonoBehaviour
     [Header("Patrol Points")]
     public Transform patrolPointA;
     public Transform patrolPointB;
+    [Tooltip("Maximum random offset applied to each patrol target")]
+    public float patrolOffsetRange = 0.5f;
 
     [Header("Movement")]
     public float moveSpeed = 2f;
@@ -43,9 +45,13 @@ public class ImpController : MonoBehaviour
         // Choose whichever point is farther as the first target
         float dA = Vector3.Distance(transform.position, patrolPointA.position);
         float dB = Vector3.Distance(transform.position, patrolPointB.position);
-        nextPatrol = (dA < dB)
+        /*nextPatrol = (dA < dB)
             ? patrolPointB.position
-            : patrolPointA.position;
+            : patrolPointA.position;*/
+
+        nextPatrol = (dA < dB)
+            ? GetRandomizedPoint(patrolPointB)
+            : GetRandomizedPoint(patrolPointA);
     }
 
     void Update()
@@ -112,12 +118,25 @@ public class ImpController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(timeBetweenVolleys);
-        nextPatrol = (nextPatrol == patrolPointA.position)
+        /*nextPatrol = (nextPatrol == patrolPointA.position)
                  ? patrolPointB.position
                  : patrolPointA.position;
-        Debug.Log("[Imp] AttackVolley finished – nextPatrol set");
+        Debug.Log("[Imp] AttackVolley finished – nextPatrol set");*/
+
+        if (Vector3.Distance(nextPatrol, patrolPointA.position) < 0.1f)
+            nextPatrol = GetRandomizedPoint(patrolPointB);
+        else
+            nextPatrol = GetRandomizedPoint(patrolPointA);
 
         isAttacking = false;
+    }
+
+    private Vector3 GetRandomizedPoint(Transform point)
+    {
+        Vector3 basePos = point.position;
+        float offsetX = Random.Range(-patrolOffsetRange, patrolOffsetRange);
+        float offsetY = Random.Range(-patrolOffsetRange, patrolOffsetRange);
+        return new Vector3(basePos.x + offsetX, basePos.y + offsetY, basePos.z);
     }
 
     /// <summary>

@@ -89,7 +89,7 @@ public class BossController : MonoBehaviour
     {
         if (bossHealthBarUI == null)
         {
-            // Grab the UI scene
+            /*// Grab the UI scene
             var uiScene = SceneManager.GetSceneByName("UI");
             if (!uiScene.isLoaded)
             {
@@ -110,7 +110,10 @@ public class BossController : MonoBehaviour
                     bossHealthBarUI = panelTf.GetComponent<BossHealthBarUI>();
                     break;
                 }
-            }
+            }*/
+
+            // look for BossUI
+            bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();
 
             if (bossHealthBarUI == null)
             {

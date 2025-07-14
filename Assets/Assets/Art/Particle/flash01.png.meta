@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d4cb9face6246af4c93facfc306ca8f6
+guid: d046ec49a2cbbb248b5e4cb7d7d9f95b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1736477171591450160
-    second: flash00_0
+      213: 4362246869160309727
+    second: flash01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flash00_0
+      name: flash01_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 550
-        height: 496
+        width: 463
+        height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03e884d89c4391810800000000000000
-      internalID: 1736477171591450160
+      spriteID: fd33cd25a60d98c30800000000000000
+      internalID: 4362246869160309727
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      flash00_0: 1736477171591450160
+      flash01_0: 4362246869160309727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,6 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class AbilityHotbarUI : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class AbilityHotbarUI : MonoBehaviour
     private List<HotbarSlotUI> slots = new List<HotbarSlotUI>();
     private Dictionary<string, HotbarSlotUI> abilityToSlot = new Dictionary<string, HotbarSlotUI>();
 
-    private bool subscribed = false;
+    //private bool subscribed = false;
 
     /*private void Start()
     {
@@ -41,7 +42,45 @@ public class AbilityHotbarUI : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    /*private void Start()
+    {
+        if (abilityManager == null)
+            abilityManager = FindFirstObjectByType<AbilityManager>();
+
+        if (abilityManager == null)
+        {
+            Debug.LogError("[AbilityHotbarUI]: No AbilityManager found");
+            return;
+        }
+
+        abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
+        abilityManager.OnAbilityUsed += OnAbilityUsed;
+
+        RebuildHotbar();
+    }*/
+
+    private IEnumerator Start()
+    {
+        // Wait until there's an AbilityManager in the scene hierarchy
+        while ((abilityManager = FindFirstObjectByType<AbilityManager>()) == null)
+            yield return null;
+
+        abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
+        abilityManager.OnAbilityUsed += OnAbilityUsed;
+
+        RebuildHotbar();
+    }
+
+    private void OnDestroy()
+    {
+        if (abilityManager != null)
+        {
+            abilityManager.OnAbilityUnlocked -= OnAbilityUnlocked;
+            abilityManager.OnAbilityUsed -= OnAbilityUsed;
+        }
+    }
+
+    /*void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneChanged;
 
@@ -101,7 +140,7 @@ public class AbilityHotbarUI : MonoBehaviour
             abilityManager.OnAbilityUsed -= OnAbilityUsed;
             subscribed = false;
         }
-    }
+    }*/
 
     /*private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -151,6 +190,11 @@ public class AbilityHotbarUI : MonoBehaviour
 
     public void RebuildHotbar()
     {
+        if (abilityManager == null)
+        {
+            return;
+        }
+
         abilityToSlot.Clear();
         foreach (var slot in slots)
             slot.Clear();

@@ -25,6 +25,7 @@ public static class SaveSystem
                 lastScene = SceneManager.GetActiveScene().name,
                 lastCheckpointID = "Demo_Start",
                 savedHP = -1,
+                savedMaxHP = -1,
                 savedLevel = -1,
                 savedXP = -1,
                 savedCoins = -1
@@ -45,9 +46,14 @@ public static class SaveSystem
 
         // Player health
         var playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();
-        Data.savedHP = playerHealth != null
+        /*Data.savedHP = playerHealth != null
             ? playerHealth.currentHP
-            : playerHealth.maxHP;
+            : playerHealth.maxHP;*/
+        if (playerHealth != null)
+        {
+            Data.savedHP = playerHealth.currentHP;
+            Data.savedMaxHP = playerHealth.maxHP;
+        }
 
         // XP & Level
         if (XPManager.Instance != null)

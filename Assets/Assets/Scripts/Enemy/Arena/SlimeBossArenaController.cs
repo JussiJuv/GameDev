@@ -54,7 +54,7 @@ public class SlimeBossArenaController : MonoBehaviour
         }
 
         // Find and show boss bar
-        var uiScene = SceneManager.GetSceneByName("UI");
+        /*var uiScene = SceneManager.GetSceneByName("UI");
         if (!uiScene.isLoaded)
             Debug.LogError("[SlimeBossArenaController]: UI scene not loaded");
         else
@@ -72,7 +72,13 @@ public class SlimeBossArenaController : MonoBehaviour
                 Debug.LogError("[SlimeBossArenaController]: Couuld not find BossHealthBarUI");
             else
                 hpBarUI.Show(health, bossName);
-        }
+        }*/
+
+        hpBarUI = FindFirstObjectByType<BossHealthBarUI>();
+        if (hpBarUI != null)
+            hpBarUI.Show(health, bossName);
+        else
+            Debug.LogError("[SlimeBossArenaController]: Could not find BossHealthBarUI");
 
         // delay boss activation
         StartCoroutine(SpawnThenActivate());

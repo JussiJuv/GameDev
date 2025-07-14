@@ -10,6 +10,7 @@ public class SaveData
 
     // Player state
     public int savedHP;
+    public int savedMaxHP;
     public int savedLevel;
     public int savedXP;
 

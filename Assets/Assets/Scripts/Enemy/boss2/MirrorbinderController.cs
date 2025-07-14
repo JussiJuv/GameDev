@@ -15,6 +15,10 @@ public class MirrorBinderController : MonoBehaviour
     private BossHealthBarUI bossHealthBarUI;
     public string bossName;
 
+    [Header("Gate & Entrance")]
+    public GameObject fogGate;
+    public BossGateController gateController;
+
     [Header("Boss Home Point")]
     public Transform homePoint;
     public float moveSpeed = 5f;
@@ -120,6 +124,14 @@ public class MirrorBinderController : MonoBehaviour
 
         if (!isClone) health.OnDeath.AddListener(CleanUpAllClones);
         if (bossHealthBarUI != null) bossHealthBarUI.Hide();
+
+        // Find gateController if not already known
+        if (gateController == null)
+        {
+            gateController = FindFirstObjectByType<BossGateController>();
+            if (gateController == null)
+                Debug.LogError("[MirrorBinderController]: No BossGateController found");
+        }
     }
 
     private void Start()
@@ -132,7 +144,7 @@ public class MirrorBinderController : MonoBehaviour
         if (p != null) player = p.transform;
         else Debug.LogWarning("Player tag not found.");
 
-        if (devStartPhase2 && health.currentHP <= phaseOneToTwoHP)
+       /* if (devStartPhase2 && health.currentHP <= phaseOneToTwoHP)
             StartCoroutine(PhaseTwoLoop());
         else if (health.currentHP > phaseOneToTwoHP)
             StartCoroutine(PhaseOneLoop());
@@ -145,7 +157,7 @@ public class MirrorBinderController : MonoBehaviour
         if (enableMeteors)
             StartCoroutine(MeteorRoutine());
 
-        ActivateBoss();
+        ActivateBoss();*/
     }
 
     private IEnumerator MeteorRoutine()
@@ -270,7 +282,7 @@ public class MirrorBinderController : MonoBehaviour
         var go = Instantiate(meteorPrefab);
         var fall = go.GetComponent<MeteorFall>();
         fall.dropDuration = duration;
-        fall.damage = redProjectileDamage; // or a separate meteorDamage field
+        fall.damage = redProjectileDamage;
         fall.Init(dropPos, player);
     }
 
@@ -301,7 +313,7 @@ public class MirrorBinderController : MonoBehaviour
     {
         // Start the telegraph animation
         anim.SetTrigger("Charge2");
-        yield return new WaitForSeconds(p1ShotInterval);  // use your configured shotInterval
+        yield return new WaitForSeconds(p1ShotInterval);
 
         // Snap player and calculate positions
         if (player != null) player.position = originalPosition;
@@ -406,11 +418,21 @@ public class MirrorBinderController : MonoBehaviour
         if (rp != null) rp.InitStraight(player, redProjectileSpeed, redProjectileDamage);
     }
 
+    // Called (UnityEvent) when the gate locks and fight should begin
     public void ActivateBoss()
     {
+        // Lock the gate so the player cant leave
+        gateController?.LockGate();
+
         if (bossHealthBarUI == null)
         {
-            // Grab the already?loaded UI scene
+            bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();
+            if (bossHealthBarUI == null)
+            {
+                Debug.LogError("[MirrorbinderController]: Could not find BossHealthBarUI");
+                return;
+            }
+            /*// Grab the already?loaded UI scene
             var uiScene = UnityEngine.SceneManagement.SceneManager.GetSceneByName("UI");
             if (!uiScene.isLoaded)
             {
@@ -431,10 +453,43 @@ public class MirrorBinderController : MonoBehaviour
             }
 
             if (bossHealthBarUI == null)
-                Debug.LogError("[MirrorBinderController]: Could not find BossHealthBarUI");
+                Debug.LogError("[MirrorBinderController]: Could not find BossHealthBarUI");*/
         }
 
         // Show it
         bossHealthBarUI.Show(health, bossName);
+
+        if (!isClone)
+        {
+            // Starting phase
+            if (devStartPhase2 && health.currentHP <= phaseOneToTwoHP)
+                StartCoroutine(PhaseTwoLoop());
+            else if (health.currentHP > phaseOneToTwoHP)
+                StartCoroutine(PhaseOneLoop());
+            else if (health.currentHP > phaseTwoToThreeHP)
+                StartCoroutine(PhaseTwoLoop());
+            else
+                StartCoroutine(PhaseThreeLoop());
+
+            // Meteor
+            if (enableMeteors)
+                StartCoroutine(MeteorRoutine());
+        }
+    }
+
+    /// <summary>
+    /// Invoked by Health.OnDeath when the boss dies
+    /// </summary>
+    public void OnBossDeath()
+    {
+        bossHealthBarUI?.Hide();
+
+        // Unlock gate
+        gateController?.UnlockGate();
+
+        // Disable fog gate
+        fogGate?.SetActive(false);
+
+        CleanUpAllClones();
     }
 }
