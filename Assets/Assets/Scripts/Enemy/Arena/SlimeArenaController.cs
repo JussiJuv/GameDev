@@ -20,13 +20,25 @@ public class SlimeArenaController : MonoBehaviour
     private Transform playerT;
     private Rigidbody2D rb;
     private float lastAttackTime = 0f;
+    private Animator anim;
+    private Health health;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        health = GetComponent<Health>();
         var p = GameObject.FindWithTag("Player");
         if (p != null) playerT = p.transform;
         else Debug.LogError("[SlimeArenaController]: No Player tagged object in scene");
+    }
+
+    private void Start()
+    {
+        if (anim != null)
+        {
+            health.OnHealthChanged.AddListener((curr, max) => anim.SetTrigger("Hurt"));
+        }
     }
 
     private void FixedUpdate()
@@ -64,4 +76,6 @@ public class SlimeArenaController : MonoBehaviour
         var h = playerT.GetComponent<Health>();
         if (h != null) h.TakeDamage(attackDamage);
     }
+
+    public void OnHurt() => anim.SetTrigger("Hurt");
 }

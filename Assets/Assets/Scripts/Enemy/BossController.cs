@@ -32,6 +32,7 @@ public class BossController : MonoBehaviour
     private Transform playerT;
     private float lastAttackTime = 0f;
     private Health health;
+    private Animator anim;
 
     public BossRoomEntrance gateController;
 
@@ -44,6 +45,7 @@ public class BossController : MonoBehaviour
     private void Awake()
     {
         health = GetComponent<Health>();
+        anim = GetComponent<Animator>();
         // Call OnBossDeath when Health reaches zero
         health.OnDeath.AddListener(OnBossDeath);
 
@@ -55,6 +57,14 @@ public class BossController : MonoBehaviour
         else
         {
             Debug.LogError("BossController: Player tag not found in scene.");
+        }
+    }
+
+    private void Start()
+    {
+        if (anim != null)
+        {
+            health.OnHealthChanged.AddListener((curr, max) => anim.SetTrigger("Hurt"));
         }
     }
     void Update()
@@ -89,29 +99,6 @@ public class BossController : MonoBehaviour
     {
         if (bossHealthBarUI == null)
         {
-            /*// Grab the UI scene
-            var uiScene = SceneManager.GetSceneByName("UI");
-            if (!uiScene.isLoaded)
-            {
-                Debug.LogError("UI scene not loaded");
-                return;
-            }
-
-            // Look through its root GameObjects
-            foreach (var root in uiScene.GetRootGameObjects())
-            {
-                // Find the canvas
-                var canvas = root.GetComponentInChildren<Canvas>(true);
-                if (canvas == null) continue;
-
-                var panelTf = canvas.transform.Find("BossHealthBarPanel");
-                if (panelTf != null)
-                {
-                    bossHealthBarUI = panelTf.GetComponent<BossHealthBarUI>();
-                    break;
-                }
-            }*/
-
             // look for BossUI
             bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();
 
@@ -189,6 +176,8 @@ public class BossController : MonoBehaviour
 
         gateController.ReleaseGate();
     }
+
+    public void OnHurt() => anim.SetTrigger("Hurt");
 
     // Draw the attack range in-editor
     void OnDrawGizmosSelected()

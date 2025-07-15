@@ -4689,6 +4689,10 @@ PrefabInstance:
       propertyPath: maxHP
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -3833442151004070157, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+      propertyPath: projectileSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4174585013214212714, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: arrowContainer
       value: 

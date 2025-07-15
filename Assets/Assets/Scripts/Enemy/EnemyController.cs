@@ -33,11 +33,15 @@ public class EnemyController : MonoBehaviour
     private Transform playerT;
     private Rigidbody2D rb;
     private float lastAttackTime = 0f;
+    private Animator anim;
+    private Health health;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
+        anim = GetComponent<Animator>();
+        health = GetComponent<Health>();
         PickPatrolTarget();
 
         var playerGo = GameObject.FindWithTag("Player");
@@ -48,6 +52,14 @@ public class EnemyController : MonoBehaviour
         else
         {
             Debug.LogError("EnemyController: No GameObject tagged 'Player' found in scene.");
+        }
+    }
+
+    private void Start()
+    {
+        if (anim != null)
+        {
+            health.OnHealthChanged.AddListener((curr, max) => anim.SetTrigger("Hurt"));
         }
     }
 
@@ -74,28 +86,6 @@ public class EnemyController : MonoBehaviour
             Patrol();
         }
     }
-
-    /*void Update()
-    {
-        if (!canMove || playerT == null)
-        {
-            return;
-        }
-
-        float distToPlayer = Vector2.Distance(transform.position, playerT.position);
-        if (distToPlayer <= attackRange)
-        {
-            TryAttack();
-        }
-        else if (distToPlayer <= chaseRange)
-        {
-            ChasePlayer();
-        }
-        else
-        {
-            Patrol();
-        }
-    }*/
 
     private void Patrol()
     {
@@ -132,6 +122,8 @@ public class EnemyController : MonoBehaviour
             // TODO: trigger attack animation here
         }
     }
+
+    public void OnHurt() => anim.SetTrigger("Hurt");
 
     // visualize detection ranges in the Scene view
     void OnDrawGizmosSelected()

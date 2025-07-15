@@ -32,12 +32,14 @@ public class SlimeBossArenaController : MonoBehaviour
     Health health;
     Transform player;
     BossHealthBarUI hpBarUI;
+    private Animator anim;
     float lastAttackTime;
 
     private void Awake()
     {
         health = GetComponent<Health>();
         health.OnDeath.AddListener(HandleDeath);
+        anim = GetComponent<Animator>();
 
         var pObj = GameObject.FindWithTag("Player");
         if (pObj != null)
@@ -53,27 +55,6 @@ public class SlimeBossArenaController : MonoBehaviour
                 Debug.LogError("[SlimeBossArenaController]: No StoneGateController in scene");
         }
 
-        // Find and show boss bar
-        /*var uiScene = SceneManager.GetSceneByName("UI");
-        if (!uiScene.isLoaded)
-            Debug.LogError("[SlimeBossArenaController]: UI scene not loaded");
-        else
-        {
-            foreach (var root in uiScene.GetRootGameObjects())
-            {
-                var bar = root.GetComponentInChildren<BossHealthBarUI>(true);
-                if (bar != null)
-                {
-                    hpBarUI = bar;
-                    break;
-                }
-            }
-            if (hpBarUI == null)
-                Debug.LogError("[SlimeBossArenaController]: Couuld not find BossHealthBarUI");
-            else
-                hpBarUI.Show(health, bossName);
-        }*/
-
         hpBarUI = FindFirstObjectByType<BossHealthBarUI>();
         if (hpBarUI != null)
             hpBarUI.Show(health, bossName);
@@ -82,6 +63,14 @@ public class SlimeBossArenaController : MonoBehaviour
 
         // delay boss activation
         StartCoroutine(SpawnThenActivate());
+    }
+
+    private void Start()
+    {
+        if (anim != null)
+        {
+            health.OnHealthChanged.AddListener((curr, max) => anim.SetTrigger("Hurt"));
+        }
     }
 
     private void Update()
@@ -139,4 +128,6 @@ public class SlimeBossArenaController : MonoBehaviour
         if (gateController != null)
             gateController.OpenGate();
     }
+
+    public void OnHurt() => anim.SetTrigger("Hurt");
 }

@@ -35,6 +35,11 @@ public class ImpArenaController : MonoBehaviour
 
     private void Start()
     {
+        if (health != null)
+        {
+            health.OnHealthChanged.AddListener((curr, max) => anim.SetTrigger("Hurt"));
+        }
+
         // find all four spawn locations
         var locParent = GameObject.Find("Arena/ImpLocations");
         if (locParent == null)
@@ -116,6 +121,8 @@ public class ImpArenaController : MonoBehaviour
         anim.SetBool("IsMoving", true);
         isAttacking = false;
     }
+
+    public void OnHurt() => anim.SetTrigger("Hurt");
 
     private void OnDeath()
     {
