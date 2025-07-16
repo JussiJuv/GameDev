@@ -67,6 +67,10 @@ public class PortalActivator : MonoBehaviour
         // Only react when Hub loads
         if (scene.name != sceneToLoad) return;
 
+        // Make it the active scene
+        SceneManager.SetActiveScene(scene);
+        SaveSystem.Save();
+
         // Now the Hub is fully initialized—do your checkpoint teleport:
         var lastID = SaveSystem.Data.lastCheckpointID;
         var allCP = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);

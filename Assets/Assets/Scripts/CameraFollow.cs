@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,9 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 offset;
     private Vector3 velocity = Vector3.zero;
-    private bool initialized = false;
+    //private bool initialized = false;
+
+    [HideInInspector] public bool initialized = false;
 
     void Start()
     {

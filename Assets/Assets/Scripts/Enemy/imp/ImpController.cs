@@ -58,6 +58,9 @@ public class ImpController : MonoBehaviour
     {
         if (isAttacking) return;
 
+        // Make sure player still exists
+        if (player == null) return;
+
         // Distance to current patrol goal and to player
         float distToGoal = Vector3.Distance(transform.position, nextPatrol);
         float distToPlayer = Vector3.Distance(transform.position, player.position);
@@ -102,8 +105,12 @@ public class ImpController : MonoBehaviour
         anim.SetBool("IsMoving", false);
         Debug.Log("[Imp] AttackVolley started");
 
+        if (player == null) yield break;
+
         for (int i = 0; i < shotsPerVolley; i++)
         {
+            // check if the player still exists
+            if (player == null) break;
             anim.SetTrigger("Attack");
 
             // compute direction to player

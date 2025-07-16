@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider2D))]
 public class Health : MonoBehaviour
@@ -32,7 +34,8 @@ public class Health : MonoBehaviour
 
     public int currentHP;
     private Collider2D col;
-    private Behaviour[] disableOnDeath;
+    //private Behaviour[] disableOnDeath;
+    private List<Behaviour> disableOnDeathList;
     private bool isDead = false;
 
     void Awake()
@@ -40,11 +43,16 @@ public class Health : MonoBehaviour
         currentHP = maxHP;
         col = GetComponent<Collider2D>();
 
+        var all = GetComponents<Behaviour>();
+        disableOnDeathList = all
+            .Where(c => c != this && !(c is Animator))
+            .ToList();
+
         // Gather components to disable on death
-        disableOnDeath = GetComponents<Behaviour>();
+        /*disableOnDeath = GetComponents<Behaviour>();
 
         var anim = GetComponent<Animator>();
-        disableOnDeath = disableOnDeath.Where(c => c != anim).ToArray();
+        disableOnDeath = disableOnDeath.Where(c => c != anim).ToArray();*/
 
     }
 
@@ -69,6 +77,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        if (isDead) return;
         isDead = true;
 
         // Disable collisions so nothing else hits the dead object
@@ -76,7 +85,6 @@ public class Health : MonoBehaviour
         {
             col.enabled = false;
         }
-
 
         // Spawn VFX if assigned
         if (deathEffectPrefab != null)
@@ -98,13 +106,16 @@ public class Health : MonoBehaviour
         }
 
         // Disable any MonoBehaviours
-        foreach (var comp in disableOnDeath)
+        foreach (var b in disableOnDeathList)
+            b.enabled = false;
+
+        /*foreach (var comp in disableOnDeath)
         {
             if (comp != this)   // Keep health script
             {
                 comp.enabled = false;
             }
-        }
+        }*/
 
         // Invoke the general OnDeath event
         OnDeath?.Invoke();
@@ -117,10 +128,44 @@ public class Health : MonoBehaviour
         }
 
         // If this is the Player, invoke OnPlayerDeath as well
-        if (CompareTag("Player")) OnPlayerDeath?.Invoke();
+        if (CompareTag("Player"))
+        {
+            OnPlayerDeath?.Invoke();
+            StartCoroutine(DelayedDeactivate());
+        }
+        else
+            StartCoroutine(DelayedDisableAndDestroy());
 
-        // Finally destroy this GameObject after a delay
-        Destroy(gameObject, destroyDelay);
+    }
 
+    private IEnumerator DelayedDisableAndDestroy()
+    {
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(gameObject);
+    }
+
+    private IEnumerator DelayedDeactivate()
+    {
+        yield return new WaitForSeconds(destroyDelay);
+        if (isDead)
+            gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Bring this Health instance (and its GameObject) back to life
+    /// </summary>
+    public void Revive()
+    {
+        if (!isDead) return;
+        isDead = false;
+
+        // Reset HP
+        currentHP = maxHP;
+        OnHealthChanged?.Invoke(currentHP, maxHP);
+
+        // enable behaviours and collision
+        foreach (var b in disableOnDeathList)
+            b.enabled = true;
+        if (col != null) col.enabled = true;
     }
 }
