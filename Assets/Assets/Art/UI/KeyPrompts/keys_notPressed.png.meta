@@ -1,0 +1,1859 @@
+fileFormatVersion: 2
+guid: 87b43d05414a2064f92a70249d76541c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2786018514933804446
+    second: keys_notPressed_0
+  - first:
+      213: -5233703355654542906
+    second: keys_notPressed_1
+  - first:
+      213: -8907333390950511653
+    second: keys_notPressed_2
+  - first:
+      213: -4953273104528358324
+    second: keys_notPressed_3
+  - first:
+      213: 7150119464290442385
+    second: keys_notPressed_4
+  - first:
+      213: 1281821118803538521
+    second: keys_notPressed_5
+  - first:
+      213: 3985834360260548069
+    second: keys_notPressed_6
+  - first:
+      213: -1180151641834945309
+    second: keys_notPressed_7
+  - first:
+      213: -1378881365460864362
+    second: keys_notPressed_8
+  - first:
+      213: -3912453786515122090
+    second: keys_notPressed_9
+  - first:
+      213: -8534592978273843508
+    second: keys_notPressed_10
+  - first:
+      213: 8216718432375074846
+    second: keys_notPressed_11
+  - first:
+      213: 1494972694795980201
+    second: keys_notPressed_12
+  - first:
+      213: 6251870867117617736
+    second: keys_notPressed_13
+  - first:
+      213: 3898080881340628531
+    second: keys_notPressed_14
+  - first:
+      213: 7694421884861191614
+    second: keys_notPressed_15
+  - first:
+      213: 6331660019617225214
+    second: keys_notPressed_16
+  - first:
+      213: 5113667863897942063
+    second: keys_notPressed_17
+  - first:
+      213: -1037222128254227857
+    second: keys_notPressed_18
+  - first:
+      213: 5060801114582124448
+    second: keys_notPressed_19
+  - first:
+      213: 3652074238403537311
+    second: keys_notPressed_20
+  - first:
+      213: 5000311439675673893
+    second: keys_notPressed_21
+  - first:
+      213: 6998064923585966604
+    second: keys_notPressed_22
+  - first:
+      213: 5831069494368061783
+    second: keys_notPressed_23
+  - first:
+      213: 7309648230122439051
+    second: keys_notPressed_24
+  - first:
+      213: 8630122393733990366
+    second: keys_notPressed_25
+  - first:
+      213: 2352402625626936739
+    second: keys_notPressed_26
+  - first:
+      213: 8312004028891511763
+    second: keys_notPressed_27
+  - first:
+      213: 6946196038752672552
+    second: keys_notPressed_28
+  - first:
+      213: -6011941624979020263
+    second: keys_notPressed_29
+  - first:
+      213: 3502124775940829532
+    second: keys_notPressed_30
+  - first:
+      213: 1723491577789039010
+    second: keys_notPressed_31
+  - first:
+      213: -3330445703570955153
+    second: keys_notPressed_32
+  - first:
+      213: -4075411147974312840
+    second: keys_notPressed_33
+  - first:
+      213: 4916855382686645397
+    second: keys_notPressed_34
+  - first:
+      213: 5824874640413537772
+    second: keys_notPressed_35
+  - first:
+      213: -2475100957290419363
+    second: keys_notPressed_36
+  - first:
+      213: -4787027283026746957
+    second: keys_notPressed_37
+  - first:
+      213: 8843295592195095419
+    second: keys_notPressed_38
+  - first:
+      213: -6936324902642216233
+    second: keys_notPressed_39
+  - first:
+      213: -1562655518801035699
+    second: keys_notPressed_40
+  - first:
+      213: 4819912663480735998
+    second: keys_notPressed_41
+  - first:
+      213: 6124321794214599921
+    second: keys_notPressed_42
+  - first:
+      213: -2624938497663922568
+    second: keys_notPressed_43
+  - first:
+      213: -5818910303585014281
+    second: keys_notPressed_44
+  - first:
+      213: -5640009796256409590
+    second: keys_notPressed_45
+  - first:
+      213: -4223626089686733501
+    second: keys_notPressed_46
+  - first:
+      213: 1206093181124124336
+    second: keys_notPressed_47
+  - first:
+      213: -5158899043467665353
+    second: keys_notPressed_48
+  - first:
+      213: -8005713280351825121
+    second: keys_notPressed_49
+  - first:
+      213: -3075481222410635609
+    second: keys_notPressed_50
+  - first:
+      213: 4532356105505206341
+    second: keys_notPressed_51
+  - first:
+      213: 2328860840958854037
+    second: keys_notPressed_52
+  - first:
+      213: -6431896364381295735
+    second: keys_notPressed_53
+  - first:
+      213: -7927024120132000413
+    second: keys_notPressed_54
+  - first:
+      213: -6628376293031941736
+    second: keys_notPressed_55
+  - first:
+      213: -1795591327804126105
+    second: keys_notPressed_56
+  - first:
+      213: 3162576381928858368
+    second: keys_notPressed_57
+  - first:
+      213: 195917151590058513
+    second: keys_notPressed_58
+  - first:
+      213: -5145630453723156763
+    second: keys_notPressed_59
+  - first:
+      213: -2094538745595399923
+    second: keys_notPressed_60
+  - first:
+      213: 8912044374582867296
+    second: keys_notPressed_61
+  - first:
+      213: 4705513984900743669
+    second: keys_notPressed_62
+  - first:
+      213: 4051730660966817164
+    second: keys_notPressed_63
+  - first:
+      213: -6600705841189088984
+    second: keys_notPressed_64
+  - first:
+      213: -1608525312400803411
+    second: keys_notPressed_65
+  - first:
+      213: 4646022925248897043
+    second: keys_notPressed_66
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: keys_notPressed_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 42
+        width: 29
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9d6a40141de9a620800000000000000
+      internalID: 2786018514933804446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 55
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c9e07207862e57b0800000000000000
+      internalID: -5233703355654542906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_2
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb4b68597bc26480800000000000000
+      internalID: -8907333390950511653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_3
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 42
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c444711ea50724bb0800000000000000
+      internalID: -4953273104528358324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_4
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19c53a215c35a3360800000000000000
+      internalID: 7150119464290442385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_5
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 42
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 952f0e32481f9c110800000000000000
+      internalID: 1281821118803538521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_6
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e550e89b37805730800000000000000
+      internalID: 3985834360260548069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_7
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 42
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e4855f95524f9fe0800000000000000
+      internalID: -1180151641834945309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 692bc4824ba3ddce0800000000000000
+      internalID: -1378881365460864362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_9
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 42
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65852ae920c24b9c0800000000000000
+      internalID: -3912453786515122090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_10
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6c17b87e80f8980800000000000000
+      internalID: -8534592978273843508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_11
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 42
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e10fe1551e5a70270800000000000000
+      internalID: 8216718432375074846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_12
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad0936ceb53fb410800000000000000
+      internalID: 1494972694795980201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_13
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 42
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842b8280e6b13c650800000000000000
+      internalID: 6251870867117617736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_14
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33ebc0e98e3c81630800000000000000
+      internalID: 3898080881340628531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_15
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 42
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb5942fffe318ca60800000000000000
+      internalID: 7694421884861191614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_16
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef9d3d3cd339ed750800000000000000
+      internalID: 6331660019617225214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_17
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 42
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f28a7fe24d567f640800000000000000
+      internalID: 5113667863897942063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_18
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6a6b3448fb0b91f0800000000000000
+      internalID: -1037222128254227857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_19
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 42
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a78199ecc39b3640800000000000000
+      internalID: 5060801114582124448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_20
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 55
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f99e5699b26cea230800000000000000
+      internalID: 3652074238403537311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_21
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 42
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52dc038f2cca46540800000000000000
+      internalID: 5000311439675673893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_22
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 42
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c02767d78fe1e1160800000000000000
+      internalID: 6998064923585966604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_23
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 47
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 759cc609fce1ce050800000000000000
+      internalID: 5831069494368061783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_24
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 55
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b81c28d4656117560800000000000000
+      internalID: 7309648230122439051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_25
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 55
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed788aeb79a54c770800000000000000
+      internalID: 8630122393733990366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_26
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 29
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a5903579b965a020800000000000000
+      internalID: 2352402625626936739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_27
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dbb1b910ab2a5370800000000000000
+      internalID: 8312004028891511763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_28
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82b1416ae78d56060800000000000000
+      internalID: 6946196038752672552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_29
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 916adb8d1fa419ca0800000000000000
+      internalID: -6011941624979020263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_30
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c513c0dbdeb0a9030800000000000000
+      internalID: 3502124775940829532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_31
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a14e7365721be710800000000000000
+      internalID: 1723491577789039010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_32
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f646dee2741e7c1d0800000000000000
+      internalID: -3330445703570955153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_33
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87cf253472b3177c0800000000000000
+      internalID: -4075411147974312840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_34
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59c31018bed2c3440800000000000000
+      internalID: 4916855382686645397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_35
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 29
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce5b70bbf9c16d050800000000000000
+      internalID: 5824874640413537772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_36
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 29
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ba9710bcca6add0800000000000000
+      internalID: -2475100957290419363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_37
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 39
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b166118c00119db0800000000000000
+      internalID: -4787027283026746957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7bf090cc72b9ba70800000000000000
+      internalID: 8843295592195095419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_39
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 16
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2905350493dbf90800000000000000
+      internalID: -6936324902642216233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_40
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 16
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4e7f8fb515505ae0800000000000000
+      internalID: -1562655518801035699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_41
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef81d2bc705c3e240800000000000000
+      internalID: 4819912663480735998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_42
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fc185a4936fdf450800000000000000
+      internalID: 6124321794214599921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_43
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e8e790858529bd0800000000000000
+      internalID: -2624938497663922568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_44
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fd64f6a8e31f3fa0800000000000000
+      internalID: -5818910303585014281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_45
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 0
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a08d96ce8f8aab1b0800000000000000
+      internalID: -5640009796256409590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_46
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 16
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34d662cf27aa265c0800000000000000
+      internalID: -4223626089686733501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_47
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0be9ceaab57ecb010800000000000000
+      internalID: 1206093181124124336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_48
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 730e10a27a8e768b0800000000000000
+      internalID: -5158899043467665353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_49
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f139007003ef5e090800000000000000
+      internalID: -8005713280351825121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_50
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a674d07f12b155d0800000000000000
+      internalID: -3075481222410635609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_51
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540f5305dd926ee30800000000000000
+      internalID: 4532356105505206341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_52
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 16
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5938ba49896c15020800000000000000
+      internalID: 2328860840958854037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_53
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98b2de095505db6a0800000000000000
+      internalID: -6431896364381295735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_54
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3652499df8d8df190800000000000000
+      internalID: -7927024120132000413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_55
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 899e53051e64304a0800000000000000
+      internalID: -6628376293031941736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_56
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 16
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76c86786337c417e0800000000000000
+      internalID: -1795591327804126105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_57
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 003e8eb967ab3eb20800000000000000
+      internalID: 3162576381928858368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_58
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11a8ee18c9908b200800000000000000
+      internalID: 195917151590058513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_59
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 0
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee26647d5c0798b0800000000000000
+      internalID: -5145630453723156763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_60
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d017e74bb14bee2e0800000000000000
+      internalID: -2094538745595399923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_61
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 065b7810421fdab70800000000000000
+      internalID: 8912044374582867296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_62
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f144a3d9085d4140800000000000000
+      internalID: 4705513984900743669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_63
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8d5c74b193aa3830800000000000000
+      internalID: 4051730660966817164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_64
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 821141d62059564a0800000000000000
+      internalID: -6600705841189088984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_65
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da9302e20ce5da9e0800000000000000
+      internalID: -1608525312400803411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: keys_notPressed_66
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31028cd1c3df97040800000000000000
+      internalID: 4646022925248897043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      keys_notPressed_0: 2786018514933804446
+      keys_notPressed_1: -5233703355654542906
+      keys_notPressed_10: -8534592978273843508
+      keys_notPressed_11: 8216718432375074846
+      keys_notPressed_12: 1494972694795980201
+      keys_notPressed_13: 6251870867117617736
+      keys_notPressed_14: 3898080881340628531
+      keys_notPressed_15: 7694421884861191614
+      keys_notPressed_16: 6331660019617225214
+      keys_notPressed_17: 5113667863897942063
+      keys_notPressed_18: -1037222128254227857
+      keys_notPressed_19: 5060801114582124448
+      keys_notPressed_2: -8907333390950511653
+      keys_notPressed_20: 3652074238403537311
+      keys_notPressed_21: 5000311439675673893
+      keys_notPressed_22: 6998064923585966604
+      keys_notPressed_23: 5831069494368061783
+      keys_notPressed_24: 7309648230122439051
+      keys_notPressed_25: 8630122393733990366
+      keys_notPressed_26: 2352402625626936739
+      keys_notPressed_27: 8312004028891511763
+      keys_notPressed_28: 6946196038752672552
+      keys_notPressed_29: -6011941624979020263
+      keys_notPressed_3: -4953273104528358324
+      keys_notPressed_30: 3502124775940829532
+      keys_notPressed_31: 1723491577789039010
+      keys_notPressed_32: -3330445703570955153
+      keys_notPressed_33: -4075411147974312840
+      keys_notPressed_34: 4916855382686645397
+      keys_notPressed_35: 5824874640413537772
+      keys_notPressed_36: -2475100957290419363
+      keys_notPressed_37: -4787027283026746957
+      keys_notPressed_38: 8843295592195095419
+      keys_notPressed_39: -6936324902642216233
+      keys_notPressed_4: 7150119464290442385
+      keys_notPressed_40: -1562655518801035699
+      keys_notPressed_41: 4819912663480735998
+      keys_notPressed_42: 6124321794214599921
+      keys_notPressed_43: -2624938497663922568
+      keys_notPressed_44: -5818910303585014281
+      keys_notPressed_45: -5640009796256409590
+      keys_notPressed_46: -4223626089686733501
+      keys_notPressed_47: 1206093181124124336
+      keys_notPressed_48: -5158899043467665353
+      keys_notPressed_49: -8005713280351825121
+      keys_notPressed_5: 1281821118803538521
+      keys_notPressed_50: -3075481222410635609
+      keys_notPressed_51: 4532356105505206341
+      keys_notPressed_52: 2328860840958854037
+      keys_notPressed_53: -6431896364381295735
+      keys_notPressed_54: -7927024120132000413
+      keys_notPressed_55: -6628376293031941736
+      keys_notPressed_56: -1795591327804126105
+      keys_notPressed_57: 3162576381928858368
+      keys_notPressed_58: 195917151590058513
+      keys_notPressed_59: -5145630453723156763
+      keys_notPressed_6: 3985834360260548069
+      keys_notPressed_60: -2094538745595399923
+      keys_notPressed_61: 8912044374582867296
+      keys_notPressed_62: 4705513984900743669
+      keys_notPressed_63: 4051730660966817164
+      keys_notPressed_64: -6600705841189088984
+      keys_notPressed_65: -1608525312400803411
+      keys_notPressed_66: 4646022925248897043
+      keys_notPressed_7: -1180151641834945309
+      keys_notPressed_8: -1378881365460864362
+      keys_notPressed_9: -3912453786515122090
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -83,10 +83,12 @@ public class XPManager : MonoBehaviour
 
     public void SetLevelAndXP(int level, int xp)
     {
+        Debug.Log($"[XPManager] SetLevelAndXP({level}, {xp}) called.  Before: currentLevel={currentLevel}, currentXP={currentXP}");
         currentLevel = level;
         currentXP = xp;
         xpToNextLevel = GetXPThreshold(level);
         OnXPChanged?.Invoke(currentXP, xpToNextLevel);
+        Debug.Log($"[XPManager] After: currentLevel={currentLevel}, currentXP={currentXP}");
     }
 
 }

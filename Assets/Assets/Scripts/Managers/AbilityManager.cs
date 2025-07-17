@@ -141,4 +141,16 @@ public class AbilityManager : MonoBehaviour
         return _unlocked.Values;
     }
 
+    /// <summary>
+    /// Clears all unlocked abilities, then unlocks based on current XPManager levle
+    /// </summary>
+    public void ResetUnlockedAbilities()
+    {
+        _unlocked.Clear();
+        foreach (var ability in allAbilities)
+            _cooldowns[ability.abilityName] = 0f;
+
+        InitializeUnlockedAbilities(XPManager.Instance.currentLevel);
+    }
+
 }

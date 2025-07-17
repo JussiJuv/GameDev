@@ -50,6 +50,7 @@ public class SaveStateApplier : MonoBehaviour
 
     public void ApplySavedState()
     {
+        SaveSystem.Load();
         //Debug.Log("[SaveStateApplier]: APPLYING SAVE STATE");
 
         // Health
@@ -72,10 +73,18 @@ public class SaveStateApplier : MonoBehaviour
         }
 
         // XP & Level
-        if (XPManager.Instance != null && SaveSystem.Data.savedLevel > 0)
+        /*if (XPManager.Instance != null && SaveSystem.Data.savedLevel > 0)
         {
             XPManager.Instance.SetLevelAndXP(SaveSystem.Data.savedLevel, SaveSystem.Data.savedXP);
-        }  
+        }*/
+
+        if (XPManager.Instance != null)
+        {
+            int lvl = Mathf.Max(SaveSystem.Data.savedLevel, 1);
+            int xp = Mathf.Max(SaveSystem.Data.savedXP, 0);
+            XPManager.Instance.SetLevelAndXP(lvl, xp);
+            //XPManager.Instance.SetLevelAndXP(SaveSystem.Data.savedLevel, SaveSystem.Data.savedXP);
+        }
 
         // Coins
         if (CurrencyManager.Instance != null && SaveSystem.Data.savedCoins >= 0)

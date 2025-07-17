@@ -65781,6 +65781,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1244011432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1244011433}
+  m_Layer: 0
+  m_Name: enemyContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1244011433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244011432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2092793457}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1256204043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95138,6 +95169,7 @@ GameObject:
   - component: {fileID: 2092793457}
   - component: {fileID: 2092793459}
   - component: {fileID: 2092793458}
+  - component: {fileID: 2092793460}
   m_Layer: 0
   m_Name: Arena
   m_TagString: Untagged
@@ -95166,6 +95198,7 @@ Transform:
   - {fileID: 881762505}
   - {fileID: 1984203436}
   - {fileID: 1550863015}
+  - {fileID: 1244011433}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2092793458
@@ -95252,6 +95285,7 @@ MonoBehaviour:
     - spawnPoint: {fileID: 1818730084}
       prefab: {fileID: 3557021382231636318, guid: 06a8933105056114392a79e503ca5e46, type: 3}
     spawnDelay: 0.5
+  enemyContainer: {fileID: 1244011432}
   spawnBoss: {fileID: 1671524497}
   bossPrefab: {fileID: 801507347542421277, guid: 380b430a718655b4aa321f62abf9fb15, type: 3}
   bossSpawnDelay: 1
@@ -95305,6 +95339,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 27.020416, y: 29.649473}
   m_EdgeRadius: 0
+--- !u!114 &2092793460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092793456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e809ef85f0259e34ebf6a3044040b94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveController: {fileID: 2092793458}
+  enemyContainer: {fileID: 1244011433}
+  gateController: {fileID: 367513480}
 --- !u!1001 &2102644082
 PrefabInstance:
   m_ObjectHideFlags: 0

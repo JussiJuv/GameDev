@@ -149,7 +149,37 @@ public class DeathUIController : MonoBehaviour
         }
 
         // Restore saved stats/inventory
+        SaveSystem.Load();
+        // Force reset XPManager
+        if (XPManager.Instance != null)
+        {
+            int lvl = Mathf.Max(SaveSystem.Data.savedLevel, 1);
+            int xp = Mathf.Max(SaveSystem.Data.savedXP, 0);
+            XPManager.Instance.SetLevelAndXP(lvl, xp);
+        }
+
         FindFirstObjectByType<SaveStateApplier>()?.ApplySavedState();
+        // Refresh any UI that listens to XPManager
+        var xpHud = FindFirstObjectByType<XPBarUI>();
+        if (xpHud != null)
+        {
+            xpHud.UpdateBar(XPManager.Instance.currentXP, XPManager.Instance.xpToNextLevel);
+            xpHud.OnLevelUp(XPManager.Instance.currentLevel);
+        }
+
+        // Other UI related refreshing
+        var am = FindFirstObjectByType<AbilityManager>();
+        if (am != null) 
+            am.ResetUnlockedAbilities();
+
+        var hotbar = FindFirstObjectByType<AbilityHotbarUI>();
+        if (hotbar != null)
+            hotbar.RebuildHotbar();
+
+        var bossHPUI = FindFirstObjectByType<BossHealthBarUI>();
+        if (bossHPUI != null)
+            bossHPUI.Hide();
+
 
         // Snap camera
         var cam = FindFirstObjectByType<CameraFollow>();

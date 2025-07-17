@@ -14,6 +14,8 @@ public class WaveArenaController : MonoBehaviour
     [Header("Wave Definitions")]
     [Tooltip("Configure each wave")]
     public WaveDefinition[] waves;
+    [Tooltip("All enemies are spawned under this object")]
+    public GameObject enemyContainer;
 
     [Header("Boss (last wave)")]
     [Tooltip("Spawn VFX for boss")]
@@ -134,7 +136,10 @@ public class WaveArenaController : MonoBehaviour
             entry.spawnPoint.gameObject.SetActive(false);
 
             // Spawn the enemy
-            Instantiate(entry.prefab, entry.spawnPoint.position, Quaternion.identity);
+            //Instantiate(entry.prefab, entry.spawnPoint.position, Quaternion.identity);
+
+            var go = Instantiate(entry.prefab, entry.spawnPoint.position, Quaternion.identity);
+            go.transform.SetParent(enemyContainer.transform, worldPositionStays: true);
 
             yield return new WaitForSeconds(wave.spawnDelay);
         }
@@ -152,5 +157,22 @@ public class WaveArenaController : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void ResetWaves()
+    {
+        StopAllCoroutines();
+        started = false;
+        waveCounterUI?.Hide();
+    }
+
+    public void ResetArenaContents(Transform enemyContainer)
+    {
+        // Destroy all enemies inside arena bounds
+        foreach (Transform child in enemyContainer)
+            Destroy(child.gameObject);
+
+        if (spawnBoss != null)
+            spawnBoss.SetActive(false);
     }
 }

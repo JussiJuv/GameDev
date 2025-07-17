@@ -1,6 +1,7 @@
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.IO;
 
 public static class SaveSystem
 {
@@ -20,17 +21,31 @@ public static class SaveSystem
         else
         {
             // No save found, create a new save
-            Data = new SaveData()
+            /*Data = new SaveData()
             {
-                lastScene = SceneManager.GetActiveScene().name,
+                //lastScene = SceneManager.GetActiveScene().name,
+                lastScene = "demo",
                 lastCheckpointID = "Demo_Start",
                 savedHP = -1,
                 savedMaxHP = -1,
                 savedLevel = -1,
                 savedXP = -1,
                 savedCoins = -1
+            };*/
+            Data = new SaveData()
+            {
+                lastScene = "demo",
+                lastCheckpointID = "Demo_Start",
+                savedHP = 15,               // your default max HP
+                savedMaxHP = 15,
+                savedLevel = 1,                // starting level
+                savedXP = 0,
+                savedCoins = 0,
             };
             Save();
+
+            //var json = JsonUtility.ToJson(Data, true);
+            //File.WriteAllText(SAVE_FILE, json);
         }
     }
 
@@ -41,19 +56,43 @@ public static class SaveSystem
     {
         // Always update current scene name before writing
         var sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName != "UI")
+        if (sceneName != "UI" || sceneName != "MainMenu")
             Data.lastScene = sceneName;
 
         // Player health
-        var playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();
+        //var playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();
         /*Data.savedHP = playerHealth != null
             ? playerHealth.currentHP
             : playerHealth.maxHP;*/
-        if (playerHealth != null)
+        var playerGO = GameObject.FindWithTag("Player");
+        if (playerGO != null)
         {
-            Data.savedHP = playerHealth.currentHP;
-            Data.savedMaxHP = playerHealth.maxHP;
+            var playerHealth = playerGO.GetComponent<Health>();
+            if (playerHealth != null)
+            {
+                Data.savedHP = playerHealth.currentHP;
+                Data.savedMaxHP = playerHealth.maxHP;
+            }
+
+            // Keys
+            var inv = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
+            Data.savedKeys.Clear();
+            foreach (var key in inv.Keys)
+            {
+                Data.savedKeys.Add(key.doorID);
+            }
+
+            // Consumables
+            Data.savedConsumables.Clear();
+            foreach (var slot in inv.Consumables)
+            {
+                Data.savedConsumables.Add(slot);
+            }
+            Data.savedActiveConsumable = inv.ActiveConsumable.HasValue
+                ? (int)inv.ActiveConsumable.Value
+                : -1;
         }
+
 
         // XP & Level
         if (XPManager.Instance != null)
@@ -68,7 +107,7 @@ public static class SaveSystem
             Data.savedCoins = CurrencyManager.Instance.Coins;
         }
 
-        // Keys
+        /*// Keys
         var inv = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
         Data.savedKeys.Clear();
         foreach (var key in inv.Keys)
@@ -84,7 +123,7 @@ public static class SaveSystem
         }
         Data.savedActiveConsumable = inv.ActiveConsumable.HasValue
             ? (int)inv.ActiveConsumable.Value
-            : -1;
+            : -1;*/
 
         string json = JsonUtility.ToJson(Data, prettyPrint: true);
         File.WriteAllText(SAVE_FILE, json);

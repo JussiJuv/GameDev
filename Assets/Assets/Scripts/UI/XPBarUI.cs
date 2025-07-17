@@ -61,7 +61,7 @@ public class XPBarUI : MonoBehaviour
         }
     }
 
-    private void UpdateBar(int currentXP, int xpToNext)
+    public void UpdateBar(int currentXP, int xpToNext)
     {
         if (fillImage != null)
         {
@@ -74,7 +74,7 @@ public class XPBarUI : MonoBehaviour
         }
     }
 
-    private void OnLevelUp(int newLevel)
+    public void OnLevelUp(int newLevel)
     {
         if (levelText != null)
         {
