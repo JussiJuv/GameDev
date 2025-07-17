@@ -49,7 +49,6 @@ public class WaveArenaController : MonoBehaviour
         }
         else
         {
-            Debug.Log("!!!!!!!!!WaveCounterUI Found!!!!!!");
             waveCounterUI.Hide();
         }
     }

@@ -23,6 +23,14 @@ public class InventoryUI : MonoBehaviour
     private List<SlotUI> slots = new List<SlotUI>();
     private bool isOpen = false;
 
+    private GameObject _playerGO;
+    private MonoBehaviour[] _toDisableInventory;
+    private Animator _playerAnim;
+
+    public static InventoryUI Instance { get; private set; }
+    public bool IsOpen => isOpen;
+
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -46,23 +54,23 @@ public class InventoryUI : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 1) Grab the new Canvas & Panel
+        // Grab the new Canvas & Panel
         var canvas = GameObject.Find("UI Canvas");
         panel = canvas.transform.Find("InventoryPanel").gameObject;
         gridContainer = panel.transform.Find("GridContainer");
         shopSection = panel.transform.Find("ShopSection");
         if (shopSection != null) shopSection.gameObject.SetActive(false);
 
-        // 2) Ensure slotPrefab is loaded
+        // Ensure slotPrefab is loaded
         if (slotPrefab == null)
             slotPrefab = Resources.Load<GameObject>("UI/Slot_BG");
 
-        // 3) Hide & rebuild
+        // Hide & rebuild
         panel.SetActive(false);
         CreateSlots();
 
 
-        // (4) Re?find the PlayerInventory in the freshly loaded scene
+        // Re find the PlayerInventory in the freshly loaded scene
         playerInv = FindFirstObjectByType<PlayerInventory>();
         if (playerInv == null)
         {
@@ -70,11 +78,21 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
-        // (5) Subscribe to consumable changes
+        _playerGO = playerInv.gameObject;
+        _toDisableInventory = new MonoBehaviour[]
+        {
+            _playerGO.GetComponent<PlayerController>(),
+            _playerGO.GetComponent<Weapon>(),
+            _playerGO.GetComponent<ArrowRainAbility>(),
+            _playerGO.GetComponent<AbilityManager>()
+        };
+        _playerAnim = _playerGO.GetComponent<Animator>();
+
+        // Subscribe to consumable changes
         playerInv.OnConsumablesChanged -= RefreshSlots;
         playerInv.OnConsumablesChanged += RefreshSlots;
 
-        // (6) Immediately refresh the grid to show keys & potions
+        // Immediately refresh the grid to show keys & potions
         RefreshSlots();
     }
 
@@ -109,6 +127,14 @@ public class InventoryUI : MonoBehaviour
 
     private void ToggleInventory()
     {
+        // Dont open/close if the game is globally paused
+        if (PauseMenuController.Instance != null && PauseMenuController.Instance.IsPaused)
+            return;
+
+        // Dont open if the shop is showing
+        if (shopSection != null && shopSection.gameObject.activeSelf)
+            return;
+
         if (panel == null || !panel)
         {
             Debug.LogWarning("[InventoryUI]: Panel is does not exists");
@@ -119,11 +145,38 @@ public class InventoryUI : MonoBehaviour
         panel.SetActive(isOpen);
 
         // Always keep shop section hidden when toggling with I
-        if (shopSection != null) shopSection.gameObject.SetActive(false);
+        if (shopSection != null)
+            shopSection.gameObject.SetActive(false);
 
-        Time.timeScale = isOpen ? 0f : 1f;
+        //Time.timeScale = isOpen ? 0f : 1f;
+        if (isOpen)
+            Time.timeScale = 0f;
+        else if (PauseMenuController.Instance == null || !PauseMenuController.Instance.IsPaused)
+            Time.timeScale = 1f;
 
-        if (isOpen) RefreshSlots();
+        if (_toDisableInventory != null)
+        {
+            if (isOpen)
+            {
+                foreach (var mb in _toDisableInventory)
+                    if (mb != null)
+                        mb.enabled = false;
+
+                if (_playerAnim != null)
+                    _playerAnim.speed = 0f;
+            }
+            else
+            {
+                foreach (var mb in _toDisableInventory)
+                    if (mb != null)
+                        mb.enabled = true;
+                if (_playerAnim != null)
+                    _playerAnim.speed = 1f;
+            }
+        }
+
+        if (isOpen)
+            RefreshSlots();
     }
 
     private void InitializeUIReferences()

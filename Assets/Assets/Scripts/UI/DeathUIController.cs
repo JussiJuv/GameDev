@@ -189,8 +189,25 @@ public class DeathUIController : MonoBehaviour
     private void QuitToMainMenu()
     {
         Time.timeScale = 1f;
-        Debug.Log("Quitting...");
+        Debug.Log("Quitting to MainMenu...");
         //SceneManager.LoadScene("MainMenu");
+
+        // Destroy all persistent objects so MainMenu has nothing but its own scene objects
+        var all = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        foreach (var go in all)
+        {
+            // Skip if this object belongs to a real loaded scene
+            var scene = go.scene;
+            if (scene.isLoaded && scene.buildIndex >= 0)
+                continue;
+
+            // Also skip the MainMenuController, should not even happen?
+            if (go.GetComponent<MainMenuController>() != null)
+                continue;
+
+            Destroy(go);
+        }
+        SceneManager.LoadScene("MainMenu");
     }
 
     private IEnumerator DelayedSnap(CameraFollow cam)

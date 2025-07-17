@@ -24,6 +24,10 @@ public class ShopManager : MonoBehaviour
     private GameObject shopUI;
     private ConsumableData selected;
 
+    private GameObject _playerGO;
+    private MonoBehaviour[] _toDisableShop;
+    private Animator _playerAnim;
+
     void Awake()
     {
         shopUI = GameObject.Find("InventoryPanel");
@@ -71,6 +75,19 @@ public class ShopManager : MonoBehaviour
         if (descText != null) descText.text = "";
         if (costText != null) costText.text = "";
         if (costIcon != null) costIcon.gameObject.SetActive(false);
+
+        _playerGO = GameObject.FindWithTag("Player");
+        if (_playerGO != null)
+        {
+            _toDisableShop = new MonoBehaviour[]
+            {
+                _playerGO.GetComponent<PlayerController>(),
+                _playerGO.GetComponent<Weapon>(),
+                _playerGO.GetComponent<ArrowRainAbility>(),
+                _playerGO.GetComponent<AbilityManager>()
+            };
+            _playerAnim = _playerGO.GetComponent<Animator>();
+        }
     }
 
     void Start()
@@ -151,6 +168,23 @@ public class ShopManager : MonoBehaviour
         //if (ui != null) ui.RefreshSlots();
     }
 
+    public void OpenShop()
+    {
+        shopUI.SetActive(true);
+        Time.timeScale = 0f;
+
+        // Disable player input/abilities
+        if (_toDisableShop != null)
+        {
+            foreach (var mb in _toDisableShop)
+                if (mb != null)
+                    mb.enabled = false;
+
+            if (_playerAnim != null)
+                _playerAnim.speed = 0f;
+        }
+    }
+
 
     void Close()
     {
@@ -158,6 +192,17 @@ public class ShopManager : MonoBehaviour
         {
             shopUI.SetActive(false);
             Time.timeScale = 1f;
+
+            // Re enable player input/abilities
+            if (_toDisableShop != null)
+            {
+                foreach (var mb in _toDisableShop)
+                    if (mb != null)
+                        mb.enabled = true;
+
+                if (_playerAnim != null)
+                    _playerAnim.speed = 1f;
+            }
         }
     }
 }

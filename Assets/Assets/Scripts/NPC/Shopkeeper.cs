@@ -20,6 +20,10 @@ public class Shopkeeper : MonoBehaviour
     private Collider2D triggerCollider;
     private Vector3 promptOffset;
 
+    private GameObject _playerGO;
+    private MonoBehaviour[] _toDisableShop;
+    private Animator _playerAnim;
+
     void Awake()
     {
         if (promptIcon == null)
@@ -31,47 +35,32 @@ public class Shopkeeper : MonoBehaviour
 
         // Hide the prompt immediately
         promptIcon.gameObject.SetActive(false);
+
+        _playerGO = GameObject.FindWithTag("Player");
+        if (_playerGO != null)
+        {
+            _toDisableShop = new MonoBehaviour[]
+            {
+                _playerGO.GetComponent<PlayerController>(),
+                _playerGO.GetComponent<Weapon>(),
+                _playerGO.GetComponent<ArrowRainAbility>(),
+                _playerGO.GetComponent<AbilityManager>()
+            };
+            _playerAnim = _playerGO.GetComponent<Animator>();
+        }
     }
 
     void Start()
     {
-        /*// 1) Find the persistent Canvas in any loaded scene
-        var canvas = FindFirstObjectByType<Canvas>();
-        if (canvas == null)
-        {
-            Debug.LogError("Shopkeeper: no Canvas found in any loaded scene!");
-            return;
-        }
-
-        // 2) Under that Canvas, find the InventoryPanel
-        var panelTf = canvas.transform.Find("InventoryPanel");
-        if (panelTf == null)
-        {
-            Debug.LogError("Shopkeeper: 'InventoryPanel' not found under Canvas");
-            return;
-        }
-
-        // 3) Assign the panel itself to shopUI
-        shopUI = panelTf.gameObject;
-        shopUI.SetActive(false);
-
-        // 4) Find the ShopSection inside the panel
-        var shopSectionTf = panelTf.Find("ShopSection");
-        if (shopSectionTf == null)
-        {
-            Debug.LogError("Shopkeeper: 'ShopSection' not found under InventoryPanel");
-            return;
-        }
-
-        shopSection = shopSectionTf.gameObject;
-        shopSection.SetActive(false);*/
-
         StartCoroutine(WaitForUICanvas());
     }
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange
+            && Input.GetKeyDown(KeyCode.E)
+            && !(PauseMenuController.Instance?.IsPaused ?? false)
+            && !(InventoryUI.Instance?.IsOpen ?? false))
         {
             ToggleShop();
         }
@@ -117,13 +106,41 @@ public class Shopkeeper : MonoBehaviour
         // When opening, refresh inventory contents
         if (nowOpen)
         {
+            Time.timeScale = 0f;
+
+            // disable player scripts
+            if (_toDisableShop != null)
+            {
+                foreach (var mb in _toDisableShop)
+                    if (mb != null)
+                        mb.enabled = false;
+
+                if (_playerAnim != null)
+                    _playerAnim.speed = 0f;
+            }
+
             var invUI = FindFirstObjectByType<InventoryUI>();
             if (invUI != null)
                 invUI.RefreshSlots();
         }
+        else
+        {
+            Time.timeScale = 1f;
+
+            // enable player scripts
+            if (_toDisableShop != null)
+            {
+                foreach (var mb in _toDisableShop)
+                    if (mb != null)
+                        mb.enabled = true;
+
+                if (_playerAnim != null)
+                    _playerAnim.speed = 1f;
+            }
+        }
 
         // Pause or unpause the game
-        Time.timeScale = nowOpen ? 0f : 1f;
+        //Time.timeScale = nowOpen ? 0f : 1f;
     }
 
     IEnumerator WaitForUICanvas()
@@ -155,6 +172,19 @@ public class Shopkeeper : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
+
+        /*_playerGO = GameObject.FindWithTag("Player");
+        if (_playerGO != null)
+        {
+            _toDisableShop = new MonoBehaviour[]
+            {
+                _playerGO.GetComponent<PlayerController>(),
+                _playerGO.GetComponent<Weapon>(),
+                _playerGO.GetComponent<ArrowRainAbility>(),
+                _playerGO.GetComponent<AbilityManager>()
+            };
+            _playerAnim = _playerGO.GetComponent<Animator>();
+        }*/
 
         Debug.LogError("[Shopkeeper] Failed to find UI Canvas and ShopSection within timeout.");
     }
