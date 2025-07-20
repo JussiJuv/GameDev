@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6694744072648848030}
   - component: {fileID: 7271260529311391554}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 165465987
-  m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingLayer: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5294999683003350795, guid: 67936dc63df57f5428012a0e7c01fcdc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
