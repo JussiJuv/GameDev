@@ -34,6 +34,8 @@ public class Checkpoint : MonoBehaviour
             promptIcon.gameObject.SetActive(false);
             promptIcon.transform.localPosition = Vector3.up * promptYOffset;
         }
+
+        Debug.Log($"[Checkpoint] {checkpointID}.Start() — savedID={SaveSystem.Data.lastCheckpointID}");
     }
 
     private void Update()
@@ -65,6 +67,7 @@ public class Checkpoint : MonoBehaviour
     /// </summary>
     private void Activate()
     {
+        Debug.Log($"[Checkpoint] Activating {checkpointID}");
         // Deactivate every other checkpoint
         var all = FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
         foreach (var cp in all)
@@ -73,11 +76,16 @@ public class Checkpoint : MonoBehaviour
             cp.isActive = false;
             cp.col.enabled = true;
             cp.UpdateVisuals();
+
+            // reset any lingering prompt/range on the other checkpoints
+            cp.playerInRange = false;
+            cp.promptIcon?.gameObject.SetActive(false);
         }
 
         isActive = true;
         UpdateVisuals();
 
+        playerInRange = false;
         promptIcon?.gameObject.SetActive(false);
         col.enabled = false;
 
