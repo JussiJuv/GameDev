@@ -26,31 +26,47 @@ public class StoryPanelController : MonoBehaviour
         else
             Instance = this;
 
-        gameObject.SetActive(false);
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     /// <summary>
     /// Show the panel, load nextScene in background, then invoke onContinue when done.
     /// </summary>
-    public void Show(string header, string body, string nextScene, Action onContinue = null)
+    public void Show(string header, string body, Action onContinue = null)
     {
-        gameObject.SetActive(true);
         headerText.text = header;
         bodyText.text = body;
         _onContinue = onContinue;
 
         // Start hidden
         canvasGroup.alpha = 0;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
         Time.timeScale = 0f; // Pause gameplay
 
         // fade in
-        StartCoroutine(FadeInAndLoad(nextScene));
+        //StartCoroutine(FadeInAndLoad(nextScene));
+        StartCoroutine(FadeIn());
         continueButton.onClick.RemoveAllListeners();
         continueButton.onClick.AddListener(OnContinuePressed);
         
     }
 
-    IEnumerator FadeInAndLoad(string nextScene)
+    IEnumerator FadeIn()
+    {
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            canvasGroup.alpha = t / fadeDuration;
+            yield return null;
+        }
+        canvasGroup.alpha = 1f;
+    }
+
+    /*IEnumerator FadeInAndLoad(string nextScene)
     {
         float t = 0;
         while (t < fadeDuration)
@@ -65,7 +81,7 @@ public class StoryPanelController : MonoBehaviour
         var op = SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
         while (!op.isDone)
             yield return null;
-    }
+    }*/
 
     void OnContinuePressed()
     {
@@ -74,7 +90,7 @@ public class StoryPanelController : MonoBehaviour
 
     IEnumerator FadeOutAndContinue()
     {
-        float t = fadeDuration;
+        /*float t = fadeDuration;
         while (t > 0)
         {
             t -= Time.unscaledDeltaTime;
@@ -82,9 +98,12 @@ public class StoryPanelController : MonoBehaviour
             yield return null;
         }
         canvasGroup.alpha = 0;
-        gameObject.SetActive(false);
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        Time.timeScale = 1f;*/
         Time.timeScale = 1f;
         _onContinue?.Invoke();
+        yield return null;
     }
 
 }

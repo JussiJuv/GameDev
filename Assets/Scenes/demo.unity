@@ -19254,6 +19254,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: portal_2_0
       objectReference: {fileID: 0}
+    - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
+      propertyPath: storyBody
+      value: Welcome to the Crossroads. Here you can buy health potions before your
+        next adventure.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
+      propertyPath: storyHeader
+      value: Crossroads
+      objectReference: {fileID: 0}
+    - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
+      propertyPath: storyPanelPrefab
+      value: 
+      objectReference: {fileID: 8342495719618983994, guid: 2467d10bb83da4f47b665f1b538669d5, type: 3}
     - target: {fileID: 8675538501309859562, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35

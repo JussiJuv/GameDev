@@ -8,11 +8,13 @@ public class MainMenuController : MonoBehaviour
     [Header("Starting scene")]
     public string sceneName = "demo";
 
-
     public Button newGameBtn, continueBtn, controlsBtn, quitBtn;
     public GameObject controlsPanel;
     [Tooltip("Back button from controlsPanel")]
     public Button backButton;
+
+    [Header("Between-Level UI")]
+    public StoryPanelController storyPanelController;
 
     private string savePath => Path.Combine(Application.persistentDataPath, "savegame.json");
 
@@ -31,12 +33,17 @@ public class MainMenuController : MonoBehaviour
 
     void OnNewGame()
     {
-        if (File.Exists(savePath))
-            File.Delete(savePath);
-        // Force the SaveSystem to recreate defaults
+        // Destroy old save
+        if (File.Exists(savePath)) File.Delete(savePath);
         SaveSystem.Load();
-        // Load first scene
-        SceneManager.LoadScene(sceneName);
+
+        storyPanelController.Show(
+            header: "Grasslands",
+            body: "Your journey begins here. Defeat the Slime Giant to proceed.",
+            onContinue: () =>
+            {
+                SceneManager.LoadScene(sceneName);
+            });
     }
 
     void OnContinue()

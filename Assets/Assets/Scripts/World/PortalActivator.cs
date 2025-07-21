@@ -16,6 +16,16 @@ public class PortalActivator : MonoBehaviour
     [Tooltip("Checkpoint ID to set when activating portal")]
     public string nextCheckpointID = "Hub";
 
+    [Header("Between-Level UI")]
+    [Tooltip("StoryPanel prefab")]
+    public GameObject storyPanelPrefab;
+    [Tooltip("Big title for this transition")]
+    public string storyHeader;
+
+    [TextArea]
+    [Tooltip("Text description for the next area")]
+    public string storyBody;
+
     private bool playerInRange = false;
 
     void Start()
@@ -31,7 +41,7 @@ public class PortalActivator : MonoBehaviour
         col.isTrigger = true;
     }
 
-    void Update()
+    /*void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
@@ -50,6 +60,15 @@ public class PortalActivator : MonoBehaviour
             // Teleport the player to their last checkpoint in the new scene
             StartCoroutine(MovePlayerToSpawnNextFrame());
         }
+    }*/
+
+    private void Update()
+    {
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            // Pause and popup the story
+            ShowTransitionPanelAndThen(sceneToLoad, nextCheckpointID);
+        }
     }
 
     private void OnEnable()
@@ -60,6 +79,34 @@ public class PortalActivator : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void ShowTransitionPanelAndThen(string scene, string checkpointID)
+    {
+        var canvas = GameObject.Find("UI Canvas");
+        var panelGO = Instantiate(storyPanelPrefab, canvas.transform);
+        var ctrl = panelGO.GetComponent<StoryPanelController>();
+
+        Time.timeScale = 0f;
+
+        ctrl.Show(
+            header: storyHeader,
+            body: storyBody,
+            onContinue: () =>
+            {
+                Destroy(panelGO);
+                Time.timeScale = 1f;
+
+                SaveSystem.SetCheckpoint(checkpointID);
+                SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+
+                var curr = gameObject.scene.name;
+                if (curr != "UI")
+                    SceneManager.UnloadSceneAsync(curr);
+
+                StartCoroutine(MovePlayerToSpawnNextFrame());
+            });
+        Time.timeScale = 0f;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
