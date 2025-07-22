@@ -9,6 +9,9 @@ TagManager:
   - Clone
   - PuzzleDoor
   - Enemy
+  - Grass
+  - Stone
+  - Wood
   layers:
   - Default
   - TransparentFX

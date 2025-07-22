@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public float dashDistance = 5f;
     public float dashDuration = 0.05f;
 
+    [Header("SFX")]
+    public AudioClip dashSFX;
+
     public LayerMask wallMask;
     public LayerMask enemyMask;
 
@@ -152,6 +155,8 @@ public class PlayerController : MonoBehaviour
         // Temporarily ignore enemies & make invulnerable
         isDashing = true;
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMaskToLayer(enemyMask), true);
+
+        AudioManager.Instance.PlaySFX(dashSFX);
 
         // "Teleport" instantly
         rb.position = target;

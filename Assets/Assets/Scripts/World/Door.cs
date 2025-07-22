@@ -7,17 +7,21 @@ using TMPro;
 public class Door : MonoBehaviour
 {
     [Header("Key & Door Setup")]
-    public string doorID;       // Matches KeyItemData.doorID
+    public string doorID;
 
     [Header("Sprites")]
     public GameObject closedSprite;
     public GameObject openSprite;
+    public SpriteRenderer promptIcon;
+
 
     [Header("Locked Message UI")]
     public Canvas messageCanvas;
     //public Text messageText;
     public TextMeshProUGUI messageText;
     public float messageDuration = 4f;
+    [TextArea]
+    public string lockedMessage = "Locked";
 
     private bool isOpen = false;
     private bool playerInRange = false;
@@ -46,10 +50,17 @@ public class Door : MonoBehaviour
         {
             inv.UseKey(doorID);
             OpenDoor();
+
+            // Hide the promtp
+            if (promptIcon != null)
+            {
+                promptIcon.gameObject.SetActive(false);
+            }
         }
         else
         {
-            ShowMessage("The door is locked\nA Silver Key fits here");
+            //ShowMessage("The door is locked\nA Silver Key fits here");
+            ShowMessage(lockedMessage);
         }
     }
 
@@ -79,9 +90,11 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !isOpen)
         {
             playerInRange = true;
+            if (promptIcon != null)
+                promptIcon.gameObject.SetActive(true);
         }
     }
 
@@ -90,6 +103,8 @@ public class Door : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerInRange = false;
+            if (promptIcon != null)
+                promptIcon.gameObject.SetActive(false);
         }
     }
 }

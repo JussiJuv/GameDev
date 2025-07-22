@@ -79,6 +79,10 @@ public class MirrorBinderController : MonoBehaviour
     public int regularProjectileDamage = 1;
     public GameObject projectileBluePrefab;
 
+    [Header("Rewards")]
+    public KeyItemData goldKeyData;
+    public KeyItemData shardBData;
+
     private enum State { Volley, Special }
     private State currentState;
     private int volleyCounter;
@@ -482,6 +486,20 @@ public class MirrorBinderController : MonoBehaviour
     /// </summary>
     public void OnBossDeath()
     {
+        // Give rewards to player
+        var player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            var inv = player.GetComponent<PlayerInventory>();
+            if (inv != null)
+            {
+                if (goldKeyData != null) inv.AddKey(goldKeyData);
+                if (shardBData != null) inv.AddKey(shardBData);
+            }
+        }
+
+        PickupPopuiUI.Instance.Show(new[] { goldKeyData, shardBData });
+
         bossHealthBarUI?.Hide();
 
         // Unlock gate

@@ -243,6 +243,8 @@ MonoBehaviour:
   regularProjectileSpeed: 5
   regularProjectileDamage: 1
   projectileBluePrefab: {fileID: 5774319383681552065, guid: 720db81bd155f054f99df460ea0cc885, type: 3}
+  goldKeyData: {fileID: 0}
+  shardBData: {fileID: 0}
 --- !u!114 &3061562630032211907
 MonoBehaviour:
   m_ObjectHideFlags: 0
