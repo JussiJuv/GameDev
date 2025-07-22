@@ -25,6 +25,10 @@ public class BossController : MonoBehaviour
     [Tooltip("The key the boss drops on death")]
     public KeyItemData bossKeyData;
 
+    [Header("Shard Reward")]
+    [Tooltip("Also drop this shard on death")]
+    public KeyItemData shardAData;
+
     [Header("UI")]
     private BossHealthBarUI bossHealthBarUI;
     public string bossName;
@@ -138,15 +142,21 @@ public class BossController : MonoBehaviour
         if (player != null)
         {
             var inv = player.GetComponent<PlayerInventory>();
-            if (inv != null && bossKeyData != null) 
+            if (inv != null) 
             {
-                inv.AddKey(bossKeyData);
+                if (bossKeyData != null)
+                    inv.AddKey(bossKeyData);
+
+                if (shardAData != null)
+                    inv.AddKey(shardAData);
+
                 inv.DebugLogInventory();
             }
         }
 
         // Show pickup popup
-        KeyPickupPopupUI.Instance.Show(bossKeyData);
+        PickupPopuiUI.Instance.Show(new[] { bossKeyData, shardAData });
+        //KeyPickupPopupUI.Instance.Show(bossKeyData);
 
 
         // Hide the boss hp bar

@@ -16390,6 +16390,10 @@ PrefabInstance:
       value: Boss_slime
       objectReference: {fileID: 0}
     - target: {fileID: 6507404039069742280, guid: 29b6b379964dcde469a1a54b81edfe21, type: 3}
+      propertyPath: shardAData
+      value: 
+      objectReference: {fileID: 11400000, guid: d1209ff7361f571438fba8bb8deb8899, type: 2}
+    - target: {fileID: 6507404039069742280, guid: 29b6b379964dcde469a1a54b81edfe21, type: 3}
       propertyPath: gateController
       value: 
       objectReference: {fileID: 711504795}
