@@ -447,6 +447,9 @@ public class MirrorBinderController : MonoBehaviour
         // Lock the gate so the player cant leave
         gateController?.LockGate();
 
+        // Play boss music
+        MusicManager.Instance?.PlayBossMusic();
+
         if (bossHealthBarUI == null)
         {
             bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();

@@ -250,6 +250,7 @@ MonoBehaviour:
   circleBlastSFX: {fileID: 0}
   chargeP2: {fileID: 0}
   chargeP3: {fileID: 0}
+  cloneActivate: {fileID: 0}
   goldKeyData: {fileID: 0}
   shardBData: {fileID: 0}
 --- !u!114 &3061562630032211907
