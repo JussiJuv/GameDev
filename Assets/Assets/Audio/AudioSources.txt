@@ -12,5 +12,7 @@ Door open: ZapSplat
 Slime death: Pixabay
 Imp death: ZapSplat
 Mirrorbinder_regular: ZapSplat
-MirrorBinder_circle: ZapSplat
-MirrorBinder_charge: Pixabay
+Mirrorbinder_circle: ZapSplat
+Mirrorbinder_charge: Pixabay
+Mirrorbinder_meteor: Pixabay
+Mirrorbinder_death: ZapSplat

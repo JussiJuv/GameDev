@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -86,6 +87,7 @@ public class MirrorBinderController : MonoBehaviour
     public AudioClip circleBlastSFX;
     public AudioClip chargeP2;
     public AudioClip chargeP3;
+    public AudioClip cloneActivate;
 
     [Header("Rewards")]
     public KeyItemData goldKeyData;
@@ -100,6 +102,7 @@ public class MirrorBinderController : MonoBehaviour
     private Animator anim;
     private Transform player;
     private Vector3 originalPosition;
+    private AudioSource _loopingSource;
 
     private void Awake()
     {
@@ -144,6 +147,10 @@ public class MirrorBinderController : MonoBehaviour
             if (gateController == null)
                 Debug.LogError("[MirrorBinderController]: No BossGateController found");
         }
+
+        _loopingSource = GetComponent<AudioSource>();
+        if (_loopingSource == null)
+            Debug.LogError("[MirrorBinderController]: Needs and AudioSource");
     }
 
     private void Start()
@@ -231,7 +238,7 @@ public class MirrorBinderController : MonoBehaviour
             else
             {
                 if (specialCounter % 2 == 0)
-                    yield return DoClonePhase(p2ClonesCount, p2CloneRadius, p2CloneChargeTime);
+                    yield return DoClonePhase(p2ClonesCount, p2CloneRadius, p2CloneChargeTime, chargeP2);
                 else
                     yield return DoCircularBlast();
 
@@ -258,7 +265,7 @@ public class MirrorBinderController : MonoBehaviour
                 // Do one more volley attack
                 yield return DoVolley(p3ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p3ShotInterval, p3VolleySFX);
                 circularCount = 0;
-                yield return DoClonePhase(p3ClonesCount, p3CloneRadius, p3CloneChargeTime);
+                yield return DoClonePhase(p3ClonesCount, p3CloneRadius, p3CloneChargeTime, chargeP3);
                 // Move back
                 anim.SetTrigger("Move");
                 yield return MoveTo(homePoint.position);
@@ -314,8 +321,16 @@ public class MirrorBinderController : MonoBehaviour
         }
     }
 
-    private IEnumerator DoClonePhase(int cloneCount, float radius, float chargeTime)
+    private IEnumerator DoClonePhase(int cloneCount, float radius, float chargeTime, AudioClip chargeSFX)
     {
+        if (_loopingSource != null && chargeSFX != null)
+        {
+            _loopingSource.clip = chargeSFX;
+            _loopingSource.loop = false;
+            _loopingSource.time = 0f;
+            _loopingSource.Play();
+        }
+
         // Start the telegraph animation
         anim.SetTrigger("Charge2");
         yield return new WaitForSeconds(p1ShotInterval);
@@ -352,6 +367,7 @@ public class MirrorBinderController : MonoBehaviour
             {
                 interrupted = true;
                 anim.SetTrigger("Hit");
+                _loopingSource?.Stop();
                 yield return new WaitForSeconds(0.2f);  // allow the hit anim to show
                 break;
             }
@@ -363,7 +379,9 @@ public class MirrorBinderController : MonoBehaviour
         // If not interrupted, fire homing red bolts
         if (!interrupted)
         {
+            _loopingSource?.Stop();
             SpawnHoming(transform.position);
+            AudioManager.Instance.PlaySFX(cloneActivate);
             foreach (var c in activeClones)
             {
                 if (c == null) continue;

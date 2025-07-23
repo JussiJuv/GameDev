@@ -19,6 +19,9 @@ public class MeteorFall : MonoBehaviour
     [Tooltip("Damage dealt if the player is within the impact collider")]
     public int damage = 2;
 
+    [Header("SFX")]
+    public AudioClip meteorHit;
+
     private Transform player;
     private Vector3 targetPos;
 
@@ -77,6 +80,9 @@ public class MeteorFall : MonoBehaviour
         {
             Destroy(impactGO, 1.0f);
         }
+
+        if (meteorHit != null)
+            AudioManager.Instance.PlaySFX(meteorHit);
 
         Destroy(gameObject);
     }

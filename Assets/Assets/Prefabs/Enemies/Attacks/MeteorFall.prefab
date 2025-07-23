@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2411b4090d05ce4f88378750710d3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallTime: 0.5
   dropDuration: 2
   shadowPrefab: {fileID: 1980121137626649436, guid: b856e952e80666b4c81dfd72bbac313d, type: 3}
   meteorSpritePrefab: {fileID: 1858832950442823026, guid: af0e97cec9cc99941a3f21162eb0a012, type: 3}
   impactPrefab: {fileID: 7069563374784497028, guid: 4dda2b8dc457fbb44baae0a9c7744351, type: 3}
   damage: 2
+  meteorHit: {fileID: 8300000, guid: f883ef7c1d12f8245b5ffa1e886e345e, type: 3}
