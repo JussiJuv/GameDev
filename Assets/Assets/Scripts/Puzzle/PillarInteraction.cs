@@ -11,12 +11,16 @@ public class PillarInteraction : MonoBehaviour
     [Tooltip("Child GameObject with the ´Press E' icon")]
     public GameObject prompt;
 
+    [Header("SFX")]
+    public AudioClip clickSFX;
+
     private bool _playerInRange = false;
 
     void Update()
     {
         if (_playerInRange && Input.GetKeyDown(KeyCode.E))
         {
+            AudioManager.Instance.PlaySFX(clickSFX);
             manager.TryActivate(runeIndex);
         }
     }

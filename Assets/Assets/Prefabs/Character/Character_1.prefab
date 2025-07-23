@@ -227,6 +227,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 4371236319842191030}
   bowTransform: {fileID: 3948301487305573099}
+  bowShotClips:
+  - {fileID: 8300000, guid: f141d5f7a4e69ee4d8ad234b2fba5a4f, type: 3}
+  - {fileID: 8300000, guid: 1d4deb19a6174464cae31127294179a6, type: 3}
+  - {fileID: 8300000, guid: 5ec6ea25ea57bf14bab277c7e31da65c, type: 3}
+  - {fileID: 8300000, guid: a0a80f74960e6bd4296d5b6a221ac728, type: 3}
   bowRadius: 0.5
   bowDeadZoneRadius: 0.9
   projectilePrefab: {fileID: 8055485634933547239, guid: f1cd9b6811e030042b07e2c8033662e8, type: 3}
@@ -249,6 +254,7 @@ MonoBehaviour:
   dashDistance: 5
   dashDuration: 0.05
   dashSFX: {fileID: 8300000, guid: 5f8c4131f2850704992b0225f053ac69, type: 3}
+  drinkPotionSFX: {fileID: 8300000, guid: ba8ffc7bdd1fd2b45be29ad11805ef62, type: 3}
   wallMask:
     serializedVersion: 2
     m_Bits: 16384
@@ -404,6 +410,8 @@ MonoBehaviour:
   visualFallSpeed: 10
   stickDuration: 1
   arrowContainer: {fileID: 0}
+  arrowRainHitSFX: {fileID: 8300000, guid: 1fa5d66a4c928ad4396da28c92d040cf, type: 3}
+  arrowRainMissSFX: {fileID: 8300000, guid: fccf184bd78713544b68a8b969c33794, type: 3}
 --- !u!95 &2151278627712864587
 Animator:
   serializedVersion: 7

@@ -917,6 +917,7 @@ MonoBehaviour:
   animator: {fileID: 367513475}
   openTrigger: OpenGate
   passCollider: {fileID: 367513478}
+  openSFX: {fileID: 8300000, guid: e24c2b3039245f54f8a050b3fabc9ee8, type: 3}
 --- !u!1001 &379772665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1636,6 +1637,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1056518445}
+    - target: {fileID: 4677424921350139, guid: c9a89849c887856408cec76513066379, type: 3}
+      propertyPath: clickSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a64ad7c932f71a3489679a42161fcc70, type: 3}
     - target: {fileID: 4677424921350139, guid: c9a89849c887856408cec76513066379, type: 3}
       propertyPath: runeIndex
       value: 1
@@ -8954,6 +8959,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2233566201651687474, guid: 1f06199d022161542b6d6048e1691189, type: 3}
+      propertyPath: drinkPotionSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8ffc7bdd1fd2b45be29ad11805ef62, type: 3}
     - target: {fileID: 4174585013214212714, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: arrowContainer
       value: 
@@ -9335,6 +9344,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1056518445}
+    - target: {fileID: 4677424921350139, guid: c9a89849c887856408cec76513066379, type: 3}
+      propertyPath: clickSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a64ad7c932f71a3489679a42161fcc70, type: 3}
     - target: {fileID: 4677424921350139, guid: c9a89849c887856408cec76513066379, type: 3}
       propertyPath: runeIndex
       value: 2
@@ -67135,6 +67148,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1056518445}
     - target: {fileID: 4677424921350139, guid: c9a89849c887856408cec76513066379, type: 3}
+      propertyPath: clickSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a64ad7c932f71a3489679a42161fcc70, type: 3}
+    - target: {fileID: 4677424921350139, guid: c9a89849c887856408cec76513066379, type: 3}
       propertyPath: runeIndex
       value: 3
       objectReference: {fileID: 0}
@@ -97966,6 +97983,10 @@ PrefabInstance:
       value: Stone_Gate
       objectReference: {fileID: 0}
     - target: {fileID: 6780651735401001224, guid: 3ff443372fb6c5f4ba781f51fc97a48d, type: 3}
+      propertyPath: solveSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: e24c2b3039245f54f8a050b3fabc9ee8, type: 3}
+    - target: {fileID: 6780651735401001224, guid: 3ff443372fb6c5f4ba781f51fc97a48d, type: 3}
       propertyPath: pillars.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -98002,6 +98023,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1056518445}
+    - target: {fileID: 4677424921350139, guid: c9a89849c887856408cec76513066379, type: 3}
+      propertyPath: clickSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a64ad7c932f71a3489679a42161fcc70, type: 3}
     - target: {fileID: 4318049168940529755, guid: c9a89849c887856408cec76513066379, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.57

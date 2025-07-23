@@ -99,6 +99,7 @@ MonoBehaviour:
   inactiveVisual: {fileID: 9156025884095936094}
   promptIcon: {fileID: 6796849211951072820}
   promptYOffset: 3
+  checkpointSFX: {fileID: 8300000, guid: 5feb04ed142f7bd4dbefb679cd142ded, type: 3}
 --- !u!1 &1781527298086869198
 GameObject:
   m_ObjectHideFlags: 0

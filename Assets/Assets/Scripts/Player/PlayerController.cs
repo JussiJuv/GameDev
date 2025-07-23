@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("SFX")]
     public AudioClip dashSFX;
+    public AudioClip drinkPotionSFX;
 
     public LayerMask wallMask;
     public LayerMask enemyMask;
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour
             float fraction;
             if (PlayerInventory.Instance.ConsumeActive(out fraction))
             {
+                AudioManager.Instance.PlaySFX(drinkPotionSFX);
                 int amount = Mathf.CeilToInt(fraction * health.maxHP);
                 health.Heal(amount);
             }

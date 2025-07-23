@@ -647,6 +647,8 @@ MonoBehaviour:
   closedSprite: {fileID: 7911575307990138088}
   openSprite: {fileID: 8390181290901412412}
   promptIcon: {fileID: 5414657374621395283}
+  doorSFX: {fileID: 8300000, guid: bb947d38a5f07ca4d9c52b8bfc0f8c39, type: 3}
   messageCanvas: {fileID: 1189314427362218146}
   messageText: {fileID: 7763791617921896719}
   messageDuration: 4
+  lockedMessage: Locked

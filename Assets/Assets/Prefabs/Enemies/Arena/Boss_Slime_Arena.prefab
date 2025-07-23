@@ -156,7 +156,13 @@ MonoBehaviour:
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
-  deathClip: {fileID: 0}
+  deathClips:
+  - {fileID: 8300000, guid: b760e0b47d162f045970463779bc30af, type: 3}
+  - {fileID: 8300000, guid: f98141e822c9637418a8fba27d361ffd, type: 3}
+  - {fileID: 8300000, guid: 6b68d7d225194d149a885e7b04f7adde, type: 3}
+  - {fileID: 8300000, guid: 4be73937b757d394faeea5abeeaef642, type: 3}
+  - {fileID: 8300000, guid: dd4a86e49023b82448fba36a0ee3b144, type: 3}
+  - {fileID: 8300000, guid: c2e25b042e2183b4da5830b1e27e616e, type: 3}
   currentHP: 0
 --- !u!95 &137622687419289120
 Animator:

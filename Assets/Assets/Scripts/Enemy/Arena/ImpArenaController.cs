@@ -106,7 +106,7 @@ public class ImpArenaController : MonoBehaviour
             if (player != null)
             {
                 Vector2 aim = (player.position - firePoint.position).normalized;
-                float angle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
+                float angle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 180f;
                 var proj = Instantiate(impProjectilePrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
                 proj.GetComponent<ImpProjectile>()?.Init(aim);
             }

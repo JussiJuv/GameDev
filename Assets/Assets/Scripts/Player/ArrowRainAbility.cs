@@ -19,6 +19,10 @@ public class ArrowRainAbility : MonoBehaviour
     public float stickDuration = 1f;
     public Transform arrowContainer;
 
+    [Header("SFX")]
+    public AudioClip arrowRainHitSFX;
+    public AudioClip arrowRainMissSFX;
+
     /// <summary>
     /// Is the circle up right now? PlayerController can check this
     /// to block normal shooting.
@@ -67,7 +71,7 @@ public class ArrowRainAbility : MonoBehaviour
         if (_indicator != null) Destroy(_indicator);
     }
 
-    private void DoArrowRainAOE(Vector3 center)
+    private Collider2D[] DoArrowRainAOE(Vector3 center)
     {
         // purely 2D overlap circle
         Collider2D[] hits = Physics2D.OverlapCircleAll(
@@ -87,7 +91,7 @@ public class ArrowRainAbility : MonoBehaviour
                 Debug.Log($" - Damaged {c.name} for {_data.arrowDamage}");
             }
         }
-
+        return hits;
     }
 
     private IEnumerator SpawnArrowRainVisual(Vector3 center)
@@ -131,7 +135,12 @@ public class ArrowRainAbility : MonoBehaviour
         }
 
         // Apply damage to everything in that circle
-        DoArrowRainAOE(center);
+        Collider2D[] hits = DoArrowRainAOE(center);
+
+        if (hits.Length > 0)
+            AudioManager.Instance.PlaySFX(arrowRainHitSFX);
+        else
+            AudioManager.Instance.PlaySFX(arrowRainMissSFX);
 
         // Let the arrows stick around for a bit
         yield return new WaitForSeconds(stickDuration);
@@ -158,96 +167,3 @@ public class ArrowRainAbility : MonoBehaviour
         }
     }
 }
-
-
-/*using UnityEngine;
-using System.Collections;
-
-public class ArrowRainAbility : MonoBehaviour
-{
-    [Header("References")]
-    public AbilityManager abilityManager;
-    public GameObject indicatorPrefab;
-
-    [Header("Tunable Settings")]
-    public string abilityName = "Arrow Rain";
-    public float indicatorRadius = 3f;
-    public float dropHeight = 10f;
-    public float fallSpeed = 20f;
-    public LayerMask groundMask;
-    public Transform arrowContainer;    // Parent for spawned arrows
-
-    private AbilityData _data;
-    private GameObject _indicator;
-    private bool _isTargeting;
-
-    private void Start()
-    {
-        if (abilityManager == null)
-        {
-            abilityManager = FindFirstObjectByType<AbilityManager>();
-        }
-        _data = abilityManager.GetAbility(abilityName);
-    }
-
-    private void Update()
-    {
-        // Activate targeting on key "1"
-        if (!_isTargeting
-            && Input.GetKeyDown(KeyCode.Alpha1)
-            && abilityManager.CanUse(abilityName))
-        {
-            BeginTargeting();
-        }
-
-        // Confirm with left-click
-        if (_isTargeting && Input.GetMouseButtonDown(0))
-        {
-            Vector3 targetPos = _indicator.transform.position;
-            abilityManager.Consume(abilityName);
-            EndTargeting();
-            StartCoroutine(SpawnArrowRain(targetPos));
-        }
-
-        // Cancel Targeting with right-click or Esc
-        else if (_isTargeting && (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))) 
-        {
-            EndTargeting();
-        }
-    }
-
-    private void BeginTargeting()
-    {
-        _isTargeting = true;
-        _indicator = Instantiate(indicatorPrefab);
-        _indicator.transform.localScale = Vector3.one * indicatorRadius * 2f;
-    }
-
-    private void EndTargeting()
-    {
-        _isTargeting = false;
-        if (_indicator != null) Destroy(_indicator);
-    }
-
-    private IEnumerator SpawnArrowRain(Vector3 center)
-    {
-        for (int i = 0; i < _data.arrowCount; i++)
-        {
-            // Random point inside circle
-            Vector2 offset = Random.insideUnitCircle * indicatorRadius;
-            Vector3 spawnPos = center + (Vector3)offset + Vector3.up * dropHeight;
-
-            // instantiate arrow prefab
-            GameObject arrow = Instantiate(_data.arrowPrefab, spawnPos, Quaternion.identity, arrowContainer);
-
-            // Give it a downward velocity
-            var rb = arrow.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.linearVelocity = Vector2.down * fallSpeed;
-            }
-            yield return new WaitForSeconds(0.05f);
-        }
-    }
-}
-*/

@@ -1,4 +1,16 @@
-Ability: Pixabay
+Dash: Pixabay
 Bow: ZapSplat
 Run Grass: https://nebula-audio.itch.io/character-footsteps-rock-grass-pack-1
 Run Stone: ZapSplat
+Run Wood: ZapSplat
+ArrowRain: ZapSplat
+Puzzle pillar: Pixabay
+Stone gate: Pixabay
+Drink potion: Pixabay
+Checkpoint: ZapSplat
+Door open: ZapSplat
+Slime death: Pixabay
+Imp death: ZapSplat
+Mirrorbinder_regular: ZapSplat
+MirrorBinder_circle: ZapSplat
+MirrorBinder_charge: Pixabay

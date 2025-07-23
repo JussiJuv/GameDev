@@ -11,6 +11,9 @@ public class StoneGateController : MonoBehaviour
     [Tooltip("The collider that prevents passage when closed")]
     public Collider2D passCollider;
 
+    [Header("SFX")]
+    public AudioClip openSFX;
+
     private bool isOpen = false;
 
     private void Reset()
@@ -25,6 +28,7 @@ public class StoneGateController : MonoBehaviour
     {
         if (isOpen) return;
         isOpen = true;
+        AudioManager.Instance.PlaySFX(openSFX);
 
         // Play the opening animation
         animator.SetTrigger(openTrigger);

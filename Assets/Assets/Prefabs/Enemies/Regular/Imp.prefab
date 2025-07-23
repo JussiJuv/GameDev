@@ -234,7 +234,11 @@ MonoBehaviour:
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
-  deathClip: {fileID: 0}
+  deathClips:
+  - {fileID: 8300000, guid: a0248f9a0b078544d82987fe86d6988a, type: 3}
+  - {fileID: 8300000, guid: 40b110b94d00ff140906905c3016b0c5, type: 3}
+  - {fileID: 8300000, guid: bba9b295a067715419415a7e05c3e804, type: 3}
+  - {fileID: 8300000, guid: 27dfc314e9e895d479191b43fc18362d, type: 3}
   currentHP: 0
 --- !u!114 &3024153944114602432
 MonoBehaviour:
@@ -250,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolPointA: {fileID: 0}
   patrolPointB: {fileID: 0}
+  patrolOffsetRange: 0.5
   moveSpeed: 2
   attackRange: 5
   shotsPerVolley: 3

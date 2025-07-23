@@ -79,6 +79,14 @@ public class MirrorBinderController : MonoBehaviour
     public int regularProjectileDamage = 1;
     public GameObject projectileBluePrefab;
 
+    [Header("SFX")]
+    public AudioClip p1VolleySFX;
+    public AudioClip p2VolleySFX;
+    public AudioClip p3VolleySFX;
+    public AudioClip circleBlastSFX;
+    public AudioClip chargeP2;
+    public AudioClip chargeP3;
+
     [Header("Rewards")]
     public KeyItemData goldKeyData;
     public KeyItemData shardBData;
@@ -147,21 +155,6 @@ public class MirrorBinderController : MonoBehaviour
         var p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) player = p.transform;
         else Debug.LogWarning("Player tag not found.");
-
-       /* if (devStartPhase2 && health.currentHP <= phaseOneToTwoHP)
-            StartCoroutine(PhaseTwoLoop());
-        else if (health.currentHP > phaseOneToTwoHP)
-            StartCoroutine(PhaseOneLoop());
-        else if (health.currentHP > phaseTwoToThreeHP)
-            StartCoroutine(PhaseTwoLoop());
-        else
-            StartCoroutine(PhaseThreeLoop());
-
-        // Launch meteor routine
-        if (enableMeteors)
-            StartCoroutine(MeteorRoutine());
-
-        ActivateBoss();*/
     }
 
     private IEnumerator MeteorRoutine()
@@ -195,7 +188,7 @@ public class MirrorBinderController : MonoBehaviour
         {
             if (currentState == State.Volley)
             {
-                yield return DoVolley(p1ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p1ShotInterval);
+                yield return DoVolley(p1ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p1ShotInterval, p1VolleySFX);
                 volleyCounter++;
                 if (volleyCounter >= p1VolleysBeforeSpecial)
                 {
@@ -223,7 +216,10 @@ public class MirrorBinderController : MonoBehaviour
         {
             if (currentState == State.Volley)
             {
-                yield return DoVolley(p2ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p2ShotInterval);
+                if (p2VolleySFX != null)
+                    AudioManager.Instance.PlaySFX(p2VolleySFX);
+
+                yield return DoVolley(p2ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p2ShotInterval, p2VolleySFX);
                 volleyCounter++;
                 if (volleyCounter >= p2VolleysBeforeSpecial)
                 {
@@ -251,23 +247,23 @@ public class MirrorBinderController : MonoBehaviour
         int circularCount = 0;
         while (health.currentHP > 0)
         {
-            // 1) Volley
-            yield return DoVolley(p3ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p3ShotInterval);
-            // 2) Circular immediately
+            // Volley
+            yield return DoVolley(p3ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p3ShotInterval, p3VolleySFX);
+            // Circular immediately
             yield return DoCircularBlast();
             circularCount++;
-            // 3) Clone after 3 blasts
+            // Clone after 3 blasts
             if (circularCount >= 3)
             {
                 // Do one more volley attack
-                yield return DoVolley(p3ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p3ShotInterval);
+                yield return DoVolley(p3ShotsPerVolley, regularProjectileSpeed, regularProjectileDamage, p3ShotInterval, p3VolleySFX);
                 circularCount = 0;
                 yield return DoClonePhase(p3ClonesCount, p3CloneRadius, p3CloneChargeTime);
                 // Move back
                 anim.SetTrigger("Move");
                 yield return MoveTo(homePoint.position);
             }
-            // 4) Wait
+            // Wait
             yield return new WaitForSeconds(p3VolleyCooldown);
         }
     }
@@ -290,10 +286,13 @@ public class MirrorBinderController : MonoBehaviour
         fall.Init(dropPos, player);
     }
 
-    private IEnumerator DoVolley(int shots, float speed, int damage, float interval)
+    private IEnumerator DoVolley(int shots, float speed, int damage, float interval, AudioClip volleySFX)
     {
         anim.SetTrigger("Charge1");
         yield return new WaitForSeconds(interval);
+
+        if (volleySFX != null)
+            AudioManager.Instance.PlaySFX(volleySFX);
         for (int i = 0; i < shots; i++)
         {
             anim.SetTrigger("Attack");
@@ -306,6 +305,8 @@ public class MirrorBinderController : MonoBehaviour
     {
         anim.SetTrigger("Charge2");
         yield return new WaitForSeconds(p1ShotInterval);
+        if (circleBlastSFX != null)
+            AudioManager.Instance.PlaySFX(circleBlastSFX);
         for (int i = 0; i < circularShotCount; i++)
         {
             float angle = i * 360f / circularShotCount;
@@ -436,28 +437,6 @@ public class MirrorBinderController : MonoBehaviour
                 Debug.LogError("[MirrorbinderController]: Could not find BossHealthBarUI");
                 return;
             }
-            /*// Grab the already?loaded UI scene
-            var uiScene = UnityEngine.SceneManagement.SceneManager.GetSceneByName("UI");
-            if (!uiScene.isLoaded)
-            {
-                Debug.LogError("UI scene not loaded");
-                return;
-            }
-
-            // Find the BossHealthBarUI component under BossHealthBarPanel
-            foreach (var root in uiScene.GetRootGameObjects())
-            {
-                var panel = root.GetComponentInChildren<Transform>(true)
-                                ?.Find("BossHealthBarPanel");
-                if (panel != null)
-                {
-                    bossHealthBarUI = panel.GetComponent<BossHealthBarUI>();
-                    break;
-                }
-            }
-
-            if (bossHealthBarUI == null)
-                Debug.LogError("[MirrorBinderController]: Could not find BossHealthBarUI");*/
         }
 
         // Show it

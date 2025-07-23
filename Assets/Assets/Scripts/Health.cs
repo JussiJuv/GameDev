@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
 
     [Header("Audio")]
     [Tooltip("SFX to play when player dies")]
-    public AudioClip deathClip;
+    public AudioClip[] deathClips;
 
     public int currentHP;
     private Collider2D col;
@@ -98,12 +98,14 @@ public class Health : MonoBehaviour
         }
 
         // Play SFX if assigned
-        if (deathClip != null)
+        AudioClip clip = null;
+        if (deathClips != null && deathClips.Length > 0)
         {
-            //AudioSource.PlayClipAtPoint(deathClip, transform.position);
-            //sfxAudioSource.PlayOneShot(deathClip);
-            AudioManager.Instance.PlaySFX(deathClip);
+            clip = deathClips[Random.Range(0, deathClips.Length)];
+            if (clip != null)
+                AudioManager.Instance.PlaySFX(clip);
         }
+
 
         // Disable any MonoBehaviours
         foreach (var b in disableOnDeathList)

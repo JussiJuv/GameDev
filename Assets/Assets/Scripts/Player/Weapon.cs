@@ -7,6 +7,9 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public Transform bowTransform;
 
+    [Header("SFX")]
+    public AudioClip[] bowShotClips;
+
     [Header("Bow Settings")]
     [Tooltip("Distance from the player center to the bow")]
     public float bowRadius = 0.5f;
@@ -151,6 +154,12 @@ public class Weapon : MonoBehaviour
         else
         {
             Debug.LogWarning("Projectile prefab has no RigidBody2D!");
+        }
+
+        if (bowShotClips != null && bowShotClips.Length > 0)
+        {
+            var clip = bowShotClips[Random.Range(0, bowShotClips.Length)];
+            AudioManager.Instance.PlaySFX(clip);
         }
 
         // Debug: draw the fire direction in the Scene view

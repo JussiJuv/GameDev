@@ -14,6 +14,9 @@ public class Door : MonoBehaviour
     public GameObject openSprite;
     public SpriteRenderer promptIcon;
 
+    [Header("SFX")]
+    public AudioClip doorSFX;
+
 
     [Header("Locked Message UI")]
     public Canvas messageCanvas;
@@ -72,6 +75,8 @@ public class Door : MonoBehaviour
 
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
+
+        AudioManager.Instance.PlaySFX(doorSFX);
     }
 
     private void ShowMessage(string msg)

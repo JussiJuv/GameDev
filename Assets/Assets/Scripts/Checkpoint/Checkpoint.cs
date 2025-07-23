@@ -16,6 +16,9 @@ public class Checkpoint : MonoBehaviour
     public SpriteRenderer promptIcon;
     public float promptYOffset = 1.5f;
 
+    [Header("SFX")]
+    public AudioClip checkpointSFX;
+
     protected bool isActive;
 
     private bool playerInRange = false;
@@ -84,6 +87,8 @@ public class Checkpoint : MonoBehaviour
 
         isActive = true;
         UpdateVisuals();
+
+        AudioManager.Instance.PlaySFX(checkpointSFX);
 
         playerInRange = false;
         promptIcon?.gameObject.SetActive(false);
