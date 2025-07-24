@@ -19461,8 +19461,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
       propertyPath: storyBody
-      value: Welcome to the Crossroads. Here you can buy health potions before your
-        next adventure.
+      value: Welcome to the Crossroads. Here you can buy health potions to aid your
+        journey. Discover the secrets held within your shard fragments.
       objectReference: {fileID: 0}
     - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
       propertyPath: storyHeader

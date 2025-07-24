@@ -1441,7 +1441,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ace344bbc76e3b744944b780232c7604, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49197,6 +49197,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130776921857296705, guid: b4da3f6fe5502104b983963056256250, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1748840052819609594, guid: b0053599c0f4bf241a59a637b03864ef, type: 3}
+    - target: {fileID: 130776921857296705, guid: b4da3f6fe5502104b983963056256250, type: 3}
+      propertyPath: m_SortingLayer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 130776921857296705, guid: b4da3f6fe5502104b983963056256250, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -585523863
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911782276003358420, guid: b4da3f6fe5502104b983963056256250, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2d08715e965030742908ac854f8b89aa, type: 2}
     - target: {fileID: 2562411731896383088, guid: b4da3f6fe5502104b983963056256250, type: 3}
       propertyPath: shopUI
       value: 
@@ -49211,11 +49227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5230614187762859104, guid: b4da3f6fe5502104b983963056256250, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.51
+      value: -0.492
       objectReference: {fileID: 0}
     - target: {fileID: 5230614187762859104, guid: b4da3f6fe5502104b983963056256250, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.31
+      value: 3.616
       objectReference: {fileID: 0}
     - target: {fileID: 5230614187762859104, guid: b4da3f6fe5502104b983963056256250, type: 3}
       propertyPath: m_LocalPosition.z

@@ -1510,6 +1510,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 579463530}
     m_Modifications:
+    - target: {fileID: 1484851528897006398, guid: 2467d10bb83da4f47b665f1b538669d5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292208334807774313, guid: 2467d10bb83da4f47b665f1b538669d5, type: 3}
+      propertyPath: m_text
+      value: Buried within the Grasslands lies a fragment of a shattered relic, guarded
+        by a silent force. The guardian knows not the value of what it holds, only
+        that it must be kept safe. Retrieve the fragment, and the way forward will
+        reveal itself.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292208334807774313, guid: 2467d10bb83da4f47b665f1b538669d5, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292208334807774313, guid: 2467d10bb83da4f47b665f1b538669d5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292208334807774313, guid: 2467d10bb83da4f47b665f1b538669d5, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292208334807774313, guid: 2467d10bb83da4f47b665f1b538669d5, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4956668334931064127, guid: 2467d10bb83da4f47b665f1b538669d5, type: 3}
       propertyPath: m_Alpha
       value: 1
