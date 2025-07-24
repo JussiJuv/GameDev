@@ -1,38 +1,35 @@
-Character (1)
-https://thelazystone.itch.io/post-apocalypse-pixel-art-asset-pack
-
-Enemy (2)
+Enemy slime "Sangoro" (2)
 https://sangoro.itch.io/free-s-fully-animated-enemy-basic-slime
 
-VFX (3)
+Player Death VFX "pimen" (3)
 https://pimen.itch.io/dark-spell-effect
 
-Tiles (4)
+Grassland Tiles, and various props "Cainos" (4) 
 https://assetstore.unity.com/packages/2d/environments/pixel-art-top-down-basic-187605
 
-Keys (5)
+Keys "karsiori" (5)
 https://assetstore.unity.com/packages/2d/pixel-art-key-pack-animated-271986
 
-Dungeon Tiles (6)
+Dungeon Tiles "Szadi art." (6)
 https://szadiart.itch.io/rogue-fantasy-catacombs
 
-Key UI (7)
+Key UI "egordorichev" (7)
 https://egordorichev.itch.io/key-set
 
-Currency (8)
+Currency "La Red Games" (8)
 https://laredgames.itch.io/gems-coins-free
 
-Boss room entrance mist (9)
+Boss room entrance mist [no author mentioned] (9)
 https://kenney.nl/assets/smoke-particles
 
-Tiles (10)
+Crossroads Tiles "Gif" (10)
 https://gif-superretroworld.itch.io/interior-pack
 
-Potions (11)
+Potions "Rian Nez" (11)
 https://rianez3.itch.io/potion-in-glasses
 
-Boss sprite (12)
+Boss sprite "CreativeKind" (12)
 https://creativekind.itch.io/necromancer-free
 
-Meteor (13)
+Meteor "Foozle" (13)
 https://foozlecc.itch.io/void-environment-pack

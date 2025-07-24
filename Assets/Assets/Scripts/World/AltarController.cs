@@ -1,8 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class AltarController : MonoBehaviour
 {
@@ -20,6 +17,9 @@ public class AltarController : MonoBehaviour
     [Header("Prompt")]
     public SpriteRenderer promptIcon;
     public float promptYOfset = 1.5f;
+
+    [Header("Fade")]
+    public float fadeDuration = 1f;
 
     bool inRange, hasA, hasB, placedA, placedB;
 
@@ -76,13 +76,29 @@ public class AltarController : MonoBehaviour
 
     IEnumerator ActivateAndCredits()
     {
-        // show the animator
-        Debug.Log("[AltarController]: Both shards placed - firing Activate trigger");
         activationAnimator.gameObject.SetActive(true);
         activationAnimator.SetTrigger("Activate");
         yield return new WaitForSeconds(activationAnimator.GetCurrentAnimatorStateInfo(0).length);
-        // Roll credits
-        // TODO
+
+        var fadeGo = GameObject.Find("UI Canvas/FadePanel");
+        if (fadeGo == null)
+            Debug.LogError("FadePanel not found under UI Canvas");
+        else
+        {
+            var fadeGroup = fadeGo.GetComponent<CanvasGroup>();
+            if (fadeGroup == null)
+                Debug.LogError("FadePanel missing CanvasGroup");
+            else
+            {
+                float t = 0f;
+                fadeGroup.alpha = 0f;
+                fadeGroup.alpha = Mathf.Clamp01(t / fadeDuration);
+                yield return null;
+            }
+            fadeGroup.alpha = 1f;
+        }
+
+        CreditsController.Instance.Show();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

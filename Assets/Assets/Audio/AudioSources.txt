@@ -1,6 +1,6 @@
 Dash: Pixabay
 Bow: ZapSplat
-Run Grass: https://nebula-audio.itch.io/character-footsteps-rock-grass-pack-1
+Run Grass: https://nebula-audio.itch.io/character-footsteps-rock-grass-pack-1 "nebula audio"
 Run Stone: ZapSplat
 Run Wood: ZapSplat
 ArrowRain: ZapSplat
@@ -16,3 +16,10 @@ Mirrorbinder_circle: ZapSplat
 Mirrorbinder_charge: Pixabay
 Mirrorbinder_meteor: Pixabay
 Mirrorbinder_death: ZapSplat
+
+
+Music: All from Pixabay
+Cloud of Sorrow: Katzen_Tupaz
+Dragon Hunters Loop: Ebunny	(Content ID)
+Heavy Trash Metal Instrumental - Irate: nickpanek620
+RPG Mistic Music Contrasting and Looped: Andorios
