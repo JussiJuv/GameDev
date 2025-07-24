@@ -95,8 +95,8 @@ public class Chest : MonoBehaviour
         // Play VFX/SFX
         if (openVFX != null)
             Instantiate(openVFX, transform.position, Quaternion.identity);
-        if (openSFX != null)
-            AudioSource.PlayClipAtPoint(openSFX, transform.position);
+        if (openSFX != null && AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(openSFX);
 
         // Disable further interaction
         GetComponent<Collider2D>().enabled = false;

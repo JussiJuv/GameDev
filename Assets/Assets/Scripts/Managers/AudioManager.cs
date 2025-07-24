@@ -19,13 +19,8 @@ public class AudioManager : MonoBehaviour
 
             sfxSource = sources[0];
             footStepSource = sources[1];
-            /*//DontDestroyOnLoad(gameObject);
-            if (sfxSource == null) 
-                sfxSource = GetComponent<AudioSource>();
 
-            if (sfxSource == null)
-                Debug.LogError("[AudioManager]: No AudioSource assigned or found");*/
-
+            UpdateMute();
         }
         else
         {
@@ -49,9 +44,11 @@ public class AudioManager : MonoBehaviour
         footStepSource.pitch = pitch;
         footStepSource.PlayOneShot(clip);
         footStepSource.pitch = 1f;
+    }
 
-        /*sfxSource.pitch = pitch;
-        sfxSource.PlayOneShot(clip);
-        sfxSource.pitch = 1f;*/
+    public void UpdateMute()
+    {
+        sfxSource.mute = !AudioPreferences.SFXOn;
+        footStepSource.mute = !AudioPreferences.SFXOn;
     }
 }

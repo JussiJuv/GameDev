@@ -21,13 +21,23 @@ public class MusicManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             src = GetComponent<AudioSource>();
             SceneManager.sceneLoaded += OnSceneLoaded;
+            UpdateMute();
         }
         else
+        {
             Destroy(gameObject);
+            return;
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode _)
     {
+        if (src == null)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            return;
+        }
+
         AudioClip clip = null;
         switch (scene.name)
         {
@@ -63,6 +73,12 @@ public class MusicManager : MonoBehaviour
         src.clip = clip;
         src.time = 0f;
         src.Play();
+    }
+
+    public void UpdateMute()
+    {
+        if (src != null)
+            src.mute = !AudioPreferences.MusicOn;
     }
 
 }

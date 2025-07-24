@@ -7,6 +7,7 @@ public class PauseMenuController : MonoBehaviour
     public GameObject pausePanel, controlsPanel;
 
     public Button resumeBtn, loadGameBtn, controlsBtn, quitBtn;
+    public Button sfxToggle, musicToggle;
 
     private GameObject _playerGO;
     private MonoBehaviour[] _toDisable;

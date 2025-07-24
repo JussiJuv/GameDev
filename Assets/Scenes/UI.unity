@@ -184,10 +184,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 266918493074459435, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 62
-      objectReference: {fileID: 0}
     - target: {fileID: 1033706581497467819, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: m_Name
       value: UI Canvas

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AbilityHotbarUI : MonoBehaviour
 {
@@ -13,51 +12,15 @@ public class AbilityHotbarUI : MonoBehaviour
     private List<HotbarSlotUI> slots = new List<HotbarSlotUI>();
     private Dictionary<string, HotbarSlotUI> abilityToSlot = new Dictionary<string, HotbarSlotUI>();
 
-    //private bool subscribed = false;
-
-    /*private void Start()
-    {
-        if (abilityManager == null)
-        {
-            abilityManager = FindFirstObjectByType<AbilityManager>();
-        }
-
-        if (!subscribed && abilityManager != null)
-        {
-            abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
-            abilityManager.OnAbilityUsed += OnAbilityUsed;
-            subscribed = true;
-        }
-
-        RebuildHotbar();
-    }*/
-
     void Awake()
     {
-        // Create the 3 slot placeholders once
-        for (int i = 0; i < 3; i++)
+        // Create the 2 slot placeholders once
+        for (int i = 0; i < 2; i++)
         {
             var go = Instantiate(slotPrefab, slotContainer);
             slots.Add(go.GetComponent<HotbarSlotUI>());
         }
     }
-
-    /*private void Start()
-    {
-        if (abilityManager == null)
-            abilityManager = FindFirstObjectByType<AbilityManager>();
-
-        if (abilityManager == null)
-        {
-            Debug.LogError("[AbilityHotbarUI]: No AbilityManager found");
-            return;
-        }
-
-        abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
-        abilityManager.OnAbilityUsed += OnAbilityUsed;
-
-        RebuildHotbar();
-    }*/
 
     private IEnumerator Start()
     {
@@ -79,95 +42,6 @@ public class AbilityHotbarUI : MonoBehaviour
             abilityManager.OnAbilityUsed -= OnAbilityUsed;
         }
     }
-
-    /*void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneChanged;
-
-        // If portal into Hub happened without destroying this UI,
-        // manually invoke our scene?loaded handler now
-        //OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
-
-        SceneManager.sceneUnloaded += OnSceneChanged;
-        TryHookupManager();
-
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneChanged;
-        if (abilityManager != null)
-        {
-            abilityManager.OnAbilityUnlocked -= OnAbilityUnlocked;
-            abilityManager.OnAbilityUsed -= OnAbilityUsed;
-        }
-    }
-
-    private void OnSceneChanged(Scene scene, LoadSceneMode mode) => TryHookupManager();
-
-    private void OnSceneChanged(Scene scene) => TryHookupManager();
-
-    private void TryHookupManager()
-    {
-        var mgr = FindFirstObjectByType<AbilityManager>();
-        Debug.Log($"[Hotbar] Trying hookup, found mgr={mgr?.name}");
-        if (mgr != abilityManager)
-        {
-            // Drop old
-            UnsubscribeManager();
-            abilityManager = mgr;
-            // use new
-            SubscribeManager();
-            RebuildHotbar();
-        }
-    }
-
-    private void SubscribeManager()
-    {
-        if (abilityManager != null && !subscribed)
-        {
-            abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
-            abilityManager.OnAbilityUsed += OnAbilityUsed;
-            subscribed = true;
-        }
-    }
-
-    private void UnsubscribeManager()
-    {
-        if (abilityManager != null && subscribed)
-        {
-            abilityManager.OnAbilityUnlocked -= OnAbilityUnlocked;
-            abilityManager.OnAbilityUsed -= OnAbilityUsed;
-            subscribed = false;
-        }
-    }*/
-
-    /*private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        var mgr = FindFirstObjectByType<AbilityManager>();
-        if (mgr != abilityManager)
-        {
-            // Unsubscribe old
-            if (subscribed && abilityManager != null)
-            {
-                abilityManager.OnAbilityUnlocked -= OnAbilityUnlocked;
-                abilityManager.OnAbilityUsed -= OnAbilityUsed;
-                subscribed = false;
-            }
-
-            abilityManager = mgr;
-
-            // Subscribe once
-            if (!subscribed && abilityManager != null)
-            {
-                abilityManager.OnAbilityUnlocked += OnAbilityUnlocked;
-                abilityManager.OnAbilityUsed += OnAbilityUsed;
-                subscribed = true;
-            }
-        }
-
-        RebuildHotbar();
-    }*/
 
     private void OnAbilityUnlocked(AbilityData ab)
     {
