@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 856644352319919699, guid: 37f6205a53033db4fba339ec4bfa8cea, type: 3}
   healFraction: 0.25
-  cost: 100
+  cost: 50
   description: Heals 25% of max HP.

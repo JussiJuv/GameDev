@@ -103,11 +103,16 @@ public class MirrorBinderController : MonoBehaviour
     private Transform player;
     private Vector3 originalPosition;
     private AudioSource _loopingSource;
+    private Collider2D col;
 
     private void Awake()
     {
         health = GetComponent<Health>();
         anim = GetComponent<Animator>();
+        col = GetComponent<Collider2D>();
+
+        col.enabled = false;
+
         originalPosition = transform.position;
 
         phaseOneToTwoHP = health.maxHP * 0.66f;
@@ -446,6 +451,8 @@ public class MirrorBinderController : MonoBehaviour
     {
         // Lock the gate so the player cant leave
         gateController?.LockGate();
+
+        col.enabled = true;
 
         // Play boss music
         MusicManager.Instance?.PlayBossMusic();

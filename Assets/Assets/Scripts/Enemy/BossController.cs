@@ -37,31 +37,26 @@ public class BossController : MonoBehaviour
     private float lastAttackTime = 0f;
     private Health health;
     private Animator anim;
+    private Collider2D col;
 
     public BossRoomEntrance gateController;
-
-    /*private void Start()
-    {
-        bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();
-        if (bossHealthBarUI == null) Debug.LogError("[BossController]: BossHealthBarUI not found in loaded scenes");
-    }*/
 
     private void Awake()
     {
         health = GetComponent<Health>();
         anim = GetComponent<Animator>();
-        // Call OnBossDeath when Health reaches zero
+        col = GetComponent<Collider2D>();
+
+        health.enabled = false;
+        col.enabled = false;
+
         health.OnDeath.AddListener(OnBossDeath);
 
         var player = GameObject.FindWithTag("Player");
         if (player != null)
-        {
             playerT = player.transform;
-        }
         else
-        {
-            Debug.LogError("BossController: Player tag not found in scene.");
-        }
+            Debug.LogError("[BossController]: Player tag not found");
     }
 
     private void Start()
@@ -111,16 +106,11 @@ public class BossController : MonoBehaviour
                 Debug.LogError("[BossController]: Could not find BossHealthBarUI in UI scene");
                 return;
             }
-
-            /*bossHealthBarUI = FindFirstObjectByType<BossHealthBarUI>();
-            if (bossHealthBarUI == null)
-            {
-                Debug.LogError("[BossController]: BossHealthBarUI still missing during ActivateBoss");
-                return;
-            }*/
         }
 
         canActivate = true;
+        health.enabled = true;
+        col.enabled = true;
         // Show the boss hp bar
         if (bossHealthBarUI != null)
         {

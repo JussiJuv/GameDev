@@ -18,7 +18,6 @@ public class MusicManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             src = GetComponent<AudioSource>();
             SceneManager.sceneLoaded += OnSceneLoaded;
             UpdateMute();
