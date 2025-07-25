@@ -111,7 +111,8 @@ public class MirrorBinderController : MonoBehaviour
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
 
-        col.enabled = false;
+        if (!isClone)
+            col.enabled = false;
 
         originalPosition = transform.position;
 
@@ -505,7 +506,7 @@ public class MirrorBinderController : MonoBehaviour
             }
         }
 
-        PickupPopuiUI.Instance.Show(new[] { goldKeyData, shardBData });
+        PickupPopupUI.Instance.Show(new[] { goldKeyData, shardBData });
 
         bossHealthBarUI?.Hide();
 

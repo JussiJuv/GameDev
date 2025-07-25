@@ -145,7 +145,7 @@ public class BossController : MonoBehaviour
         }
 
         // Show pickup popup
-        PickupPopuiUI.Instance.Show(new[] { bossKeyData, shardAData });
+        PickupPopupUI.Instance.Show(new[] { bossKeyData, shardAData });
         //KeyPickupPopupUI.Instance.Show(bossKeyData);
 
 

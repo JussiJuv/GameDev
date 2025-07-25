@@ -4,17 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class HealthBarUI : MonoBehaviour
 {
-    [Header("References (will be found at runtime)")]
-    [Tooltip("The player's Health component")]
-    public Health playerHealth;
-
-    [Tooltip("Image component of the fill graphic")]
-    public Image fillImage;
+    private Health playerHealth;
+    private Image fillImage;
 
     private void Awake()
     {
         if (playerHealth == null)
             TryFindPlayerHealth();
+
+        // Locate HP fill
+        if (fillImage == null)
+        {
+            var fillTransform = transform.Find("HUD_Panel/BarsContainer/HP_BG/HP_Fill");
+            if (fillTransform != null) 
+                fillImage = fillTransform.GetComponent<Image>();
+
+            if (fillImage == null)
+                Debug.LogError("[HealthBarUI]: Cannot find HP_Fill image under HUD_Panel");
+        }
 
         // Listen for future scene loads
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -27,7 +34,7 @@ public class HealthBarUI : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // After any new scene comes online, re?resolve the playerHealth reference
+        // After any new scene comes online, resolve the playerHealth reference
         TryFindPlayerHealth();
     }
 

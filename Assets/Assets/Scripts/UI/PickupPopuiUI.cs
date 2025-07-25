@@ -5,9 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class PickupPopuiUI : MonoBehaviour
+public class PickupPopupUI : MonoBehaviour
 {
-    public static PickupPopuiUI Instance { get; private set; }
+    public static PickupPopupUI Instance { get; private set; }
 
     [Header("References")]
     public CanvasGroup canvasGroup;
