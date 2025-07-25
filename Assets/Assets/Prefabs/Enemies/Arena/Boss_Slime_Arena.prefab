@@ -135,7 +135,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   maxHP: 15
-  xpValue: 10
+  xpValue: 50
   destroyDelay: 0.5
   deathEffectPrefab: {fileID: 0}
   OnDeath:

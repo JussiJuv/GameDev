@@ -71,8 +71,8 @@ public class XPManager : MonoBehaviour
     {
         if (xpThresholds == null || xpThresholds.Length == 0)
         {
-            Debug.LogWarning("XP Thresholds not set! Returning default 100.");
-            return 100;
+            Debug.LogWarning("XP Thresholds not set! Returning default 1000.");
+            return 1000;
         }
 
         int index = level - 1;

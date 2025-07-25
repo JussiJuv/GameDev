@@ -345,6 +345,22 @@ PrefabInstance:
       propertyPath: startingLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3847791116223747360, guid: 369bd2bd38c9fe24e8bb98372f34fd9c, type: 3}
+      propertyPath: 'xpThresholds.Array.data[0]'
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847791116223747360, guid: 369bd2bd38c9fe24e8bb98372f34fd9c, type: 3}
+      propertyPath: 'xpThresholds.Array.data[1]'
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847791116223747360, guid: 369bd2bd38c9fe24e8bb98372f34fd9c, type: 3}
+      propertyPath: 'xpThresholds.Array.data[2]'
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847791116223747360, guid: 369bd2bd38c9fe24e8bb98372f34fd9c, type: 3}
+      propertyPath: 'xpThresholds.Array.data[3]'
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7301228561857351328, guid: 369bd2bd38c9fe24e8bb98372f34fd9c, type: 3}
       propertyPath: m_Name
       value: XPManager

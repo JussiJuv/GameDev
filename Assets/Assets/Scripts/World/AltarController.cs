@@ -92,12 +92,19 @@ public class AltarController : MonoBehaviour
             {
                 float t = 0f;
                 fadeGroup.alpha = 0f;
-                fadeGroup.alpha = Mathf.Clamp01(t / fadeDuration);
-                yield return null;
+
+                while (t < fadeDuration)
+                {
+                    t += Time.unscaledDeltaTime;
+                    fadeGroup.alpha = Mathf.Clamp01(t / fadeDuration);
+                    yield return null;
+                }
+                
             }
             fadeGroup.alpha = 1f;
         }
 
+        fadeGo.SetActive(false);
         CreditsController.Instance.Show();
     }
 

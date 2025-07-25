@@ -204,6 +204,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1322003282255734812, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322003282255734812, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8543918897373044191, guid: c8b7c9e83cdd0cd4d9136cfd98e73415, type: 3}
+    - target: {fileID: 1322003282255734812, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322003282255734812, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322003282255734812, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322003282255734812, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322003282255734812, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031557139764303498, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3031557139764303498, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: m_BlocksRaycasts
       value: 0
@@ -292,6 +324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5159998108821337531, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5313013927208867379, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: closeButton
       value: 
@@ -326,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9096868044034306130, guid: de2944cac9af48e4e9af8e7e45e32304, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
