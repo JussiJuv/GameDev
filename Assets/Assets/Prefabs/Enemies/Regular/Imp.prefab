@@ -262,3 +262,4 @@ MonoBehaviour:
   timeBetweenVolleys: 2
   firePoint: {fileID: 6456217061133332455}
   impProjectilePrefab: {fileID: 32426443398443091, guid: fd4e724f75e3b7c4ab3faf5949cd6fd7, type: 3}
+  attackSFX: {fileID: 8300000, guid: c5120f60fe8179d46944ebb8059f6cbd, type: 3}

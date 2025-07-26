@@ -43,30 +43,25 @@ public class SlimeArenaController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerT == null) return;
+        if (playerT == null)
+            return;
 
-        float dist = Vector2.Distance(transform.position, playerT.position);
-
-        if (dist <= attackRange)
-            TryAttack();
-        else
-        {
-            Vector2 target = Vector2.MoveTowards(
-                rb.position,
-                playerT.position,
-                moveSpeed * Time.fixedDeltaTime);
-            rb.MovePosition(target);
-        }
-    }
-
-    /*private void ChasePlayer()
-    {
-        // run straight at the player
-        transform.position = Vector3.MoveTowards(
+        Collider2D hit = Physics2D.OverlapCircle(
             transform.position,
+            attackRange,
+            LayerMask.GetMask("Player"));
+        if (hit != null)
+        {
+            TryAttack();
+            return;
+        }
+
+        Vector2 target = Vector2.MoveTowards(
+            rb.position,
             playerT.position,
-            moveSpeed * Time.deltaTime);
-    }*/
+            moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(target);
+    }
 
     private void TryAttack()
     {

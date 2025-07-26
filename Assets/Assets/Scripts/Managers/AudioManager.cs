@@ -29,12 +29,19 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PlaySFX(AudioClip clip, float pitch = 1f)
     {
-        if (clip != null)
+        if (clip == null || sfxSource == null)
+            return;
+
+        /*if (clip != null)
         {
             sfxSource.PlayOneShot(clip);
-        }
+        }*/
+        float orignalPitch = sfxSource.pitch;
+        sfxSource.pitch = pitch;
+        sfxSource.PlayOneShot(clip);
+        sfxSource.pitch = orignalPitch;
     }
 
     public void PlayFootstep(AudioClip clip, float pitch = 1f)

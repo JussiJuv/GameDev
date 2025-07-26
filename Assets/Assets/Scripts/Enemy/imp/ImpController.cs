@@ -23,6 +23,9 @@ public class ImpController : MonoBehaviour
     public Transform firePoint;
     public GameObject impProjectilePrefab;
 
+    [Header("Audio")]
+    public AudioClip attackSFX;
+
     private Transform player;
     private Animator anim;
     private Vector3 nextPatrol;
@@ -120,6 +123,12 @@ public class ImpController : MonoBehaviour
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 180f;
             var go = Instantiate(impProjectilePrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
             go.GetComponent<ImpProjectile>()?.Init(dir);
+
+            if (attackSFX != null)
+            {
+                float pitch = Random.Range(0.9f, 1.1f);
+                AudioManager.Instance.PlaySFX(attackSFX, pitch);
+            }
 
             yield return new WaitForSeconds(timeBetweenShots);
         }

@@ -16,6 +16,11 @@ public class MainMenuController : MonoBehaviour
     [Header("Between-Level UI")]
     public StoryPanelController storyPanelController;
 
+    private const string GrasslandsStory =
+    "Buried within the Grasslands lies a fragment of a shattered relic, guarded by a silent force. " +
+    "The guardian knows not the value of what it holds, only that it must be kept safe. " +
+    "Retrieve the fragment, and the way forward will reveal itself.";
+
     private string savePath => Path.Combine(Application.persistentDataPath, "savegame.json");
 
     private void Start()
@@ -41,7 +46,7 @@ public class MainMenuController : MonoBehaviour
 
         storyPanelController.Show(
             header: "Grasslands",
-            body: "Your journey begins here. Defeat the Slime Giant to proceed.",
+            body: GrasslandsStory,
             onContinue: () =>
             {
                 SceneManager.LoadScene(sceneName);

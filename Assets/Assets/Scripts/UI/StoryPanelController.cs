@@ -44,10 +44,9 @@ public class StoryPanelController : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
-        Time.timeScale = 0f; // Pause gameplay
+        Time.timeScale = 0f;
 
         // fade in
-        //StartCoroutine(FadeInAndLoad(nextScene));
         StartCoroutine(FadeIn());
         continueButton.onClick.RemoveAllListeners();
         continueButton.onClick.AddListener(OnContinuePressed);
@@ -66,23 +65,6 @@ public class StoryPanelController : MonoBehaviour
         canvasGroup.alpha = 1f;
     }
 
-    /*IEnumerator FadeInAndLoad(string nextScene)
-    {
-        float t = 0;
-        while (t < fadeDuration)
-        {
-            t += Time.unscaledDeltaTime;
-            canvasGroup.alpha = t / fadeDuration;
-            yield return null;
-        }
-        canvasGroup.alpha = 1;
-
-        // Begin async load
-        var op = SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
-        while (!op.isDone)
-            yield return null;
-    }*/
-
     void OnContinuePressed()
     {
         StartCoroutine(FadeOutAndContinue()); 
@@ -90,17 +72,6 @@ public class StoryPanelController : MonoBehaviour
 
     IEnumerator FadeOutAndContinue()
     {
-        /*float t = fadeDuration;
-        while (t > 0)
-        {
-            t -= Time.unscaledDeltaTime;
-            canvasGroup.alpha = t / fadeDuration;
-            yield return null;
-        }
-        canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
-        Time.timeScale = 1f;*/
         Time.timeScale = 1f;
         _onContinue?.Invoke();
         yield return null;

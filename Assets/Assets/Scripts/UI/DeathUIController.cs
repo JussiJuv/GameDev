@@ -42,6 +42,13 @@ public class DeathUIController : MonoBehaviour
 
     private void OnPlayerDied()
     {
+        StartCoroutine(DelayedShowDeathMenu());
+    }
+
+    private IEnumerator DelayedShowDeathMenu()
+    {
+        yield return new WaitForSeconds(1.5f);
+
         Time.timeScale = 0f;
         panel.SetActive(true);
 
@@ -68,28 +75,11 @@ public class DeathUIController : MonoBehaviour
             return;
         }
 
-        /*SceneManager.sceneLoaded += StaticHandleRespawnAfterLoad;
-        SceneManager.LoadScene(scene);*/
-
-        /*SceneManager.sceneLoaded += OnSceneLoadedAfterRespawn;
-
-        SceneManager.UnloadSceneAsync(scene);
-        SceneManager.LoadScene(scene, LoadSceneMode.Additive);*/
-
         StartCoroutine(ReloadScene(scene));
     }
 
     private IEnumerator ReloadScene(string sceneName)
     {
-        /*// Unload it fully
-        var unload = SceneManager.UnloadSceneAsync(sceneName);
-        if (unload == null)
-        {
-            Debug.LogError("[DeathUIController]: Failed to start unloading");
-            yield break;
-        }
-        yield return unload;*/
-
         Scene toUnload = SceneManager.GetSceneByName(sceneName);
         if (!toUnload.isLoaded)
             Debug.LogError($"[DeathUIController]: Scene '{sceneName}' not currently loaded, cannot unload");
@@ -185,8 +175,27 @@ public class DeathUIController : MonoBehaviour
         var cam = FindFirstObjectByType<CameraFollow>();
         StartCoroutine(DelayedSnap(cam));
     }
-    
+
     private void QuitToMainMenu()
+    {
+        Time.timeScale = 1f;
+        // Destroy any DDOL objects
+        foreach (var go in FindObjectsByType<GameObject>(FindObjectsSortMode.None))
+        {
+            if (go.scene.buildIndex == -1 && go.GetComponent<PauseMenuController>() == null)
+                Destroy(go);
+        }
+
+        if (playerGO != null)
+        {
+            Destroy(playerGO);
+            playerGO = null;
+        }
+        
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
+    /*private void QuitToMainMenu()
     {
         Time.timeScale = 1f;
         Debug.Log("Quitting to MainMenu...");
@@ -208,7 +217,7 @@ public class DeathUIController : MonoBehaviour
             Destroy(go);
         }
         SceneManager.LoadScene("MainMenu");
-    }
+    }*/
 
     private IEnumerator DelayedSnap(CameraFollow cam)
     {

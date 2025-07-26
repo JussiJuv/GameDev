@@ -17,6 +17,9 @@ public class ImpArenaController : MonoBehaviour
     public Transform firePoint;
     public GameObject impProjectilePrefab;
 
+    [Header("Audio")]
+    public AudioClip attackSFX;
+
     private Transform[] patrolPoints;
     private Vector3 nextTarget;
     private bool isAttacking;
@@ -109,6 +112,12 @@ public class ImpArenaController : MonoBehaviour
                 float angle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 180f;
                 var proj = Instantiate(impProjectilePrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
                 proj.GetComponent<ImpProjectile>()?.Init(aim);
+
+                if (attackSFX != null)
+                {
+                    float pitch = Random.Range(0.5f, 2f);
+                    AudioManager.Instance.PlaySFX(attackSFX, pitch);
+                }
             }
             yield return new WaitForSeconds(timeBetweenShots);
         }

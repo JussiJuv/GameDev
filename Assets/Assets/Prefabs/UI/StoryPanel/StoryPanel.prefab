@@ -567,8 +567,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your journey begins among the Grasslands. Defeat the Slime Giant to claim
-    the ancient shard.
+  m_text: Buried within the Grasslands lies a fragment of a shattered relic, guarded
+    by a silent force. The guardian knows not the value of what it holds, only that
+    it must be kept safe. Retrieve the fragment, and the way forward will reveal
+    itself.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -227,6 +227,7 @@ MonoBehaviour:
   timeBetweenVolleys: 2
   firePoint: {fileID: 143503195503014357}
   impProjectilePrefab: {fileID: 32426443398443091, guid: fd4e724f75e3b7c4ab3faf5949cd6fd7, type: 3}
+  attackSFX: {fileID: 8300000, guid: c5120f60fe8179d46944ebb8059f6cbd, type: 3}
 --- !u!1 &5920859175792559135
 GameObject:
   m_ObjectHideFlags: 0

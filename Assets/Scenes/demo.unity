@@ -4691,11 +4691,11 @@ PrefabInstance:
       objectReference: {fileID: 1470649002}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.15
+      value: 35.89
       objectReference: {fileID: 0}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.43
+      value: -3.62
       objectReference: {fileID: 0}
     - target: {fileID: 4244052135290292197, guid: 1f06199d022161542b6d6048e1691189, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6534,6 +6534,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2349278583362291744, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
       propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349278583362291744, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
+      propertyPath: attackRange
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2676647125395865318, guid: c8e0cb6e9500bb84bbf0f8d19f631a20, type: 3}
@@ -19540,7 +19544,7 @@ PrefabInstance:
     - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
       propertyPath: storyBody
       value: Welcome to the Crossroads. Here you can buy health potions to aid your
-        journey. Discover the secrets held within your shard fragments.
+        journey.
       objectReference: {fileID: 0}
     - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
       propertyPath: storyHeader

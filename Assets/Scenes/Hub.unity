@@ -46838,7 +46838,7 @@ PrefabInstance:
     - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
       propertyPath: storyBody
       value: The Crypt is dark and full of danger. Fight through waves of enemies
-        to reach the end.
+        to reach the end. Discover the secrets held within your shard fragments.
       objectReference: {fileID: 0}
     - target: {fileID: 8328281141468543348, guid: 33fe940a64b999a46988e1c4879fc9ec, type: 3}
       propertyPath: sceneToLoad

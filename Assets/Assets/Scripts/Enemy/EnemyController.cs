@@ -28,6 +28,9 @@ public class EnemyController : MonoBehaviour
     [Tooltip("Seconds between each attack attempt")]
     public float attackCooldown = 1f;
 
+    [Tooltip("Which layers count as attack targets")]
+    public LayerMask attackLayers;
+
     private Vector3 startPos;
     private Vector3 patrolTarget;
     private Transform playerT;
@@ -68,6 +71,40 @@ public class EnemyController : MonoBehaviour
         if (!canMove || playerT == null)
             return;
 
+        Collider2D hit = Physics2D.OverlapCircle(
+            transform.position,
+            attackRange,
+            attackLayers);
+
+        if (hit != null && hit.CompareTag("Player"))
+        {
+            TryAttack();
+            return;
+        }
+
+        float dist = Vector2.Distance(transform.position, playerT.position);
+
+        if (dist <= chaseRange)
+        {
+            Vector2 target = Vector2.MoveTowards(
+                rb.position,
+                playerT.position,
+                chaseSpeed * Time.fixedDeltaTime);
+
+            rb.MovePosition(target);
+        }
+        else
+        {
+            Patrol();
+        }
+
+    }
+
+    /*private void FixedUpdate()
+    {
+        if (!canMove || playerT == null)
+            return;
+
         float dist = Vector2.Distance(transform.position, playerT.position);
         if (dist <= attackRange)
         {
@@ -85,7 +122,7 @@ public class EnemyController : MonoBehaviour
         {
             Patrol();
         }
-    }
+    }*/
 
     private void Patrol()
     {

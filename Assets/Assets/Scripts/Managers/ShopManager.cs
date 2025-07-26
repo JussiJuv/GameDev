@@ -65,6 +65,7 @@ public class ShopManager : MonoBehaviour
         if (costText == null) Debug.LogError("ShopManager: 'CostText' missing under CostContainer!");
         if (costIcon == null) Debug.LogError("ShopManager: 'CostIcon' missing under CostContainer!");
         if (buyButton == null) Debug.LogError("ShopManager: 'BuyButton' missing!");
+        else buyButton.interactable = false;
         if (backButton == null) Debug.LogError("ShopManager: 'BackButton' missing!");
 
         buyButton?.onClick.AddListener(Buy);
@@ -117,6 +118,7 @@ public class ShopManager : MonoBehaviour
         descText.text = it.description;
         costText.text = it.cost.ToString();
         costIcon.gameObject.SetActive(true);
+        buyButton.interactable = true;
     }
 
     void Buy()

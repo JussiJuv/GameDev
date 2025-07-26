@@ -11,6 +11,7 @@ Checkpoint: ZapSplat
 Door open: ZapSplat
 Slime death: Pixabay
 Imp death: ZapSplat
+Imp attack: ZapSplat
 Mirrorbinder_regular: ZapSplat
 Mirrorbinder_circle: ZapSplat
 Mirrorbinder_charge: Pixabay

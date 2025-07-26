@@ -181,9 +181,12 @@ MonoBehaviour:
   chaseSpeed: 2
   patrolRadius: 3
   chaseRange: 10
-  attackRange: 1
+  attackRange: 0.5
   attackDamage: 1
   attackCooldown: 1
+  attackLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!95 &355754569691349180
 Animator:
   serializedVersion: 7

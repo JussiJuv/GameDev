@@ -324,7 +324,7 @@ MonoBehaviour:
       m_Calls: []
   maxHP: 1000
   xpValue: 0
-  destroyDelay: 0.5
+  destroyDelay: 3
   deathEffectPrefab: {fileID: 3341095332118901100, guid: 2a2673d47a31eb840bec71e522f7e708, type: 3}
   OnDeath:
     m_PersistentCalls:
@@ -332,7 +332,8 @@ MonoBehaviour:
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
-  deathClip: {fileID: 8300000, guid: 5c655cd9abd197b4e80660b8e31fc533, type: 3}
+  deathClips:
+  - {fileID: 8300000, guid: 5c655cd9abd197b4e80660b8e31fc533, type: 3}
   currentHP: 0
 --- !u!50 &7395702047644957517
 Rigidbody2D:
