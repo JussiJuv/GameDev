@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Profiling.Memory.Experimental;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -27,6 +26,7 @@ public class CreditsController : MonoBehaviour
         // Art
         new[]
         {
+            "xXAshuraXx - Bow & Arrow",
             "Sangoro – Slime Enemy",
             "pimen – Dark Spell Effect",
             "Cainos – Pixel Art Top Down Basics",
